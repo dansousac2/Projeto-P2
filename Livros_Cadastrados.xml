@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<CentralLivro>
+  <livrosDisponiveis>
+    <Livro>
+      <tipo>literatura</tipo>
+      <genero>gênero do tipo 1</genero>
+      <titulo>As peripércias de Leo</titulo>
+      <idioma>mandarim</idioma>
+      <anoPublicacao>1991</anoPublicacao>
+      <quantidade>3</quantidade>
+      <editora>Inova</editora>
+      <resumo>qq coisa serve</resumo>
+      <id>1618527884536</id>
+      <notaMedia>8</notaMedia>
+    </Livro>
+    <Livro>
+      <tipo>literatura</tipo>
+      <genero>gênero do tipo 2</genero>
+      <titulo>Broncos e Troncos</titulo>
+      <idioma>casteliano</idioma>
+      <anoPublicacao>1991</anoPublicacao>
+      <quantidade>2</quantidade>
+      <editora>Inova</editora>
+      <resumo>qq coisa serve</resumo>
+      <id>1618527884537</id>
+      <notaMedia>9</notaMedia>
+    </Livro>
+    <Livro>
+      <tipo>tecnico</tipo>
+      <genero>gênero do tipo 3</genero>
+      <titulo>As peripércias de Leo</titulo>
+      <idioma>mandarim</idioma>
+      <anoPublicacao>1991</anoPublicacao>
+      <quantidade>1</quantidade>
+      <editora>Inova</editora>
+      <resumo>qq coisa serve</resumo>
+      <id>1618527884538</id>
+      <notaMedia>10</notaMedia>
+    </Livro>
+    <Livro>
+      <tipo>desenvolvimento pessoal</tipo>
+      <genero>gênero do tipo 4</genero>
+      <titulo>As peripércias de Leo</titulo>
+      <idioma>mandarim</idioma>
+      <anoPublicacao>1991</anoPublicacao>
+      <quantidade>8</quantidade>
+      <editora>Inova</editora>
+      <resumo>qq coisa serve</resumo>
+      <id>1618527884539</id>
+      <notaMedia>8</notaMedia>
+    </Livro>
+  </livrosDisponiveis>
+</CentralLivro>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-15">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Danilo/eclipse-workspace/00-Bibliotecas-EXTRA/mensageiro/activation.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Danilo/eclipse-workspace/00-Bibliotecas-EXTRA/mensageiro/dsn.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Danilo/eclipse-workspace/00-Bibliotecas-EXTRA/mensageiro/gimap.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Danilo/eclipse-workspace/00-Bibliotecas-EXTRA/mensageiro/imap.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Danilo/eclipse-workspace/00-Bibliotecas-EXTRA/mensageiro/mailapi.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Danilo/eclipse-workspace/00-Bibliotecas-EXTRA/mensageiro/pop3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Danilo/eclipse-workspace/00-Bibliotecas-EXTRA/mensageiro/smtp.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Danilo/eclipse-workspace/00-Bibliotecas-EXTRA/xstream-1.4.15/lib/xstream-1.4.15.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Danilo/eclipse-workspace/00-Bibliotecas-EXTRA/xstream-1.4.15/lib/xstream-benchmark-1.4.15.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Danilo/eclipse-workspace/00-Bibliotecas-EXTRA/xstream-1.4.15/lib/xstream-hibernate-1.4.15.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Danilo/eclipse-workspace/00-Bibliotecas-EXTRA/xstream-1.4.15/lib/xstream-jmh-1.4.15.jar"/>
+	<classpathentry kind="lib" path="00-icones"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
