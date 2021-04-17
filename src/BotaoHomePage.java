@@ -1,7 +1,7 @@
 import javax.swing.JButton;
 
 public class BotaoHomePage extends JButton{
-	
+	// comenário
 	public BotaoHomePage(int posiX,int posiY) {
 		
 		this.setIcon(Imagens.ICONE_HOMEPAGE);
