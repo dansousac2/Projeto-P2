@@ -17,6 +17,6 @@
 	<classpathentry kind="lib" path="C:/Users/Danilo/eclipse-workspace/00-Bibliotecas-EXTRA/xstream-1.4.15/lib/xstream-benchmark-1.4.15.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Danilo/eclipse-workspace/00-Bibliotecas-EXTRA/xstream-1.4.15/lib/xstream-hibernate-1.4.15.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Danilo/eclipse-workspace/00-Bibliotecas-EXTRA/xstream-1.4.15/lib/xstream-jmh-1.4.15.jar"/>
-	<classpathentry kind="lib" path="00-icones"/>
+	<classpathentry kind="lib" path="Livraria-icones"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

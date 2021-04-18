@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>00-icones</name>
-			<type>2</type>
-			<location>C:/Users/Danilo/eclipse-workspace/00-icones</location>
-		</link>
-	</linkedResources>
 </projectDescription>
