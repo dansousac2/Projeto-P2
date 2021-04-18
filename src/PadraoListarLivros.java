@@ -27,7 +27,7 @@ public abstract class PadraoListarLivros extends JFrame {
 	private JTable jtLivrosDisponiveis;
 	private DefaultTableModel modelo;
 	
-	private ArrayList<Livro> listarLivros;
+	protected ArrayList<Livro> listarLivros;
 	private JComboBox<String> cbTipo;
 	private JComboBox<String> cbOrdem;
 	private JTextField barraPesquisar;
@@ -216,12 +216,8 @@ public abstract class PadraoListarLivros extends JFrame {
 	}
 	
 	private void addTabela() {
-
-		PersistenciaLivros perLivros = new PersistenciaLivros();
-		
-		try {
 			
-			this.listarLivros = perLivros.recuperarCentral("Livros_Cadastrados.xml").getLivrosDisponiveis();
+			this.listarLivros = recuperarLivrosCabiveis();
 		
 			String[] tituloColunas = {"Tipo","Título","Resumo","ID","Nota Média","Quantidade"};
 		
@@ -267,11 +263,11 @@ public abstract class PadraoListarLivros extends JFrame {
 			
 			add(barraTabela);
 		
-		} catch(Exception e) {
-			e.getStackTrace();
-			JOptionPane.showMessageDialog(null, "Não foi possível criar a lista de livros", "Criar lista de livros",
-					JOptionPane.ERROR_MESSAGE);
-		}
+//		} catch(Exception e) {
+//			e.getStackTrace();
+//			JOptionPane.showMessageDialog(null, "Não foi possível criar a lista de livros", "Criar lista de livros",
+//					JOptionPane.ERROR_MESSAGE);
+//		}
 	}
 	
 	private void addBotaoVisualizar() {
@@ -390,5 +386,34 @@ public abstract class PadraoListarLivros extends JFrame {
 			return o1.getTitulo().compareToIgnoreCase(o2.getTitulo());
 		}
 	}
+	
+	private ArrayList<Livro> recuperarLivrosCabiveis() {
+		
+		PersistenciaLivros perLivros = new PersistenciaLivros();
 
+		CentralLivro centralInformacoes;
+		
+		try {
+			if(this.getClass().getSimpleName().equals("ColecaoUsuario")) {
+			
+				centralInformacoes = perLivros.recuperarCentral("Livros_Usuarios.xml");
+				ArrayList<Usuario> buscarUsuario = centralInformacoes.getUsuariosCadastrados();
+				for(Usuario user : buscarUsuario) {
+					if(user == usuarioLogado) {
+						return user.getColecaoDeLivros();
+					}
+				}
+			}
+			
+			else {
+				centralInformacoes = perLivros.recuperarCentral("Livros_Cadastrados.xml");
+				return centralInformacoes.getLivrosDisponiveis();
+			}
+			
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Não foi possível listar os livros", "Erro", JOptionPane.ERROR_MESSAGE);
+		}
+		return new ArrayList<Livro>();
+	}
+	
 }

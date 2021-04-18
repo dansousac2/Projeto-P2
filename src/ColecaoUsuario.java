@@ -4,7 +4,6 @@ public class ColecaoUsuario extends PadraoListarLivros{
 
 	public ColecaoUsuario(Usuario user) {
 		super(user,false,Imagens.ICONE_COLECAO,"Minha Coleção");
-		
 		super.addIconeUsuario();
 		super.addNomeIconeUsuario();
 		
@@ -22,6 +21,5 @@ public class ColecaoUsuario extends PadraoListarLivros{
 		
 		add(botaoNota);
 	}
-	
-	
+		
 }

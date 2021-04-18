@@ -1,9 +1,12 @@
+import java.util.ArrayList;
 
 public class Usuario {
 	
 	private String nome;
 	private String email;
 	private String senha;
+	
+	private ArrayList<Livro> colecaoDeLivros;
 	
 	public Usuario(String nome,String email,String senha) {
 		
@@ -31,5 +34,10 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+	public ArrayList<Livro> getColecaoDeLivros() {
+		return colecaoDeLivros;
+	}
+	
 	
 }
