@@ -7,8 +7,8 @@ public class MainParaTestes {
 		Usuario user01 = new Usuario("Danilo", "dansousac2@gmail.com",
 				"0090");
 		
-//		new ListarLivrosUsuario(user01);
-		new ColecaoUsuario(user01);
+		new ListarLivrosUsuario(user01);
+//		new ColecaoUsuario(user01);
 		
 	}
 }

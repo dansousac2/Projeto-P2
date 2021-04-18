@@ -1,4 +1,5 @@
 import java.awt.Color;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,7 +7,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,7 +16,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -130,7 +129,7 @@ public abstract class PadraoListarLivros extends JFrame {
 									
 				for(Livro liv : selecionadosPorTipo) {
 					
-					adicionarLinhasAtualizadas(liv);
+					Utilidade.adicionarLinhasAtualizadas(liv,modelo);
 				}
 				repaint();
 				break;
@@ -165,7 +164,7 @@ public abstract class PadraoListarLivros extends JFrame {
 				
 				for(Livro liv : listarLivros) {
 					
-					adicionarLinhasAtualizadas(liv);
+					Utilidade.adicionarLinhasAtualizadas(liv,modelo);
 				}
 				
 				repaint();
@@ -188,11 +187,10 @@ public abstract class PadraoListarLivros extends JFrame {
 
 			ArrayList<Livro> listaPorDigito = new ArrayList<Livro>();
 			
-			char digito = e.getKeyChar();
-			
 			if(barraPesquisar.getText().isEmpty()) {
 				listaPorDigito.addAll(listarLivros);
 			}
+			
 			else {
 				
 				String digitado = barraPesquisar.getText();
@@ -207,7 +205,7 @@ public abstract class PadraoListarLivros extends JFrame {
 			modelo.setRowCount(0);
 			
 			for(Livro liv : listaPorDigito) {
-				adicionarLinhasAtualizadas(liv);
+				Utilidade.adicionarLinhasAtualizadas(liv,modelo);
 			}
 			
 			repaint();
@@ -217,7 +215,7 @@ public abstract class PadraoListarLivros extends JFrame {
 	
 	private void addTabela() {
 			
-			this.listarLivros = recuperarLivrosCabiveis();
+			this.listarLivros = Utilidade.recuperarLivrosCabiveis(this,usuarioLogado);
 		
 			String[] tituloColunas = {"Tipo","Título","Resumo","ID","Nota Média","Quantidade"};
 		
@@ -236,7 +234,7 @@ public abstract class PadraoListarLivros extends JFrame {
 			
 			for(Livro elemento : listarLivros) {
 				
-				String[] atributosLivros =  principaisAtributosDosLivros(elemento);
+				String[] atributosLivros =  Utilidade.principaisAtributosDosLivros(elemento);
 				
 				String[] linha = new String[repetir];
 				
@@ -262,12 +260,7 @@ public abstract class PadraoListarLivros extends JFrame {
 			barraTabela.setBounds(22, 125, 644, 339);
 			
 			add(barraTabela);
-		
-//		} catch(Exception e) {
-//			e.getStackTrace();
-//			JOptionPane.showMessageDialog(null, "Não foi possível criar a lista de livros", "Criar lista de livros",
-//					JOptionPane.ERROR_MESSAGE);
-//		}
+
 	}
 	
 	private void addBotaoVisualizar() {
@@ -355,65 +348,6 @@ public abstract class PadraoListarLivros extends JFrame {
 		nomeIcone.setBounds(20, 73, 120, 15);
 		
 		add(nomeIcone);
-	}
-	
-	private String[] principaisAtributosDosLivros(Livro liv) {
-		
-		String[] atributos = new String[6];
-		
-		Object[] objetosAtributos = {liv.getTipo(),liv.getTitulo(),liv.getResumo(),liv.getId(),
-				liv.getNotaMedia(),liv.getQuantidade() };
-		
-		for(int i = 0; i < 6; i++) {
-			atributos[i] = objetosAtributos[i].toString();
-		}
-		return atributos;
-	}
-	
-	private void adicionarLinhasAtualizadas(Livro liv) {
-		String[] atributos = principaisAtributosDosLivros(liv);
-		String[] linha = new String[modelo.getColumnCount()];
-		
-		for(int i = 0; i < modelo.getColumnCount(); i++) {
-			linha[i] = atributos[i];
-		}
-		modelo.addRow(linha);
-	}
-	
-	public class ComparadorLivros implements Comparator<Livro>{
-
-		public int compare(Livro o1, Livro o2) {
-			return o1.getTitulo().compareToIgnoreCase(o2.getTitulo());
-		}
-	}
-	
-	private ArrayList<Livro> recuperarLivrosCabiveis() {
-		
-		PersistenciaLivros perLivros = new PersistenciaLivros();
-
-		CentralLivro centralInformacoes;
-		
-		try {
-			if(this.getClass().getSimpleName().equals("ColecaoUsuario")) {
-			
-				centralInformacoes = perLivros.recuperarCentral("Livros_Usuarios.xml");
-				ArrayList<Usuario> buscarUsuario = centralInformacoes.getUsuariosCadastrados();
-				for(Usuario user : buscarUsuario) {
-					if(user == usuarioLogado) {
-						return user.getColecaoDeLivros();
-					}
-				}
-			}
-			
-			else {
-				centralInformacoes = perLivros.recuperarCentral("Livros_Cadastrados.xml");
-				return centralInformacoes.getLivrosDisponiveis();
-			}
-			
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Não foi possível listar os livros", "Erro", JOptionPane.ERROR_MESSAGE);
-		}
-		return new ArrayList<Livro>();
 	}
 	
 }
