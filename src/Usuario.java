@@ -5,6 +5,7 @@ public class Usuario {
 	private String nome;
 	private String email;
 	private String senha;
+	private boolean ehLivreiro;
 	
 	private ArrayList<Livro> colecaoDeLivros;
 	
@@ -37,6 +38,14 @@ public class Usuario {
 
 	public ArrayList<Livro> getColecaoDeLivros() {
 		return colecaoDeLivros;
+	}
+
+	public boolean isEhLivreiro() {
+		return ehLivreiro;
+	}
+
+	public void setEhLivreiro(boolean ehLivreiro) {
+		this.ehLivreiro = ehLivreiro;
 	}
 	
 	

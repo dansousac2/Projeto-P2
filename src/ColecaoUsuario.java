@@ -9,7 +9,7 @@ public class ColecaoUsuario extends PadraoListarLivros{
 		
 		addBotaoNota();
 		
-		add(new BotaoHomePage(125, 10));
+		add(new BotaoHomePage(125, 10,user,this));
 		
 		repaint();
 	}

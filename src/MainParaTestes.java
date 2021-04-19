@@ -1,4 +1,3 @@
-import javax.swing.JOptionPane;
 
 public class MainParaTestes {
 
@@ -6,6 +5,7 @@ public class MainParaTestes {
 		
 		Usuario user01 = new Usuario("Danilo", "dansousac2@gmail.com",
 				"0090");
+		user01.setEhLivreiro(false); // TESTANDO BOTÃO HOME PAGE
 		
 		new ListarLivrosUsuario(user01);
 //		new ColecaoUsuario(user01);
