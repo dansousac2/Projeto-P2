@@ -12,7 +12,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class JanelaLoguin extends JanelaPadraoLivreiroUsuario{
+	
 	ArrayList<Usuario> BancoDeDadosUsuarios;
+	
 	public class OuvinteBotaoLogin implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			if(getEmail().getText().equals("email") || getSenha().getText().equals("Senha")) {
