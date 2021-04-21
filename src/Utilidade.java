@@ -31,13 +31,13 @@ public class Utilidade {
 	public static ArrayList<Livro> recuperarLivrosCabiveis(PadraoListarLivros janela,Usuario logado) {
 		
 		PersistenciaLivros perLivros = new PersistenciaLivros();
-
-		CentralLivro centralInformacoes;
 		
 		try {
-			if(janela.getClass().getSimpleName().equals("ColecaoUsuario")) {
 			
-				centralInformacoes = perLivros.recuperarCentral("Lista_Usuarios.xml");
+			CentralLivro centralInformacoes = perLivros.recuperarCentral("Dados_Livraria.xml");
+
+			if(janela.getClass().getSimpleName().equals("ColecaoUsuario")) {
+				
 				ArrayList<Usuario> buscarUsuario = centralInformacoes.getUsuariosCadastrados();
 				for(Usuario user : buscarUsuario) {
 					if(user == logado) {
@@ -47,12 +47,12 @@ public class Utilidade {
 			}
 			
 			else {
-				centralInformacoes = perLivros.recuperarCentral("Livros_Cadastrados.xml");
+				
 				return centralInformacoes.getLivrosDisponiveis();
 			}
 			
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Não foi possível listar os livros", "Erro", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Ainda não há livros cadastrados em sua coleção.", "Coleção", JOptionPane.WARNING_MESSAGE);
 		}
 		return new ArrayList<Livro>(); // !!!
 	}

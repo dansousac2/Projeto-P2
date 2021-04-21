@@ -1,3 +1,4 @@
+import java.util.HashMap;
 
 public class Livro {
 	
@@ -16,7 +17,9 @@ public class Livro {
 	
 	private int quantidade;
 	private long id;
+	
 	private int notaMedia;
+	private HashMap<String,Integer> notasAtribuidas;
 	
 	public Livro(String tipo,String genero,String titulo,String idioma,
 			String editora,String resumo,int ano,int quantidade) {
@@ -138,6 +141,14 @@ public class Livro {
 
 	public void setGenero(String genero) {
 		this.genero = genero;
+	}
+
+	public HashMap<String, Integer> getNotasAtribuidas() {
+		return notasAtribuidas;
+	}
+
+	public void setNotasAtribuidas(HashMap<String, Integer> notasAtribuidas) {
+		this.notasAtribuidas = notasAtribuidas;
 	}
 	
 }
