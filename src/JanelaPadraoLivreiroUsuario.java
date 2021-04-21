@@ -30,7 +30,6 @@ public abstract class JanelaPadraoLivreiroUsuario extends JFrame{
 		setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(true);
-		setVisible(true);
 		Incremento1();
 		Incremento2();
 		Incremento3();
@@ -45,6 +44,7 @@ public abstract class JanelaPadraoLivreiroUsuario extends JFrame{
 		Incremento12();
 		Incremento13();
 		
+		setVisible(true);
 	}
 		abstract void Incremento1();
 		abstract void Incremento2();
