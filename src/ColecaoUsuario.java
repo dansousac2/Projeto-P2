@@ -94,8 +94,9 @@ public class ColecaoUsuario extends PadraoListarLivros{
 									JOptionPane.ERROR_MESSAGE);
 						}
 					}
+					
+					break;
 				}
-				
 				
 			}
 		}
