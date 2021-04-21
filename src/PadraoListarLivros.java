@@ -23,8 +23,8 @@ public abstract class PadraoListarLivros extends JFrame {
 	
 	protected Usuario usuarioLogado;
 	
-	private JTable jtLivrosDisponiveis;
-	private DefaultTableModel modelo;
+	protected JTable jtLivrosDisponiveis;
+	protected DefaultTableModel modelo;
 	
 	protected ArrayList<Livro> listarLivros;
 	private JComboBox<String> cbTipo;

@@ -7,8 +7,8 @@ public class MainParaTestes {
 				"0090");
 		user01.setEhLivreiro(false); // TESTANDO BOTÃO HOME PAGE
 		
-		new ListarLivrosUsuario(user01);
-//		new ColecaoUsuario(user01);
+//		new ListarLivrosUsuario(user01);
+		new ColecaoUsuario(user01);
 		
 	}
 }

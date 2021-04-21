@@ -1,4 +1,10 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Collection;
+import java.util.HashMap;
+
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 public class ColecaoUsuario extends PadraoListarLivros{
 
@@ -21,5 +27,61 @@ public class ColecaoUsuario extends PadraoListarLivros{
 		
 		add(botaoNota);
 	}
+	
+	public class OuvinteBotaoNota implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			
+			Integer[] notas = {10,9,8,7,6,5,4,3,2,1};
+			
+			Integer nota = (int)JOptionPane.showInternalInputDialog(null, "Selecione a nota: ", "Atribuir Nota",
+					JOptionPane.INFORMATION_MESSAGE, null, notas, notas[0]);
+			
+			if(nota != null) {
+				
+				int linhaSelecionada = jtLivrosDisponiveis.getSelectedRow();
+				
+				long idSelecionado = (long)modelo.getValueAt(linhaSelecionada, 3);
+				
+				for(Livro liv : listarLivros) {
+					if(idSelecionado == liv.getId()) {
+						
+						HashMap<String, Integer> hashNotas = liv.getNotasAtribuidas();
+						String emailUsuario = usuarioLogado.getEmail();
+						
+						if(hashNotas.containsKey(emailUsuario)) {
+							hashNotas.replace(emailUsuario, nota);
+						}
+						else {
+							hashNotas.put(emailUsuario, nota);
+						}
+						
+						int quantidadeDeVotos = hashNotas.size();
+						int somaDosVotos = 0;
+						
+						Collection<Integer> colecao = hashNotas.values();
+						Integer[] notasColecao = colecao.toArray(new Integer[0]);
+						
+						for(Integer n : notasColecao) {
+							somaDosVotos += n;
+						}
+						
+						liv.setNotaMedia(somaDosVotos/quantidadeDeVotos);
+						
+						jtLivrosDisponiveis.repaint();
+						
+						PersistenciaLivros persistencia = new PersistenciaLivros();
+						
+//						try {
+//							
+//							ArrayList<Livro> listaDeLivros = persistencia.recuperarCentral(emailUsuario) 
+//						}
+					}
+				}
+				
+				
+			}
+		}
 		
+	}
 }
