@@ -1,5 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -72,10 +73,26 @@ public class ColecaoUsuario extends PadraoListarLivros{
 						
 						PersistenciaLivros persistencia = new PersistenciaLivros();
 						
-//						try {
-//							
-//							ArrayList<Livro> listaDeLivros = persistencia.recuperarCentral(emailUsuario) 
-//						}
+						try {
+							
+							CentralLivro central = persistencia.recuperarCentral("Dados_Livraria.xml");
+							 
+							ArrayList<Livro> listaLivros = central.getLivrosDisponiveis();
+							
+							for(Livro L : listaLivros) {
+								if(L == liv) {
+									L.setNotaMedia(liv.getNotaMedia());
+									L.setNotasAtribuidas(hashNotas);
+								}
+								break;
+							}
+							
+							persistencia.salvarCentral(central, "Dados_Livraria.xml");
+							
+						} catch(Exception erro) {
+							JOptionPane.showInternalMessageDialog(null, "Erro em atualizar dados", "Salvar alterações",
+									JOptionPane.ERROR_MESSAGE);
+						}
 					}
 				}
 				

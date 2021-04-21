@@ -146,5 +146,9 @@ public class Livro {
 	public HashMap<String, Integer> getNotasAtribuidas() {
 		return notasAtribuidas;
 	}
+
+	public void setNotasAtribuidas(HashMap<String, Integer> notasAtribuidas) {
+		this.notasAtribuidas = notasAtribuidas;
+	}
 	
 }
