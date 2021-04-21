@@ -8,7 +8,7 @@ public class Usuario {
 	private boolean ehLivreiro;
 	
 	private ArrayList<Livro> colecaoDeLivros;
-	
+
 	public Usuario(String nome,String email,String senha) {
 		
 		this.nome = nome;
@@ -26,6 +26,9 @@ public class Usuario {
 	
 	public String getEmail() {
 		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getSenha() {

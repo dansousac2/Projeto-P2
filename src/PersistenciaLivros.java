@@ -1,9 +1,7 @@
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.PrintWriter;
-
 import javax.swing.JOptionPane;
-
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
