@@ -10,22 +10,29 @@ import com.thoughtworks.xstream.XStream;
 public class faseInicial {
 
 	public static void main(String[] args){
-		XStream xstream = new XStream();
+		
 		ArrayList<Usuario> BancoDeDadosUsuarios = new ArrayList<Usuario>();
-		File arquivo = new File("Cadastro de Usuários Interno");
-		if(arquivo.exists()) {
-			try {
-				FileInputStream Recuperar = new FileInputStream(arquivo);
-				BancoDeDadosUsuarios = (ArrayList<Usuario>) xstream.fromXML(Recuperar);
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
-		}
+		
+		PersistenciaLivros persistencia = new PersistenciaLivros();
+		
+		try {
+			
+			CentralLivro central = persistencia.recuperarCentral("Dados_Livraria.xml");
+			
+			BancoDeDadosUsuarios = central.getUsuariosCadastrados();
+			
 		if(BancoDeDadosUsuarios.isEmpty()) {
 			new JanelaCadastrarLivreiro(BancoDeDadosUsuarios);
+			System.out.println("banco de dados vazio");
 		}
 		else {
 			new JanelaLoguin(BancoDeDadosUsuarios);
+			System.out.println("banco de dadods preenchido");
 		}
+				
+		} catch(Exception ex) {
+			System.out.println(ex.getStackTrace());
+		}
+		
 	}
 }
