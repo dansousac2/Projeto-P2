@@ -26,6 +26,9 @@ public class ColecaoUsuario extends PadraoListarLivros{
 		JButton botaoNota = new JButton("Atribuir Nota");
 		botaoNota.setBounds(480, 494, 120, 25);
 		
+		OuvinteBotaoNota ouvinte = new OuvinteBotaoNota();
+		botaoNota.addActionListener(ouvinte);
+		
 		add(botaoNota);
 	}
 	
