@@ -22,4 +22,7 @@ public class Imagens {
 	
 	public static final ImageIcon ICONE_COLECAO_ACESSO = 
 			new ImageIcon(Imagens.class.getResource("/colecaoAcesso.png"));
+	
+	public static final ImageIcon ICONE_NOVO_LIVRO = 
+			new ImageIcon(Imagens.class.getResource("/novoLivro.png"));
 }

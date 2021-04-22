@@ -108,11 +108,11 @@ public abstract class PadraoListarLivros extends JFrame {
 				
 				if(tipoCombo > 0) {
 										
-					String[] tipos = {"literatura","tecnico","periodico","desenvolvimento pessoal"};	
+					String[] tipos = {"Literatura","Técnico","Periódico","Desenvolvimento Pessoal"};	
 					
 					for(Livro liv : listarLivros){
 						
-						if(liv.getTipo().equals(tipos[tipoCombo - 1])){
+						if(liv.getTipo() == Tipo.values()[tipoCombo - 1]){
 							selecionadosPorTipo.add(liv);
 						}
 					}
