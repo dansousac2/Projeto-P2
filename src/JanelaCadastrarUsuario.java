@@ -12,12 +12,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
 public class JanelaCadastrarUsuario extends JanelaPadraoLivreiroUsuario{
-	ArrayList<Usuario> BancoDeDadosUsuarios;
+	CentralLivro BancoDeDados;
+	PersistenciaLivros Percistencia;
 	public class OuvinteBotaoCadastrar implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			if(getNome().getText().equals("Nome de usuário") || getEmail().getText().equals("email") || getSenha().getText().equals("Senha")){
@@ -28,21 +30,13 @@ public class JanelaCadastrarUsuario extends JanelaPadraoLivreiroUsuario{
 			}
 			else {
 				usuario = new Usuario(getNome().getText(), getEmail().getText(), getSenha().getText());
-				BancoDeDadosUsuarios.add(usuario);
-				xstream = new XStream(new DomDriver());
-				XML = xstream.toXML(BancoDeDadosUsuarios);
-				arquivo = new File("Cadastro de Usuários Interno");
+				BancoDeDados.getUsuariosCadastrados().add(usuario);
 				try {
-					if(!arquivo.exists()) {
-						arquivo.createNewFile();
-					}
-					PrintWriter gravar = new PrintWriter(arquivo);
-					gravar.print(XML);
-					gravar.close();
+					Percistencia.salvarCentral(BancoDeDados, "Dados_Livraria.xml");
 					JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!", "Seja bem vindo!", JOptionPane.INFORMATION_MESSAGE);
 					dispose();
 					new ListarLivrosUsuario(usuario);
-				}catch (IOException e1) {
+				}catch (Exception e1) {
 					e1.printStackTrace();
 				}
 			}
@@ -51,14 +45,14 @@ public class JanelaCadastrarUsuario extends JanelaPadraoLivreiroUsuario{
 	public class OuvinteBotaoVoltarCadastrarUsuario implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			dispose();
-			new JanelaLoguin(BancoDeDadosUsuarios);
+			new JanelaLoguin(BancoDeDados);
 		}
 
 	}
 	
-	public JanelaCadastrarUsuario(ArrayList<Usuario> Dados) {
+	public JanelaCadastrarUsuario(CentralLivro Dados) {
 		super();
-		BancoDeDadosUsuarios = Dados;
+		BancoDeDados = Dados;
 	}
 	public void Incremento1() {
 	titulo = new JLabel("Cadastrar Usuário");
@@ -67,45 +61,29 @@ public class JanelaCadastrarUsuario extends JanelaPadraoLivreiroUsuario{
 	add(titulo);
 	}
 	public void Incremento2() {
-	String Nome = "Nome de usuário";
 	nome = new JTextField();
 	nome.setBounds(70, 230, 250, 25);
 	nome.setBorder(BorderFactory.createLineBorder(Color.CYAN.darker()));
-	nome.setText(Nome);
-	OuvinteFocus OuvinteF = new OuvinteFocus(nome, Nome);
-	nome.addFocusListener(OuvinteF);
 	add(nome);
 	}
-	public void Incremento3() {
-	String nome = "Senha";	
-	senha = new JTextField();
+	public void Incremento3() {	
+	senha = new JPasswordField();
 	senha.setBounds(70, 320, 250, 25);
 	senha.setBorder(BorderFactory.createLineBorder(Color.CYAN.darker()));
-	senha.setText(nome);
-	OuvinteFocus OuvinteF = new OuvinteFocus(senha, nome);
-	senha.addFocusListener(OuvinteF);
 	add(senha);
 	}
 	public void Incremento4() {
-	String nome = "email";
 	email = new JTextField();
 	email.setBounds(390, 230, 250, 25);
 	email.setBorder(BorderFactory.createLineBorder(Color.CYAN.darker()));
-	email.setText(nome);
-	OuvinteFocus OuvinteF = new OuvinteFocus(email, nome);
 	OuvinteEmail Ouvinte = new OuvinteEmail(email);
 	email.addKeyListener(Ouvinte);
-	email.addFocusListener(OuvinteF);
 	add(email);
 	}
 	public void Incremento5() {
-	String nome = "Confirme a Senha";
-	confirmeSenha = new JTextField();
+	confirmeSenha = new JPasswordField();
 	confirmeSenha.setBounds(390, 320, 250, 25);
 	confirmeSenha.setBorder(BorderFactory.createLineBorder(Color.CYAN.darker()));
-	confirmeSenha.setText(nome);
-	OuvinteFocus OuvinteF = new OuvinteFocus(confirmeSenha, nome);
-	confirmeSenha.addFocusListener(OuvinteF);
 	add(confirmeSenha);
 	}
 	public void Incremento6() {

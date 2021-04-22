@@ -18,6 +18,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
@@ -27,21 +28,19 @@ public class JanelaAlteraçãoDeSenha extends JanelaPadraoLivreiroUsuario{
 	JButton botaoConfirmar;
 	JButton botaoEnviarCodigo;
 	String codigoRedefinirSenha;
-	ArrayList<Usuario> BancoDeDadosUsuarios;
+	CentralLivro BancoDeDados;
 	String comparar;
-	int max = 9999;
-	int min = 0000;
 	int numeroAleatorio;
 	public class OuvinteEnviarCodigo implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			int cont = 0;
-			for(Usuario U: BancoDeDadosUsuarios) {
+			for(Usuario U: BancoDeDados.getUsuariosCadastrados()) {
 				if(U.getEmail().equals(email.getText())){
 					Random rand = new Random();
-				    numeroAleatorio = rand.nextInt((max - min) + 1) + min;
+				    numeroAleatorio = rand.nextInt((9999 - 0000) + 1) + 0000;
 				    codigoRedefinirSenha = ""+numeroAleatorio;
 				    Properties props = new Properties();
-					props.put("mail.smtp.user", "leonardo.lucena@academico.ifpb.edu.br"); 
+					props.put("mail.smtp.user", "estanteonlineifpb@gmail.com"); 
 			        props.put("mail.smtp.host", "smtp.gmail.com"); 
 			        props.put("mail.smtp.port", "25"); 
 			        props.put("mail.debug", "true"); 
@@ -55,13 +54,13 @@ public class JanelaAlteraçãoDeSenha extends JanelaPadraoLivreiroUsuario{
 			        Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
 			        	protected PasswordAuthentication getPasswordAuthentication() 
 			        	{
-			        		return new PasswordAuthentication("leonardo.lucena@academico.ifpb.edu.br", "Overlok00$");
+			        		return new PasswordAuthentication("estanteonlineifpb@gmail.com", "estante123");
 			        	}
 			        });
 			        session.setDebug(true);
 			        try{
 			        	Message message = new MimeMessage(session);
-			        	message.setFrom(new InternetAddress("leonardo.lucena@academico.ifpb.edu.br"));
+			        	message.setFrom(new InternetAddress("estanteonlineifpb@gmail.com"));
 			        	Address[] toUser = InternetAddress.parse(email.getText());
 			        	message.setRecipients(Message.RecipientType.TO, toUser);
 			        	message.setSubject("Codigo para Redefinição de Senha");
@@ -113,11 +112,11 @@ public class JanelaAlteraçãoDeSenha extends JanelaPadraoLivreiroUsuario{
 					JOptionPane.showMessageDialog(null, "A senha deve ter no minimo 5 caracteres", "Tente novamente", JOptionPane.ERROR_MESSAGE);
 				}
 				else {
-					for(Usuario U: BancoDeDadosUsuarios) {
+					for(Usuario U: BancoDeDados.getUsuariosCadastrados()) {
 						if(U.getEmail().equals(email.getText())){
 							U.setSenha(senha.getText());
 							JOptionPane.showMessageDialog(null, "A sua senha foi redefinida!");
-							new JanelaLoguin(BancoDeDadosUsuarios);
+							new JanelaLoguin(BancoDeDados);
 							dispose();
 							break;
 						}
@@ -126,9 +125,9 @@ public class JanelaAlteraçãoDeSenha extends JanelaPadraoLivreiroUsuario{
 			}
 		}
 	}
-	public JanelaAlteraçãoDeSenha(ArrayList<Usuario> Dados) {
+	public JanelaAlteraçãoDeSenha(CentralLivro Dados) {
 		super();
-		BancoDeDadosUsuarios = Dados;
+		BancoDeDados = Dados;
 	}
 	void Incremento1() {
 		titulo = new JLabel("Alteração de Senha");
@@ -150,15 +149,11 @@ public class JanelaAlteraçãoDeSenha extends JanelaPadraoLivreiroUsuario{
 		add(titulo);
 	}
 	void Incremento4() {
-		String nome = "email";
 		email = new JTextField();
 		email.setBounds(165, 230, 250, 25);
 		email.setBorder(BorderFactory.createLineBorder(Color.CYAN.darker()));
-		email.setText(nome);
-		OuvinteFocus OuvinteF = new OuvinteFocus(email, nome);
 		OuvinteEmail Ouvinte = new OuvinteEmail(email);
 		email.addKeyListener(Ouvinte);
-		email.addFocusListener(OuvinteF);
 		add(email);
 	}
 	void Incremento5() {
@@ -169,36 +164,24 @@ public class JanelaAlteraçãoDeSenha extends JanelaPadraoLivreiroUsuario{
 		add(titulo);
 	}
 	void Incremento6() {	
-		String nome = "Código Recebido";	
 		codigo = new JTextField();
 		codigo.setBounds(165, 300, 250, 25);
 		codigo.setBorder(BorderFactory.createLineBorder(Color.CYAN.darker()));
-		codigo.setText(nome);
 		codigo.enable(false);
-		OuvinteFocus OuvinteF = new OuvinteFocus(codigo, nome);
-		codigo.addFocusListener(OuvinteF);
 		add(codigo);
 	}
 	void Incremento7() {
-		String nome = "Senha";	
-		senha = new JTextField();
+		senha = new JPasswordField();
 		senha.setBounds(70, 390, 250, 25);
 		senha.setBorder(BorderFactory.createLineBorder(Color.CYAN.darker()));
-		senha.setText(nome);
 		senha.enable(false);
-		OuvinteFocus OuvinteF = new OuvinteFocus(senha, nome);
-		senha.addFocusListener(OuvinteF);
 		add(senha);
 	}
 	void Incremento8() {
-		String nome = "Confirme a Senha";
-		confirmeSenha = new JTextField();
+		confirmeSenha = new JPasswordField();
 		confirmeSenha.setBounds(390, 390, 250, 25);
 		confirmeSenha.setBorder(BorderFactory.createLineBorder(Color.CYAN.darker()));
-		confirmeSenha.setText(nome);
 		confirmeSenha.enable(false);
-		OuvinteFocus OuvinteF = new OuvinteFocus(confirmeSenha, nome);
-		confirmeSenha.addFocusListener(OuvinteF);
 		add(confirmeSenha);
 	}
 	void Incremento9() {
