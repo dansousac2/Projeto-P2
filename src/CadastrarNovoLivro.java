@@ -39,7 +39,7 @@ public class CadastrarNovoLivro extends JFrame{
 		addAno();
 		addResumo();
 		addQuantidade();
-		addGenero();
+		addTipo();
 		
 		addAutores();
 		addMes();
@@ -131,9 +131,13 @@ public class CadastrarNovoLivro extends JFrame{
 		add(tfQuantidade);
 	}
 	
-	private void addGenero() {
+	private void addTipo() {
 	
+		String[] tipos = {"Literatura","Técnico","Periódico","Desenvolvimento Pessoal"};
 		
+		cbTipo = new JComboBox<String>();
+		cbTipo.setBounds(260, 130, 70, 25);
+		add(cbTipo);
 	}
 	
 	private void addAutores() { //ANTES DEVE VIR GÊNERO E TIPO

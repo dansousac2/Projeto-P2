@@ -120,9 +120,7 @@ public abstract class PadraoListarLivros extends JFrame {
 				
 				else {
 					
-					for(Livro liv : listarLivros) {
-						selecionadosPorTipo.add(liv);
-					}
+					selecionadosPorTipo.addAll(listarLivros);
 				}
 					
 				modelo.setRowCount(0);
