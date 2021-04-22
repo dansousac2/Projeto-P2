@@ -2,7 +2,7 @@ import java.util.HashMap;
 
 public class Livro {
 	
-	private String tipo;
+	private Tipo tipo;
 	private String genero;
 	private String titulo;
 	private String idioma;
@@ -21,7 +21,7 @@ public class Livro {
 	private int notaMedia;
 	private HashMap<String,Integer> notasAtribuidas;
 	
-	public Livro(String tipo,String genero,String titulo,String idioma,
+	public Livro(Tipo tipo,String genero,String titulo,String idioma,
 			String editora,String resumo,int ano,int quantidade) {
 		
 		this.tipo = tipo;
@@ -35,12 +35,16 @@ public class Livro {
 		this.id = System.currentTimeMillis();
 	}
 
-	public String getTipo() {
+	public Tipo getTipo() {
 		return tipo;
 	}
 
 	public String getGenero() {
 		return genero;
+	}
+	
+	public void setGenero(String genero) {
+		this.genero = genero;
 	}
 	
 	public long getId() {
@@ -135,12 +139,8 @@ public class Livro {
 		this.assunto = assunto;
 	}
 
-	public void setTipo(String tipo) {
+	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
-	}
-
-	public void setGenero(String genero) {
-		this.genero = genero;
 	}
 
 	public HashMap<String, Integer> getNotasAtribuidas() {
