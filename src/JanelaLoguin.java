@@ -9,11 +9,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class JanelaLoguin extends JanelaPadraoLivreiroUsuario{
 	
-	ArrayList<Usuario> BancoDeDadosUsuarios;
+	CentralLivro BancoDeDados;
 	
 	public class OuvinteBotaoLogin implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
@@ -21,11 +22,19 @@ public class JanelaLoguin extends JanelaPadraoLivreiroUsuario{
 				JOptionPane.showMessageDialog(null, "Há algum campo vazio, tente novamente", "Campo vazio", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
-				for(int i = 0; i<BancoDeDadosUsuarios.size(); i++) {
-					if(BancoDeDadosUsuarios.get(i).getEmail().equals(getEmail().getText()) 
-						&& BancoDeDadosUsuarios.get(i).getSenha().equals(getSenha().getText())) {
+				for(int i = 0; i<BancoDeDados.getUsuariosCadastrados().size(); i++) {
+					if(BancoDeDados.getUsuariosCadastrados().get(i).getEmail().equals(getEmail().getText()) 
+							&& BancoDeDados.getUsuariosCadastrados().get(i).getSenha().equals(getSenha().getText()) 
+							&& BancoDeDados.getUsuariosCadastrados().get(i).isEhLivreiro()==true) {
 						dispose();
-						new ListarLivrosUsuario(BancoDeDadosUsuarios.get(i));
+						new ListarLivrosLivreiro();
+						break;
+						
+					}
+				else if(BancoDeDados.getUsuariosCadastrados().get(i).getEmail().equals(getEmail().getText()) 
+						&& BancoDeDados.getUsuariosCadastrados().get(i).getSenha().equals(getSenha().getText())) {
+						dispose();
+						new ListarLivrosUsuario(BancoDeDados.getUsuariosCadastrados().get(i));
 						break;
 					}
 					else {
@@ -39,18 +48,18 @@ public class JanelaLoguin extends JanelaPadraoLivreiroUsuario{
 	public class OuvinteBotaoRecuperarSenha implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			dispose();
-			new JanelaAlteraçãoDeSenha(BancoDeDadosUsuarios);
+			new JanelaAlteraçãoDeSenha(BancoDeDados);
 		}
 	}
 	public class OuvinteBotaoNovoUsuario implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			dispose();
-			new JanelaCadastrarUsuario(BancoDeDadosUsuarios);
+			new JanelaCadastrarUsuario(BancoDeDados);
 		}
 	}
-	public JanelaLoguin(ArrayList<Usuario> Dados) {
+	public JanelaLoguin(CentralLivro Dados) {
 		super();
-		BancoDeDadosUsuarios = Dados;
+		BancoDeDados = Dados;
 	}
 	public void Incremento1() {
 		titulo = new JLabel("Login");
@@ -65,25 +74,17 @@ public class JanelaLoguin extends JanelaPadraoLivreiroUsuario{
 		add(titulo);
 	}
 	public void Incremento3() {
-		String nome = "Senha";	
-		senha = new JTextField();
+		senha = new JPasswordField();
 		senha.setBounds(235, 300, 250, 25);
 		senha.setBorder(BorderFactory.createLineBorder(Color.CYAN.darker()));
-		senha.setText(nome);
-		OuvinteFocus OuvinteF = new OuvinteFocus(senha, nome);
-		senha.addFocusListener(OuvinteF);
 		add(senha);
 	}
 		public void Incremento4() {
-		String nome = "email";
 		email = new JTextField();
 		email.setBounds(235, 230, 250, 25);
 		email.setBorder(BorderFactory.createLineBorder(Color.CYAN.darker()));
-		email.setText(nome);
-		OuvinteFocus OuvinteF = new OuvinteFocus(email, nome);
 		OuvinteEmail Ouvinte = new OuvinteEmail(email);
 		email.addKeyListener(Ouvinte);
-		email.addFocusListener(OuvinteF);
 		add(email);
 	}
 		public void Incremento5() {

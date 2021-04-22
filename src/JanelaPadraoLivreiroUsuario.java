@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
@@ -16,12 +17,13 @@ public abstract class JanelaPadraoLivreiroUsuario extends JFrame{
 	protected JButton botao;
 	protected JTextField nome;
 	protected JTextField email;
-	protected JTextField senha;
-	protected JTextField confirmeSenha;
+	protected JPasswordField senha;
+	protected JPasswordField confirmeSenha;
 	protected XStream xstream;
 	protected File arquivo;
 	protected String XML;
 	protected Usuario usuario;
+	 
 	
 	
 	public JanelaPadraoLivreiroUsuario() {
@@ -89,16 +91,16 @@ public abstract class JanelaPadraoLivreiroUsuario extends JFrame{
 		public void setEmail(JTextField email) {
 			this.email = email;
 		}
-		public JTextField getSenha() {
+		public JPasswordField getSenha() {
 			return senha;
 		}
-		public void setSenha(JTextField senha) {
+		public void setSenha(JPasswordField senha) {
 			this.senha = senha;
 		}
-		public JTextField getConfirmeSenha() {
+		public JPasswordField getConfirmeSenha() {
 			return confirmeSenha;
 		}
-		public void setConfirmeSenha(JTextField confirmeSenha) {
+		public void setConfirmeSenha(JPasswordField confirmeSenha) {
 			this.confirmeSenha = confirmeSenha;
-		}	
+		}
 }

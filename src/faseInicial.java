@@ -11,23 +11,15 @@ public class faseInicial {
 
 	public static void main(String[] args){
 		
-		ArrayList<Usuario> BancoDeDadosUsuarios = new ArrayList<Usuario>();
-		
 		PersistenciaLivros persistencia = new PersistenciaLivros();
-		
 		try {
-			
 			CentralLivro central = persistencia.recuperarCentral("Dados_Livraria.xml");
 			
-			BancoDeDadosUsuarios = central.getUsuariosCadastrados();
-			
-		if(BancoDeDadosUsuarios.isEmpty()) {
-			new JanelaCadastrarLivreiro(BancoDeDadosUsuarios);
-			System.out.println("banco de dados vazio");
+		if(central.getUsuariosCadastrados().isEmpty()) {
+			new JanelaCadastrarLivreiro(central);
 		}
 		else {
-			new JanelaLoguin(BancoDeDadosUsuarios);
-			System.out.println("banco de dadods preenchido");
+			new JanelaLoguin(central);
 		}
 				
 		} catch(Exception ex) {

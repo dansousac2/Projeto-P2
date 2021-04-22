@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <CentralLivro>
   <livrosDisponiveis/>
-  <usuariosCadastrados/>
+  <usuariosCadastrados>
+    <Usuario>
+      <nome>Leonardo</nome>
+      <email>leonardo.lucena@academico.ifpb.edu.br</email>
+      <senha>leomoral</senha>
+      <ehLivreiro>true</ehLivreiro>
+    </Usuario>
+  </usuariosCadastrados>
 </CentralLivro>

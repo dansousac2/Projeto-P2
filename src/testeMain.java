@@ -7,10 +7,10 @@ public class testeMain {
 //
 //		new ListarLivrosUsuario(novoUsuario);
 ////	
-//		new ListarLivrosLivreiro();
+		new ListarLivrosLivreiro();
 		
 //		new ColecaoUsuario(novoUsuario);	
 		
-		new CadastrarNovoLivro();
+//		new CadastrarNovoLivro();
 	}
 }
