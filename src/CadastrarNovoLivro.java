@@ -131,12 +131,12 @@ public class CadastrarNovoLivro extends JFrame{
 		add(tfQuantidade);
 	}
 	
-	private void addTipo() {
+	private void addTipo() {	// SOBRA 26px À DIREITA !!!!
 	
 		String[] tipos = {"Literatura","Técnico","Periódico","Desenvolvimento Pessoal"};
 		
-		cbTipo = new JComboBox<String>();
-		cbTipo.setBounds(260, 130, 70, 25);
+		cbTipo = new JComboBox<>(tipos);
+		cbTipo.setBounds(260, 130, 214, 23);
 		add(cbTipo);
 	}
 	
