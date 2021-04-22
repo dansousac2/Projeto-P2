@@ -1,12 +1,16 @@
 import java.awt.Color;
 import java.awt.Font;
+import java.text.ParseException;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
 
 public class CadastrarNovoLivro extends JFrame{
 
@@ -19,7 +23,7 @@ public class CadastrarNovoLivro extends JFrame{
 	JComboBox cbGenero;
 	JComboBox cbTipo;
 	JTextArea taAutores;
-	JTextField tfLancamento;
+	JFormattedTextField ftfLancamento;
 	JTextField tfEdicao;
 	JTextField tfAssunto;
 	
@@ -40,9 +44,12 @@ public class CadastrarNovoLivro extends JFrame{
 		addResumo();
 		addQuantidade();
 		addTipo();
-		
+		addGenero();
 		addAutores();
 		addMes();
+		addEdicao();
+		addAssunto();
+		addBotaoAdicionar();
 		
 		this.setVisible(true);
 	}
@@ -133,21 +140,28 @@ public class CadastrarNovoLivro extends JFrame{
 	
 	private void addTipo() {	// SOBRA 26px À DIREITA !!!!
 	
-		String[] tipos = {"Literatura","Técnico","Periódico","Desenvolvimento Pessoal"};
+		String[] tipos = {"Selecione o Tipo","Literatura","Técnico","Periódico","Desenvolvimento Pessoal"};
 		
 		cbTipo = new JComboBox<>(tipos);
 		cbTipo.setBounds(260, 130, 214, 23);
 		add(cbTipo);
 	}
 	
-	private void addAutores() { //ANTES DEVE VIR GÊNERO E TIPO
+	private void addGenero() {
+		
+		cbGenero = new JComboBox<>();
+		cbGenero.setBounds(260, 158, 214, 23);
+		add(cbGenero);
+	}
+	
+	private void addAutores() { 
 	
 		JLabel autores = new JLabel("Autor(es): ");
-		autores.setBounds(260, 304, 75, 15);
+		autores.setBounds(260, 200, 75, 15);
 		add(autores);
 		
 		taAutores = new JTextArea();
-		taAutores.setBounds(320, 300, 154, 50);
+		taAutores.setBounds(320, 196, 154, 50);
 		taAutores.setLineWrap(true);
 		taAutores.setWrapStyleWord(true);
 		taAutores.setBorder(BorderFactory.createLineBorder(Color.GRAY));
@@ -157,11 +171,50 @@ public class CadastrarNovoLivro extends JFrame{
 	private void addMes() {
 	
 		JLabel mes = new JLabel("Mês de lançamento: ");
-		mes.setBounds(260, 364, 120, 15);
+		mes.setBounds(260, 260, 120, 15);
 		add(mes);
 		
-		tfLancamento = new JTextField();
-		tfLancamento.setBounds(380, 360, 94, 25);
-		add(tfLancamento);
+		MaskFormatter mascara;
+		try {
+			mascara = new MaskFormatter("##/####");
+			
+			ftfLancamento = new JFormattedTextField(mascara);
+			ftfLancamento.setBounds(380, 256, 94, 25);
+			ftfLancamento.setHorizontalAlignment(JLabel.CENTER);
+			add(ftfLancamento);
+			
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	private void addEdicao() {
+	
+		JLabel edicao = new JLabel("Número da edição: ");
+		edicao.setBounds(260, 291, 110, 15);
+		add(edicao);
+		
+		tfEdicao = new JTextField();
+		tfEdicao.setBounds(380, 287, 94, 25);
+		add(tfEdicao);
+	}
+	
+	private void addAssunto() {
+	
+		JLabel assunto = new JLabel("Assunto: ");
+		assunto.setBounds(260, 322, 60, 15);
+		add(assunto);
+		
+		tfAssunto = new JTextField();
+		tfAssunto.setBounds(320, 318, 154, 25);
+		add(tfAssunto);
+	}
+	
+	private void addBotaoAdicionar() {
+	
+		JButton btAdicionar = new JButton("Cadastrar");
+		btAdicionar.setBounds(324, 370, 100, 25);
+		add(btAdicionar);
 	}
 }
