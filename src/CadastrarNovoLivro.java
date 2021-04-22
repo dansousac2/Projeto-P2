@@ -39,6 +39,8 @@ public class CadastrarNovoLivro extends JFrame{
 		addAno();
 		addResumo();
 		addQuantidade();
+		addGenero();
+		
 		addAutores();
 		addMes();
 		
@@ -127,6 +129,11 @@ public class CadastrarNovoLivro extends JFrame{
 		tfQuantidade.setBounds(85, 371, 160, 25);
 		tfQuantidade.setHorizontalAlignment(JTextField.CENTER);
 		add(tfQuantidade);
+	}
+	
+	private void addGenero() {
+	
+		
 	}
 	
 	private void addAutores() { //ANTES DEVE VIR GÊNERO E TIPO
