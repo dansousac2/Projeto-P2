@@ -52,7 +52,7 @@ public class ListarLivrosLivreiro extends PadraoListarLivros{
 
 		public void actionPerformed(ActionEvent e) {
 			
-			new CadastrarNovoLivro();
+			new CadastrarNovoLivro(listarLivros);
 		}
 		
 	}

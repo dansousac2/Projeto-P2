@@ -1,4 +1,5 @@
 import java.awt.Color;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,7 +9,6 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -38,14 +38,13 @@ public class CadastrarNovoLivro extends JFrame{
 	
 	private OuvinteBotaoCadastrar ouvinte = new OuvinteBotaoCadastrar();
 	
-	public CadastrarNovoLivro() { //MODIFICAR O CONSTRUTOR
+	public CadastrarNovoLivro(ArrayList<Livro> listarLivros) { 
 	
-//		this.listaDeLivros = listarLivros;
+		this.listaDeLivros = listarLivros;
 		
 		this.setTitle("Novo Livro");
 		this.setSize(500,450);
 		this.setLocationRelativeTo(null);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.setLayout(null);
 		
@@ -291,7 +290,7 @@ public class CadastrarNovoLivro extends JFrame{
 							}
 						}
 						
-						System.out.println(cadastrar);
+						System.out.println(cadastrar); // COLOCAR AQUI O QUE TIVER QUE OCORRER QUANDO TUDO ESTÁ PRONTO.
 					}
 						
 					else {
