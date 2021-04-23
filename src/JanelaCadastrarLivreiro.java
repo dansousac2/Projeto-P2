@@ -17,10 +17,17 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 public class JanelaCadastrarLivreiro extends JanelaPadraoLivreiroUsuario{
 	CentralLivro BancoDeDados;
-	PersistenciaLivros Percistencia = new PersistenciaLivros();
+	PersistenciaLivros Persistencia = new PersistenciaLivros();
 	public class OuvinteBotaoCadastrar implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			if(getNome().getText().equals("Nome de usuário") || getEmail().getText().equals("email") || getSenha().getText().equals("Senha")){
+			int cont = 0;
+			for(int i = 0; i<senha.getText().length();i++) {
+				cont++;
+			}
+			if(cont<5) {
+				JOptionPane.showMessageDialog(null, "A senha deve ter no minimo 5 caracteres", "Tente novamente", JOptionPane.ERROR_MESSAGE);
+			}
+			else if(getNome().getText().equals("") || getEmail().getText().equals("") || getSenha().getText().equals("")){
 				JOptionPane.showMessageDialog(null, "Há algum campo vazio, tente novamente", "Campo vazio", JOptionPane.ERROR_MESSAGE);
 			}
 			else if(!getSenha().getText().equals(getConfirmeSenha().getText())) {
@@ -31,7 +38,7 @@ public class JanelaCadastrarLivreiro extends JanelaPadraoLivreiroUsuario{
 				usuario.setEhLivreiro(true);
 				BancoDeDados.getUsuariosCadastrados().add(usuario);
 				try {
-					Percistencia.salvarCentral(BancoDeDados, "Dados_Livraria.xml");
+					Persistencia.salvarCentral(BancoDeDados, "Dados_Livraria.xml");
 					JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!", "Seja bem vindo!", JOptionPane.INFORMATION_MESSAGE);
 					dispose();
 					new ListarLivrosLivreiro();
@@ -121,10 +128,21 @@ public class JanelaCadastrarLivreiro extends JanelaPadraoLivreiroUsuario{
 		public void Incremento12() {
 		titulo = new JLabel("Nome de Usuário");
 		titulo.setFont(new Font("ARBARKLEY", Font.TYPE1_FONT, 13));
-		titulo.setBounds(45, 205, 80, 25);
+		titulo.setBounds(45, 205, 120, 25);
+		add(titulo);
+		titulo = new JLabel("Email");
+		titulo.setFont(new Font("ARBARKLEY", Font.TYPE1_FONT, 13));
+		titulo.setBounds(365, 205, 80, 25);
+		add(titulo);
+		titulo = new JLabel("Senha");
+		titulo.setFont(new Font("ARBARKLEY", Font.TYPE1_FONT, 13));
+		titulo.setBounds(45, 295, 80, 25);
+		add(titulo);
+		titulo = new JLabel("Confirme a Senha");
+		titulo.setFont(new Font("ARBARKLEY", Font.TYPE1_FONT, 13));
+		titulo.setBounds(365, 295, 120, 25);
 		add(titulo);
 		}
 		public void Incremento13() {
 		}
-		
 }

@@ -29,6 +29,7 @@ public class JanelaAlteraçãoDeSenha extends JanelaPadraoLivreiroUsuario{
 	JButton botaoEnviarCodigo;
 	String codigoRedefinirSenha;
 	CentralLivro BancoDeDados;
+	PersistenciaLivros persistencia = new PersistenciaLivros();
 	String comparar;
 	int numeroAleatorio;
 	public class OuvinteEnviarCodigo implements ActionListener{
@@ -115,6 +116,11 @@ public class JanelaAlteraçãoDeSenha extends JanelaPadraoLivreiroUsuario{
 					for(Usuario U: BancoDeDados.getUsuariosCadastrados()) {
 						if(U.getEmail().equals(email.getText())){
 							U.setSenha(senha.getText());
+							try {
+								persistencia.salvarCentral(BancoDeDados, "Dados_Livraria.xml");
+							} catch (Exception e1) {
+								e1.printStackTrace();
+							}
 							JOptionPane.showMessageDialog(null, "A sua senha foi redefinida!");
 							new JanelaLoguin(BancoDeDados);
 							dispose();
@@ -147,6 +153,10 @@ public class JanelaAlteraçãoDeSenha extends JanelaPadraoLivreiroUsuario{
 		titulo.setBounds(140, 230, 25, 25);
 		titulo.setBorder(BorderFactory.createLineBorder(Color.CYAN.darker()));
 		add(titulo);
+		titulo = new JLabel("Email");
+		titulo.setFont(new Font("Arial", Font.BOLD, 13));
+		titulo.setBounds(140, 205, 80, 25);
+		add(titulo);
 	}
 	void Incremento4() {
 		email = new JTextField();
@@ -162,6 +172,10 @@ public class JanelaAlteraçãoDeSenha extends JanelaPadraoLivreiroUsuario{
 		titulo.setBounds(140, 300, 25, 25);
 		titulo.setBorder(BorderFactory.createLineBorder(Color.CYAN.darker()));
 		add(titulo);
+		titulo = new JLabel("Código para redefinição de senha");
+		titulo.setFont(new Font("Arial", Font.BOLD, 13));
+		titulo.setBounds(140, 275, 160, 25);
+		add(titulo);
 	}
 	void Incremento6() {	
 		codigo = new JTextField();
@@ -176,6 +190,10 @@ public class JanelaAlteraçãoDeSenha extends JanelaPadraoLivreiroUsuario{
 		senha.setBorder(BorderFactory.createLineBorder(Color.CYAN.darker()));
 		senha.enable(false);
 		add(senha);
+		titulo = new JLabel("Senha");
+		titulo.setFont(new Font("Arial", Font.BOLD, 13));
+		titulo.setBounds(45, 365, 80, 25);
+		add(titulo);
 	}
 	void Incremento8() {
 		confirmeSenha = new JPasswordField();
@@ -183,6 +201,10 @@ public class JanelaAlteraçãoDeSenha extends JanelaPadraoLivreiroUsuario{
 		confirmeSenha.setBorder(BorderFactory.createLineBorder(Color.CYAN.darker()));
 		confirmeSenha.enable(false);
 		add(confirmeSenha);
+		titulo = new JLabel("Confirme a Senha");
+		titulo.setFont(new Font("Arial", Font.BOLD, 13));
+		titulo.setBounds(365, 365, 120, 25);
+		add(titulo);
 	}
 	void Incremento9() {
 		img = new ImageIcon("24p/key-24p.png");
@@ -237,6 +259,4 @@ public class JanelaAlteraçãoDeSenha extends JanelaPadraoLivreiroUsuario{
 	public void setBotaoEnviarCodigo(JButton botaoEnviarCodigo) {
 		this.botaoEnviarCodigo = botaoEnviarCodigo;
 	}
-	
-	
 }

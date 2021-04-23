@@ -18,14 +18,16 @@ public class JanelaLoguin extends JanelaPadraoLivreiroUsuario{
 	
 	public class OuvinteBotaoLogin implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			if(getEmail().getText().equals("email") || getSenha().getText().equals("Senha")) {
+			if(getEmail().getText().equals("") || getSenha().getText().equals("")) {
 				JOptionPane.showMessageDialog(null, "Há algum campo vazio, tente novamente", "Campo vazio", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
+				int cont = 0;
 				for(int i = 0; i<BancoDeDados.getUsuariosCadastrados().size(); i++) {
 					if(BancoDeDados.getUsuariosCadastrados().get(i).getEmail().equals(getEmail().getText()) 
 							&& BancoDeDados.getUsuariosCadastrados().get(i).getSenha().equals(getSenha().getText()) 
 							&& BancoDeDados.getUsuariosCadastrados().get(i).isEhLivreiro()==true) {
+						cont++;
 						dispose();
 						new ListarLivrosLivreiro();
 						break;
@@ -33,14 +35,14 @@ public class JanelaLoguin extends JanelaPadraoLivreiroUsuario{
 					}
 				else if(BancoDeDados.getUsuariosCadastrados().get(i).getEmail().equals(getEmail().getText()) 
 						&& BancoDeDados.getUsuariosCadastrados().get(i).getSenha().equals(getSenha().getText())) {
+						cont++;
 						dispose();
 						new ListarLivrosUsuario(BancoDeDados.getUsuariosCadastrados().get(i));
 						break;
 					}
-					else {
-						JOptionPane.showMessageDialog(null, "Email ou Senha Incorrento, tente novamente");
-						break;
-					}
+				}
+				if(cont == 0) {
+					JOptionPane.showMessageDialog(null, "Email ou senha invalido", "Tente novamente", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		}
@@ -123,6 +125,14 @@ public class JanelaLoguin extends JanelaPadraoLivreiroUsuario{
 		add(botao);	
 	}
 	void Incremento10() {
+		titulo = new JLabel("Email");
+		titulo.setFont(new Font("ARBARKLEY", Font.TYPE1_FONT, 13));
+		titulo.setBounds(210, 205, 80, 25);
+		add(titulo);
+		titulo = new JLabel("Senha");
+		titulo.setFont(new Font("ARBARKLEY", Font.TYPE1_FONT, 13));
+		titulo.setBounds(210, 275, 80, 25);
+		add(titulo);
 	}
 	void Incremento11() {
 	}

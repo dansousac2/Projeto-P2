@@ -8,5 +8,11 @@
       <senha>leomoral</senha>
       <ehLivreiro>true</ehLivreiro>
     </Usuario>
+    <Usuario>
+      <nome>Leonardo Freitas</nome>
+      <email>leonardofreitas.l94@hotmail.com</email>
+      <senha>12345</senha>
+      <ehLivreiro>false</ehLivreiro>
+    </Usuario>
   </usuariosCadastrados>
 </CentralLivro>
