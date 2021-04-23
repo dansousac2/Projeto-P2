@@ -1,34 +1,47 @@
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.ParseException;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 public class CadastrarNovoLivro extends JFrame{
+	
+	private ArrayList<Livro> listaDeLivros;
 
-	JTextField tfTitulo;
-	JTextField tfIdioma;
-	JTextField tfEditora;
-	JTextField tfAno;
-	JTextArea taResumo;
-	JTextField tfQuantidade;
-	JComboBox cbGenero;
-	JComboBox cbTipo;
-	JTextArea taAutores;
-	JFormattedTextField ftfLancamento;
-	JTextField tfEdicao;
-	JTextField tfAssunto;
+	private JTextField tfTitulo;
+	private JTextField tfIdioma;
+	private JTextField tfEditora;
+	private JTextField tfAno;
+	private JTextArea taResumo;
+	private JTextField tfQuantidade;
+	private JComboBox<String> cbGenero;
+	private JComboBox<String> cbTipo;
+	private JTextArea taAutores;
+	private JFormattedTextField ftfLancamento;
+	private JTextField tfEdicao;
+	private JTextField tfAssunto;
 	
-	public CadastrarNovoLivro() {
+	private JButton btAdicionar;
 	
+	private OuvinteBotaoCadastrar ouvinte = new OuvinteBotaoCadastrar();
+	
+	public CadastrarNovoLivro() { //MODIFICAR O CONSTRUTOR
+	
+//		this.listaDeLivros = listarLivros;
+		
 		this.setTitle("Novo Livro");
 		this.setSize(500,450);
 		this.setLocationRelativeTo(null);
@@ -144,6 +157,11 @@ public class CadastrarNovoLivro extends JFrame{
 		
 		cbTipo = new JComboBox<>(tipos);
 		cbTipo.setBounds(260, 130, 214, 23);
+		
+		cbTipo.addActionListener(ouvinte);
+		
+		cbTipo.addActionListener(ouvinte);
+		
 		add(cbTipo);
 	}
 	
@@ -151,6 +169,7 @@ public class CadastrarNovoLivro extends JFrame{
 		
 		cbGenero = new JComboBox<>();
 		cbGenero.setBounds(260, 158, 214, 23);
+		cbGenero.setEnabled(false);
 		add(cbGenero);
 	}
 	
@@ -165,6 +184,7 @@ public class CadastrarNovoLivro extends JFrame{
 		taAutores.setLineWrap(true);
 		taAutores.setWrapStyleWord(true);
 		taAutores.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+		taAutores.setEnabled(false);
 		add(taAutores);
 	}
 	
@@ -176,11 +196,12 @@ public class CadastrarNovoLivro extends JFrame{
 		
 		MaskFormatter mascara;
 		try {
-			mascara = new MaskFormatter("##/####");
+			mascara = new MaskFormatter("##");
 			
 			ftfLancamento = new JFormattedTextField(mascara);
 			ftfLancamento.setBounds(380, 256, 94, 25);
 			ftfLancamento.setHorizontalAlignment(JLabel.CENTER);
+			ftfLancamento.setEnabled(false);
 			add(ftfLancamento);
 			
 		} catch (ParseException e) {
@@ -197,6 +218,7 @@ public class CadastrarNovoLivro extends JFrame{
 		
 		tfEdicao = new JTextField();
 		tfEdicao.setBounds(380, 287, 94, 25);
+		tfEdicao.setEnabled(false);
 		add(tfEdicao);
 	}
 	
@@ -208,13 +230,136 @@ public class CadastrarNovoLivro extends JFrame{
 		
 		tfAssunto = new JTextField();
 		tfAssunto.setBounds(320, 318, 154, 25);
+		tfAssunto.setEnabled(false);
 		add(tfAssunto);
 	}
 	
 	private void addBotaoAdicionar() {
 	
-		JButton btAdicionar = new JButton("Cadastrar");
-		btAdicionar.setBounds(324, 370, 100, 25);
+		btAdicionar = new JButton("Adicionar");
+		btAdicionar.setBounds(304, 355, 120, 50);
+		
+		btAdicionar.addActionListener(ouvinte);
+		
 		add(btAdicionar);
+	}
+	
+	public class OuvinteBotaoCadastrar implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			
+			String botaoClicado = e.getActionCommand();
+			
+			if(botaoClicado.equals(btAdicionar.getActionCommand())) {
+				
+				if(cbTipo.getSelectedIndex() != 0) {
+					
+					if(cbGenero.getSelectedIndex() != 0) {
+						
+						boolean cadastrar = true;
+						
+						ArrayList<JTextField> textField = new ArrayList<JTextField>();
+						textField.add(ftfLancamento);
+						textField.add(tfEdicao);
+						textField.add(tfEditora);
+						textField.add(tfQuantidade);
+						textField.add(tfAno);
+						textField.add(tfAssunto);
+						textField.add(tfIdioma);
+						textField.add(tfTitulo);
+						
+						for(JTextField tf : textField) {
+							if(tf.isEnabled()) {
+								if(tf.getText().isBlank()) {
+									cadastrar = false;
+									break;
+								}
+							}
+						}
+						
+						if(taResumo.isEnabled() && taResumo.getText().isBlank() && taAutores.isEnabled() && taAutores.getText().isBlank()) {
+							cadastrar = false;
+						}
+						
+						if(!ftfLancamento.getText().equals("  ") && ftfLancamento.isEnabled()) {
+							
+							int mesInt = Integer.parseInt(ftfLancamento.getText());
+							
+							if(mesInt <1 || mesInt > 12) {
+								cadastrar = false;
+								JOptionPane.showMessageDialog(null, "Mês inválido", "Aviso", JOptionPane.WARNING_MESSAGE);
+							}
+						}
+						
+						System.out.println(cadastrar);
+					}
+						
+					else {
+						JOptionPane.showMessageDialog(null, "Selecione um Gênero");
+					}
+						
+				}
+					
+				else {
+					JOptionPane.showMessageDialog(null, "Selecione um Tipo");
+				}
+			}
+
+			if(botaoClicado.equals(cbTipo.getActionCommand())) {
+				
+				if(cbTipo.getSelectedIndex() != 0) {
+					
+					String tipo = (String)cbTipo.getSelectedItem();
+					
+					String[] generoDoTipoSelecionado = Utilidade.generosDoTipo(tipo);
+					
+					cbGenero.removeAllItems();
+					cbGenero.addItem("Selecione um gênero");
+					
+					for(String gen : generoDoTipoSelecionado) {
+						cbGenero.addItem(gen);
+					}
+					
+					cbGenero.setEnabled(true);
+					
+					taAutores.setEnabled(false);
+					ftfLancamento.setEnabled(false);
+					tfEdicao.setEnabled(false);
+					tfAssunto.setEnabled(false);
+					
+					switch(tipo) {
+						
+					case "Literatura","Desenvolvimento Pessoal":
+						taAutores.setEnabled(true);
+						break;
+			
+					case "Periódico":
+						ftfLancamento.setEnabled(true);
+						tfEdicao.setEnabled(true);
+						break;
+					
+					case "Técnico":
+						tfAssunto.setEnabled(true);
+						break;
+						
+					default:
+						break;
+					}
+					
+				}
+				
+				else {
+					cbGenero.setEnabled(false);
+					taAutores.setEnabled(false);
+					ftfLancamento.setEnabled(false);
+					tfEdicao.setEnabled(false);
+					tfAssunto.setEnabled(false);					
+				}
+				
+				repaint();
+			}
+			
+		}
+		
 	}
 }

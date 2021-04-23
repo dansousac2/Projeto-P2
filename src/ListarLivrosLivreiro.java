@@ -52,7 +52,7 @@ public class ListarLivrosLivreiro extends PadraoListarLivros{
 
 		public void actionPerformed(ActionEvent e) {
 			
-			// ABRE UMA JANELA SOBREPOSTA (SE POSSÍVEL) PARA ADICIONAR UM LIVRO À COLEÇÃO
+			new CadastrarNovoLivro();
 		}
 		
 	}
