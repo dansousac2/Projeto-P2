@@ -112,7 +112,7 @@ public abstract class PadraoListarLivros extends JFrame {
 					
 					for(Livro liv : listarLivros){
 						
-						if(liv.getTipo() == Tipo.values()[tipoCombo - 1]){
+						if(liv.getTipo() == tipos[tipoCombo - 1]){
 							selecionadosPorTipo.add(liv);
 						}
 					}

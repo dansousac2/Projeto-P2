@@ -57,6 +57,25 @@ public class Utilidade {
 		return new ArrayList<Livro>(); // !!!
 	}
 	
-	
+	public static String[] generosDoTipo(String tipo) {
+		
+		switch(tipo) {
+		
+		case "Literatura":
+			return new String[] {"literatura brasileira", "literatura estrangeira", "infanto juvenil", "artes", "biografias ou poesia"}; 
+		
+		case "Técnico":
+			return new String[] {"paradidático ","formação profissional"};
+		
+		case "Periódico":
+			return new String[] {"gibi ","revista de notícias"};
+		
+		case "Desenvolvimento Pessoal":
+			return new String[] {"autoajuda","religião","saúde"};
+			
+		default:
+			return new String[0];
+		}
+	}
 
 }

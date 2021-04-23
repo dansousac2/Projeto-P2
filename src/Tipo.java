@@ -1,8 +1,0 @@
-
-public enum Tipo {
-
-	LITERATURA,
-	TECNICO,
-	PERIODICO,
-	DESENVOLVIMENTO_PESSOAL;
-}
