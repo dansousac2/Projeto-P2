@@ -5,11 +5,14 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 public class ListarLivrosLivreiro extends PadraoListarLivros{
 	
-	public ListarLivrosLivreiro() {
-		super(null,true,Imagens.ICONE_LOGOMARCA,"Livraria Stile");
+	public ListarLivrosLivreiro(Usuario user) {
+		super(user,true,Imagens.ICONE_LOGOMARCA,"Livraria Stile");
 		
 		addIconeLivreiro();
 		addBotaoNovo();
@@ -40,7 +43,7 @@ public class ListarLivrosLivreiro extends PadraoListarLivros{
 	private void addBotaoNovo() {
 		
 		JButton botaoNovo = new JButton("Novo +");
-		botaoNovo.setBounds(520, 494, 80, 25);
+		botaoNovo.setBounds(520, 484, 80, 25);
 		
 		OuvinteBotaoNovo ouvinte = new OuvinteBotaoNovo(this);
 		botaoNovo.addActionListener(ouvinte);

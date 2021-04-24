@@ -21,6 +21,7 @@ public class Livro {
 	
 	private int notaMedia;
 	private HashMap<String,Integer> notasAtribuidas;
+	private int visualizacoes = 0;
 	
 	public Livro(String tipo,String genero,String titulo,String idioma,
 			String editora,String resumo,int ano,int quantidade) {
@@ -52,6 +53,14 @@ public class Livro {
 		return id;
 	}
 	
+	public int getVisualizacoes() {
+		return visualizacoes;
+	}
+
+	public void setVisualizacoes(int visualizacoes) {
+		this.visualizacoes = visualizacoes;
+	}
+
 	public String getTitulo() {
 		return titulo;
 	}
