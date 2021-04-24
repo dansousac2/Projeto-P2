@@ -174,13 +174,4 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 		barra.add(menu);
 		add(barra);
 	}
-	public static void main(String[] args) {
-		try {
-		CentralLivro C = new PersistenciaLivros().recuperarCentral("Dados_Livraria.xml");
-		Usuario U = new Usuario("Nome", "email", "senha");
-		new JanelaVisualizarDetalhesUsuario(U,C.getLivrosDisponiveis().get(0));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 }

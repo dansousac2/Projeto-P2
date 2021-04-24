@@ -14,6 +14,8 @@ import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDetalhes{
 	Usuario usuarioLocal;
+	Livro livroDetalhado;
+	JTextArea comentarios;
 	public class OuvinteBotaoSalvar implements ActionListener{
 		Livro livroDetalhado;
 		String[] atributos;
@@ -63,11 +65,13 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 			}
 		}
 	}
-	public JanelaVisualizarDetalhesLivreiro(Usuario U) {
+	public JanelaVisualizarDetalhesLivreiro(Usuario U,Livro L) {
 		super();
+		usuarioLocal = U;
+		livroDetalhado = L;
 		Barra();
 		Titulo();
-		usuarioLocal = U;
+		DetalhesDoLivro();
 		setVisible(true);
 	}
 	public void Titulo() {
@@ -76,9 +80,7 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		titulo.setFont(new Font("Arial", Font.BOLD, 22));
 		add(titulo);
 	}
-	public void DetalhesDoLivro(Livro L) {
-		JTextArea comentarios = new JTextArea();
-		Livro livroDetalhado = L;
+	public void DetalhesDoLivro() {
 		String[] atributos = {livroDetalhado.getTitulo(),livroDetalhado.getGenero(),livroDetalhado.getIdioma(),
 		""+livroDetalhado.getAnoPublicacao(),livroDetalhado.getEditora(),livroDetalhado.getAutores(),livroDetalhado.getMesLancamento(),
 		""+livroDetalhado.getNumeroEdicao(),livroDetalhado.getAssunto(),""+livroDetalhado.getQuantidade(),""+livroDetalhado.getNotaMedia(),
@@ -112,6 +114,7 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		rolo = new JScrollPane(resumo);
 		rolo.setBounds(450, 130, 200, 200);
 		add(rolo);
+		comentarios = new JTextArea();
 		comentarios.setLineWrap(true);
 		comentarios.setWrapStyleWord(true);
 		rolo = new JScrollPane(comentarios);
