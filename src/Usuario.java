@@ -7,7 +7,7 @@ public class Usuario {
 	private String senha;
 	private boolean ehLivreiro = false;
 	
-	private ArrayList<Livro> colecaoDeLivros;
+	private ArrayList<Livro> colecaoDeLivros = new ArrayList<Livro>();
 
 	public Usuario(String nome,String email,String senha) {
 		

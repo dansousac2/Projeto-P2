@@ -16,14 +16,11 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 	Usuario usuarioLocal;
 	Livro livroDetalhado;
 	JTextArea comentarios;
+	String C;
 	public class OuvinteBotaoSalvar implements ActionListener{
-		Livro livroDetalhado;
 		String[] atributos;
-		JTextArea comentarios;
-		public OuvinteBotaoSalvar(String[] S,Livro L, JTextArea C) {
+		public OuvinteBotaoSalvar(String[] S) {
 			atributos = S;
-			livroDetalhado = L;
-			comentarios = C;
 		}
 		public void actionPerformed(ActionEvent e) {
 			livroDetalhado.setTitulo(atributos[0]);
@@ -38,27 +35,35 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 			livroDetalhado.setQuantidade(Integer.parseInt(atributos[9]));
 			livroDetalhado.setNotaMedia(Integer.parseInt(atributos[10]));
 			livroDetalhado.setResumo(atributos[11]);
-			livroDetalhado.comentarios = comentarios.getText();
+			livroDetalhado.setComentarios(comentarios.getText());
 			repaint();
 			JOptionPane.showMessageDialog(null, "As alterações foram salvas");
 		}
 		
 	}
 	public class OuvinteBotaoAdicionarComentario implements ActionListener{
-		Livro livroDetalhado;
-		Usuario usuarioLocal;
-		JTextArea caixaDeComentarios;
-		public OuvinteBotaoAdicionarComentario(Usuario U,Livro L, JTextArea T) {
-			livroDetalhado = L;
-			usuarioLocal = U;
-			caixaDeComentarios = T;
-		}
 		public void actionPerformed(ActionEvent e) {
 			String T = JOptionPane.showInputDialog("Adicione um Comentário");
-			if(T!=null) {
-				livroDetalhado.comentarios += "\n  "+usuarioLocal.getNome()+":  "+T;
-				caixaDeComentarios.setText(livroDetalhado.comentarios);
-				repaint();
+			if(!T.isBlank()) {
+				
+				try {
+					PersistenciaLivros persistencia = new PersistenciaLivros();
+					CentralLivro dados = persistencia.recuperarCentral("Dados_Livraria.xml");
+					for(int i = 0; i<dados.getLivrosDisponiveis().size();i++) {
+						if(dados.getLivrosDisponiveis().get(i) == livroDetalhado) {
+							
+							C += "\n  "+usuarioLocal.getNome()+":  "+T;
+							dados.getLivrosDisponiveis().get(i).setComentarios(C);
+							break;
+						}
+					}
+					persistencia.salvarCentral(dados, "Dados_Livraria.xml");
+					
+				
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			comentarios.setText(C);
 			}
 			else {
 				JOptionPane.showMessageDialog(null, "Nenhum comentário será adicionado", "Atenção", JOptionPane.INFORMATION_MESSAGE);
@@ -66,25 +71,31 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 		}
 	}
 	public class OuvinteBotaoNotificar implements ActionListener{
-		Livro livroDetalhado;
-		Usuario usuarioLocal;
-		public OuvinteBotaoNotificar(Usuario U,Livro L) {
-			livroDetalhado = L;
-			usuarioLocal = U;
+		public OuvinteBotaoNotificar() {
 		}
 		public void actionPerformed(ActionEvent e) {
 			livroDetalhado.getInteressados().add(usuarioLocal.getNome());
+			JOptionPane.showMessageDialog(null, "Você será notificado assim que haver estoque!");
 		}
 	}
 	public class OuvinteBotaoAddColeçao implements ActionListener{
-		Livro livroDetalhado;
-		Usuario usuarioLocal;
-		public OuvinteBotaoAddColeçao(Usuario U,Livro L) {
-			livroDetalhado = L;
-			usuarioLocal = U;
+		public OuvinteBotaoAddColeçao() {
 		}
 		public void actionPerformed(ActionEvent e) {
-			usuarioLocal.getColecaoDeLivros().add(livroDetalhado);
+			try {
+				PersistenciaLivros persistencia = new PersistenciaLivros();
+				CentralLivro dados = persistencia.recuperarCentral("Dados_Livraria.xml");
+				for(int i = 0; i<dados.getUsuariosCadastrados().size();i++) {
+					if(dados.getUsuariosCadastrados().get(i) == usuarioLocal) {
+						dados.getUsuariosCadastrados().get(i).getColecaoDeLivros().add(livroDetalhado);
+						break;
+					}
+				}
+				persistencia.salvarCentral(dados, "Dados_Livraria.xml");
+				JOptionPane.showMessageDialog(null, "O livro foi adicionado a sua coleção");
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
 		}
 	}
 	public JanelaVisualizarDetalhesUsuario(Usuario U,Livro L) {
@@ -134,7 +145,8 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 		rolo = new JScrollPane(resumo);
 		rolo.setBounds(450, 130, 200, 200);
 		add(rolo);
-		comentarios = new JTextArea();
+		System.out.print(livroDetalhado.getComentarios());
+		comentarios = new JTextArea(livroDetalhado.getComentarios());
 		comentarios.setLineWrap(true);
 		comentarios.setWrapStyleWord(true);
 		comentarios.setEditable(false);
@@ -143,7 +155,7 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 		add(rolo);
 		botao = new JButton("Adicionar comentário");
 		botao.setBounds(140, 515, 180, 25);
-		botao.addActionListener(new OuvinteBotaoAdicionarComentario(usuarioLocal, livroDetalhado, comentarios));
+		botao.addActionListener(new OuvinteBotaoAdicionarComentario());
 		add(botao);
 		botao = new JButton("Home");
 		botao.setBounds(590, 20, 70, 70);
@@ -154,11 +166,14 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 		add(titulo);
 		botao = new JButton("Notificar-me quando chegar");
 		botao.setBounds(438, 410, 240, 30);
-		botao.addActionListener(new OuvinteBotaoNotificar(usuarioLocal, livroDetalhado));
+		if(livroDetalhado.getQuantidade()>0) {
+			botao.setEnabled(false);
+		}
+		botao.addActionListener(new OuvinteBotaoNotificar());
 		add(botao);
 		botao = new JButton("Adicionar a coleção");
 		botao.setBounds(438, 460, 240, 30);
-		botao.addActionListener(new OuvinteBotaoAddColeçao(usuarioLocal, livroDetalhado));
+		botao.addActionListener(new OuvinteBotaoAddColeçao());
 		add(botao);
 		botao = new JButton("COMPRAR");
 		if(livroDetalhado.getQuantidade()==0) {

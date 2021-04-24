@@ -17,13 +17,9 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 	Livro livroDetalhado;
 	JTextArea comentarios;
 	public class OuvinteBotaoSalvar implements ActionListener{
-		Livro livroDetalhado;
 		String[] atributos;
-		JTextArea comentarios;
 		public OuvinteBotaoSalvar(String[] S,Livro L, JTextArea C) {
 			atributos = S;
-			livroDetalhado = L;
-			comentarios = C;
 		}
 		public void actionPerformed(ActionEvent e) {
 			livroDetalhado.setTitulo(atributos[0]);
@@ -39,10 +35,23 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 			livroDetalhado.setNotaMedia(Integer.parseInt(atributos[10]));
 			livroDetalhado.setResumo(atributos[11]);
 			livroDetalhado.comentarios = comentarios.getText();
-			repaint();
-			JOptionPane.showMessageDialog(null, "As alterações foram salvas");
+			try {
+				PersistenciaLivros persistencia = new PersistenciaLivros();
+				CentralLivro dados = persistencia.recuperarCentral("Dados_Livraria.xml");
+				for(int i = 0; i<dados.getLivrosDisponiveis().size();i++) {
+					if(dados.getLivrosDisponiveis().get(i) == livroDetalhado) {
+						dados.getLivrosDisponiveis().remove(i);
+						dados.getLivrosDisponiveis().add(livroDetalhado);
+						break;
+					}
+				}
+				persistencia.salvarCentral(dados, "Dados_Livraria.xml");
+				JOptionPane.showMessageDialog(null, "As alterações foram salvas");
+				repaint();
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
 		}
-		
 	}
 	public class OuvinteBotaoAdicionarComentario implements ActionListener{
 		Livro livroDetalhado;

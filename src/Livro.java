@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Livro {
-	public String comentarios = "COMENTÁRIOS\n";
+	private String comentarios = "COMENTÁRIOS";
 	private String tipo;
 	private String genero;
 	private String titulo;
@@ -158,6 +158,14 @@ public class Livro {
 
 	public void setInteressados(ArrayList<String> interessados) {
 		this.interessados = interessados;
+	}
+
+	public String getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(String comentarios) {
+		this.comentarios = comentarios;
 	}
 	
 }
