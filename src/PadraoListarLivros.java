@@ -83,7 +83,7 @@ public abstract class PadraoListarLivros extends JFrame {
 					JOptionPane.showMessageDialog(rootPane, "Selecione algum livro primeiro!");
 				}
 				else {
-					long idSelecionado = (long)jtLivrosDisponiveis.getValueAt(linhaSelecionada, 3);
+					long idSelecionado = Long.parseLong((String)jtLivrosDisponiveis.getValueAt(linhaSelecionada, 3)); // MUDEI AQUI
 					
 					for(Livro elemento : listarLivros) {
 						if(elemento.getId() == idSelecionado) {
