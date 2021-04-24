@@ -90,7 +90,10 @@ public abstract class PadraoListarLivros extends JFrame {
 							
 							for(Livro liv : listarLivros) {
 								if(idSelecionado == liv.getId()) {
-									// CRIAR UMA JANELA DE DETALHES PASSADO ESTE LIVRO COMO PARÂMETRO
+									
+									if(usuarioLogado.isEhLivreiro()) {
+//										new JanelaVisualizarDetalhesLivreiro
+									}
 								}
 							}
 							
