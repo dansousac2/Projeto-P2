@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 public class ListarLivrosLivreiro extends PadraoListarLivros{
-
+	
 	public ListarLivrosLivreiro() {
 		super(null,true,Imagens.ICONE_LOGOMARCA,"Livraria Stile");
 		
@@ -42,17 +42,23 @@ public class ListarLivrosLivreiro extends PadraoListarLivros{
 		JButton botaoNovo = new JButton("Novo +");
 		botaoNovo.setBounds(520, 494, 80, 25);
 		
-		OuvinteBotaoNovo ouvinte = new OuvinteBotaoNovo();
+		OuvinteBotaoNovo ouvinte = new OuvinteBotaoNovo(this);
 		botaoNovo.addActionListener(ouvinte);
 		
 		add(botaoNovo);
 	}
 	
 	public class OuvinteBotaoNovo implements ActionListener{
+		
+		ListarLivrosLivreiro janela;
+		
+		public OuvinteBotaoNovo(ListarLivrosLivreiro listarLivrosLivreiro) {
+			this.janela = listarLivrosLivreiro;
+		}
 
 		public void actionPerformed(ActionEvent e) {
 			
-			new CadastrarNovoLivro(listarLivros);
+			new CadastrarNovoLivro(janela);
 		}
 		
 	}

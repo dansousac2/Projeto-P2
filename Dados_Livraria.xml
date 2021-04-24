@@ -1,6 +1,119 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <CentralLivro>
-  <livrosDisponiveis/>
+  <livrosDisponiveis>
+    <Livro>
+      <tipo>Periódico</tipo>
+      <genero>gibi </genero>
+      <titulo>qwe</titulo>
+      <idioma>qwe</idioma>
+      <anoPublicacao>2000</anoPublicacao>
+      <editora>qwe</editora>
+      <resumo>qwe</resumo>
+      <mesLancamento>12</mesLancamento>
+      <numeroEdicao>3</numeroEdicao>
+      <quantidade>3</quantidade>
+      <id>1619224060215</id>
+      <notaMedia>0</notaMedia>
+    </Livro>
+    <Livro>
+      <tipo>Literatura</tipo>
+      <genero>literatura brasileira</genero>
+      <titulo>Aventuras de Java</titulo>
+      <idioma>português</idioma>
+      <anoPublicacao>2021</anoPublicacao>
+      <editora>Ávida</editora>
+      <resumo>Qualquer coisa para aqui</resumo>
+      <autores></autores>
+      <numeroEdicao>0</numeroEdicao>
+      <quantidade>3</quantidade>
+      <id>1619226383032</id>
+      <notaMedia>0</notaMedia>
+    </Livro>
+    <Livro>
+      <tipo>Literatura</tipo>
+      <genero>infanto juvenil</genero>
+      <titulo>Um, dois, três e Java.</titulo>
+      <idioma>português</idioma>
+      <anoPublicacao>2021</anoPublicacao>
+      <editora>Ávida</editora>
+      <resumo>era assim que seria</resumo>
+      <autores>Danilo Costa, Leonardo Freitas</autores>
+      <numeroEdicao>0</numeroEdicao>
+      <quantidade>3</quantidade>
+      <id>1619226780317</id>
+      <notaMedia>0</notaMedia>
+    </Livro>
+    <Livro>
+      <tipo>Desenvolvimento Pessoal</tipo>
+      <genero>religião</genero>
+      <titulo>O avião e a Aero Velha</titulo>
+      <idioma>português</idioma>
+      <anoPublicacao>2020</anoPublicacao>
+      <editora>Ávida</editora>
+      <resumo>Quando esta indo já se foi</resumo>
+      <autores>Leo Zozinho</autores>
+      <numeroEdicao>0</numeroEdicao>
+      <quantidade>1</quantidade>
+      <id>1619227214307</id>
+      <notaMedia>0</notaMedia>
+    </Livro>
+    <Livro>
+      <tipo>Técnico</tipo>
+      <genero>paradidático </genero>
+      <titulo>Desertor</titulo>
+      <idioma>Inglês</idioma>
+      <anoPublicacao>2022</anoPublicacao>
+      <editora>Ávida</editora>
+      <resumo>Qualquer coisa</resumo>
+      <numeroEdicao>0</numeroEdicao>
+      <assunto>temática</assunto>
+      <quantidade>3</quantidade>
+      <id>1619227327153</id>
+      <notaMedia>0</notaMedia>
+    </Livro>
+    <Livro>
+      <tipo>Literatura</tipo>
+      <genero>literatura brasileira</genero>
+      <titulo>lksdnf</titulo>
+      <idioma>lskdnflskf</idioma>
+      <anoPublicacao>2019</anoPublicacao>
+      <editora>ljnlkdnflskd</editora>
+      <resumo>sldjfnsldnflsdnflsdnflsdkfnsldfnsldfnsldfnsl</resumo>
+      <autores>jsnfldsnflksdnf</autores>
+      <numeroEdicao>0</numeroEdicao>
+      <quantidade>23</quantidade>
+      <id>1619228405997</id>
+      <notaMedia>0</notaMedia>
+    </Livro>
+    <Livro>
+      <tipo>Periódico</tipo>
+      <genero>gibi </genero>
+      <titulo>Va adiante</titulo>
+      <idioma>qwe</idioma>
+      <anoPublicacao>2021</anoPublicacao>
+      <editora>qwe</editora>
+      <resumo>qweqwe</resumo>
+      <mesLancamento>01</mesLancamento>
+      <numeroEdicao>3</numeroEdicao>
+      <quantidade>3</quantidade>
+      <id>1619229178157</id>
+      <notaMedia>0</notaMedia>
+    </Livro>
+    <Livro>
+      <tipo>Periódico</tipo>
+      <genero>gibi </genero>
+      <titulo>as árvores</titulo>
+      <idioma>muita coisa</idioma>
+      <anoPublicacao>1234</anoPublicacao>
+      <editora>Ávida</editora>
+      <resumo>qweqwe</resumo>
+      <mesLancamento>08</mesLancamento>
+      <numeroEdicao>3</numeroEdicao>
+      <quantidade>2</quantidade>
+      <id>1619233223005</id>
+      <notaMedia>0</notaMedia>
+    </Livro>
+  </livrosDisponiveis>
   <usuariosCadastrados>
     <Usuario>
       <nome>Leonardo</nome>

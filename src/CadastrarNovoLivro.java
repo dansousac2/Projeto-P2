@@ -4,20 +4,21 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
-public class CadastrarNovoLivro extends JFrame{
+public class CadastrarNovoLivro extends JDialog{
 	
 	private ArrayList<Livro> listaDeLivros;
 
@@ -38,9 +39,14 @@ public class CadastrarNovoLivro extends JFrame{
 	
 	private OuvinteBotaoCadastrar ouvinte = new OuvinteBotaoCadastrar();
 	
-	public CadastrarNovoLivro(ArrayList<Livro> listarLivros) { 
+	private ListarLivrosLivreiro janela;
 	
-		this.listaDeLivros = listarLivros;
+	public CadastrarNovoLivro(ListarLivrosLivreiro janela) { 
+	
+		this.setModal(true);
+		
+		this.janela = janela;
+		this.listaDeLivros = janela.listarLivros;
 		
 		this.setTitle("Novo Livro");
 		this.setSize(500,450);
@@ -276,21 +282,116 @@ public class CadastrarNovoLivro extends JFrame{
 							}
 						}
 						
-						if(taResumo.isEnabled() && taResumo.getText().isBlank() && taAutores.isEnabled() && taAutores.getText().isBlank()) {
+						if((taResumo.isEnabled() && taResumo.getText().isBlank()) || (taAutores.isEnabled() && taAutores.getText().isBlank())) {
 							cadastrar = false;
 						}
 						
-						if(!ftfLancamento.getText().equals("  ") && ftfLancamento.isEnabled()) {
+						try {
+						
+						if(Utilidade.ehNumero(tfAno.getText()) || Utilidade.ehNumero(tfQuantidade.getText())){
 							
-							int mesInt = Integer.parseInt(ftfLancamento.getText());
+							LocalDate dataHoje = LocalDate.now();
 							
-							if(mesInt <1 || mesInt > 12) {
+							int ano = dataHoje.getYear();
+							
+							if(Integer.parseInt(tfAno.getText()) > ano) {
 								cadastrar = false;
-								JOptionPane.showMessageDialog(null, "Mês inválido", "Aviso", JOptionPane.WARNING_MESSAGE);
 							}
+							
+							if(!ftfLancamento.getText().equals("  ") && ftfLancamento.isEnabled()) {
+
+								int mesLanc = Integer.parseInt(ftfLancamento.getText());
+								
+								int anoSelecionado = Integer.parseInt(tfAno.getText());
+								
+								try {
+									
+									LocalDate dataInformada = LocalDate.of(anoSelecionado, mesLanc, 1);
+									if(dataInformada.isAfter(dataHoje)) {
+										cadastrar = false;
+									}
+									
+								}catch (Exception erro) {
+									cadastrar = false;
+								}
+							}
+							
+						} else {
+							cadastrar = false;
 						}
 						
-						System.out.println(cadastrar); // COLOCAR AQUI O QUE TIVER QUE OCORRER QUANDO TUDO ESTÁ PRONTO.
+						} catch (Exception ex) {
+							cadastrar = false;
+						}
+						
+						if(cadastrar) {
+							
+							int resposta = JOptionPane.YES_OPTION;
+							
+							for(Livro liv : listaDeLivros) {
+	
+								if(tfTitulo.getText().toLowerCase().equals(liv.getTitulo().toLowerCase())) {
+									resposta = JOptionPane.showConfirmDialog(null, "Esta obra ja consta no banco de dados!\n"
+											+ "Deseja continuar?", "Obra Duplicada?!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+								}
+								break;
+							}
+							
+							if(resposta == JOptionPane.YES_OPTION) {
+								
+								Livro novoLivro = new Livro((String)cbTipo.getSelectedItem(),(String)cbGenero.getSelectedItem(),tfTitulo.getText(),
+										tfIdioma.getText(),tfEditora.getText(),taResumo.getText(),Integer.parseInt(tfAno.getText()),
+										Integer.parseInt(tfQuantidade.getText()));
+								
+								if(taAutores.isEnabled()) {
+									novoLivro.setAutores(taAutores.getText());
+								}
+								
+								if(ftfLancamento.isEnabled()) {
+									novoLivro.setMesLancamento(ftfLancamento.getText());
+								}
+								
+								if(tfEdicao.isEnabled()) {
+									novoLivro.setNumeroEdicao(Integer.parseInt(tfEdicao.getText()));
+								}
+								
+								if(tfAssunto.isEnabled()) {
+									novoLivro.setAssunto(tfAssunto.getText());
+								}
+								
+								listaDeLivros.add(novoLivro);
+								
+								PersistenciaLivros persistencia = new PersistenciaLivros();
+								
+								try {
+									
+									CentralLivro central = persistencia.recuperarCentral("Dados_Livraria.xml");
+									
+									central.setLivrosDisponiveis(listaDeLivros);
+									
+									persistencia.salvarCentral(central, "Dados_Livraria.xml");
+									
+									JOptionPane.showMessageDialog(null, "Salvo com sucesso!", "Cadastrar Novo Livro", JOptionPane.INFORMATION_MESSAGE);
+									
+									janela.modelo.setRowCount(0);
+									
+									for(Livro liv : janela.listarLivros) {
+										Utilidade.adicionarLinhasAtualizadas(liv, janela.modelo);
+									}
+									
+									janela.repaint();
+									dispose();
+									
+								}catch (Exception erro) {
+									JOptionPane.showMessageDialog(null, "Erro ao recuperar/salvar lista", "Erro", JOptionPane.ERROR_MESSAGE);
+								}
+							}
+							
+						} else {
+							JOptionPane.showMessageDialog(null, "Verifique os campos habilitados", "Aviso", JOptionPane.ERROR_MESSAGE);
+							repaint();
+						}
+						
 					}
 						
 					else {

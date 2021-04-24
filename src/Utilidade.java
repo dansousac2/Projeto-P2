@@ -78,4 +78,13 @@ public class Utilidade {
 		}
 	}
 
+	public static boolean ehNumero(String str) {
+		try {
+			Double.parseDouble(str);
+			return true;
+		}catch (Exception e) {
+			return false;
+		}
+	}
+	
 }
