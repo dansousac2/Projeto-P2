@@ -14,6 +14,8 @@ import javax.swing.table.DefaultTableModel;
 
 public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetalhes{
 	Usuario usuarioLocal;
+	Livro livroDetalhado;
+	JTextArea comentarios;
 	public class OuvinteBotaoSalvar implements ActionListener{
 		Livro livroDetalhado;
 		String[] atributos;
@@ -85,11 +87,13 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 			usuarioLocal.getColecaoDeLivros().add(livroDetalhado);
 		}
 	}
-	public JanelaVisualizarDetalhesUsuario(Usuario U) {
+	public JanelaVisualizarDetalhesUsuario(Usuario U,Livro L) {
 		super();
+		usuarioLocal = U;
+		livroDetalhado = L;
+		DetalhesDoLivro();
 		Barra();
 		Titulo();
-		usuarioLocal = U;
 		setVisible(true);
 	}
 	public void Titulo() {
@@ -98,13 +102,11 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 		titulo.setFont(new Font("Arial", Font.BOLD, 22));
 		add(titulo);
 	}
-	public void DetalhesDoLivro(Livro L) {
-		JTextArea comentarios = new JTextArea();
-		Livro livroDetalhado = L;
+	public void DetalhesDoLivro() {
 		String[] atributos = {livroDetalhado.getTitulo(),livroDetalhado.getGenero(),livroDetalhado.getIdioma(),
-		""+livroDetalhado.getAnoPublicacao(),livroDetalhado.getEditora(),livroDetalhado.getAutores(),livroDetalhado.getMesLancamento(),
-		""+livroDetalhado.getNumeroEdicao(),livroDetalhado.getAssunto(),""+livroDetalhado.getQuantidade(),""+livroDetalhado.getNotaMedia(),
-		livroDetalhado.getResumo()};
+				""+livroDetalhado.getAnoPublicacao(),livroDetalhado.getEditora(),livroDetalhado.getAutores(),livroDetalhado.getMesLancamento(),
+				""+livroDetalhado.getNumeroEdicao(),livroDetalhado.getAssunto(),""+livroDetalhado.getQuantidade(),""+livroDetalhado.getNotaMedia(),
+				livroDetalhado.getResumo()};
 		modelo = new DefaultTableModel();
 		modelo.addColumn("Aspectos");
 		modelo.addColumn("Detalhes");
@@ -132,6 +134,7 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 		rolo = new JScrollPane(resumo);
 		rolo.setBounds(450, 130, 200, 200);
 		add(rolo);
+		comentarios = new JTextArea();
 		comentarios.setLineWrap(true);
 		comentarios.setWrapStyleWord(true);
 		comentarios.setEditable(false);
@@ -172,9 +175,12 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 		add(barra);
 	}
 	public static void main(String[] args) {
-		Livro livro = new Livro("Romance","amor a vida","portugues","conexão paz","Danilo; leo","janeiro",
-				28,2000);
-		Usuario U = new Usuario("Leonardo","leonardofreitas.l94@hotmail.com","leomoral1994");
-		new JanelaVisualizarDetalhesUsuario(U).DetalhesDoLivro(livro);
+		try {
+		CentralLivro C = new PersistenciaLivros().recuperarCentral("Dados_Livraria.xml");
+		Usuario U = new Usuario("Nome", "email", "senha");
+		new JanelaVisualizarDetalhesUsuario(U,C.getLivrosDisponiveis().get(0));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -141,10 +141,4 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		barra.add(menu);
 		add(barra);
 	}
-	public static void main(String[] args) {
-		Livro livro = new Livro("Romance","amor a vida","portugues","conexão paz","Danilo; leo","janeiro",
-				28,2000);
-		Usuario U = new Usuario("Leonardo","leonardofreitas.l94@hotmail.com","leomoral1994");
-		new JanelaVisualizarDetalhesLivreiro(U).DetalhesDoLivro(livro);
-	}
 }
