@@ -19,11 +19,10 @@ public class JanelaPadraoVisualizarDetalhes extends JFrame{
 	JMenuBar barra;
 	JMenuItem itens;
 	DefaultTableModel modelo;
-	public JanelaPadraoVisualizarDetalhes() {
+	public JanelaPadraoVisualizarDetalhes() { //removi um comentario
 		setSize(700, 580);
 		setLocationRelativeTo(null);
 		setLayout(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(true);
 	}
 }
