@@ -63,6 +63,7 @@ public abstract class PadraoListarLivros extends JFrame {
 		
 		addIconeCentral();
 		addNomeIconeCentral();
+		addMenuOpcoes();
 		
 		this.setVisible(true);
 	}
@@ -90,6 +91,10 @@ public abstract class PadraoListarLivros extends JFrame {
 							
 							for(Livro liv : listarLivros) {
 								if(idSelecionado == liv.getId()) {
+									
+									liv.setVisualizacoes(liv.getVisualizacoes() + 1);
+									
+									// PERSISTENCIA AQUI !!!!
 									
 									if(usuarioLogado.isEhLivreiro()) {
 										new JanelaVisualizarDetalhesLivreiro(usuarioLogado, liv);
@@ -269,7 +274,7 @@ public abstract class PadraoListarLivros extends JFrame {
 	private void addBotaoVisualizar() {
 		
 		JButton btVisualizar = new JButton("Visualizar");
-		btVisualizar.setBounds(88, 494, 100, 25);
+		btVisualizar.setBounds(88, 484, 100, 25);
 		
 		btVisualizar.setActionCommand("visualizar");
 		btVisualizar.addActionListener(ouvinteGeral);
@@ -353,4 +358,10 @@ public abstract class PadraoListarLivros extends JFrame {
 		add(nomeIcone);
 	}
 	
+	private void addMenuOpcoes() {
+		
+		if(getClass().getSimpleName().equals("ListarLivrosLivreiro")) {
+			MenuOpcoes menu = new MenuOpcoes(this);
+		}
+	}
 }

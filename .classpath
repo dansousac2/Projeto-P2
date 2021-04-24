@@ -18,5 +18,6 @@
 	<classpathentry kind="lib" path="lib/xstream-benchmark-1.4.15.jar"/>
 	<classpathentry kind="lib" path="lib/xstream-hibernate-1.4.15.jar"/>
 	<classpathentry kind="lib" path="lib/xstream-jmh-1.4.15.jar"/>
+	<classpathentry kind="lib" path="lib/iText-5.0.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

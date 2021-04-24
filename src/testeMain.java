@@ -5,9 +5,9 @@ public class testeMain {
 		
 		Usuario novoUsuario = new Usuario("Danilo S. Costa", "dansousac2@hotmail.com", "123qwe");
 
-		new ListarLivrosUsuario(novoUsuario);
+//		new ListarLivrosUsuario(novoUsuario);
 
-//		new ListarLivrosLivreiro();
+		new ListarLivrosLivreiro(novoUsuario);
 		
 //		new ColecaoUsuario(novoUsuario);	
 

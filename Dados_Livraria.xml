@@ -2,6 +2,7 @@
 <CentralLivro>
   <livrosDisponiveis>
     <Livro>
+<<<<<<< HEAD
       <tipo>Literatura</tipo>
       <genero>literatura estrangeira</genero>
       <titulo>A odisseia</titulo>
@@ -30,9 +31,27 @@
       <numeroEdicao>0</numeroEdicao>
       <quantidade>0</quantidade>
       <id>1619306025006</id>
+=======
+      <comentarios>COMENTÁRIOS
+</comentarios>
+      <tipo>Periódico</tipo>
+      <genero>revista de notícias</genero>
+      <titulo>Alvorada Voraz</titulo>
+      <idioma>português</idioma>
+      <anoPublicacao>1234</anoPublicacao>
+      <editora>Ávida</editora>
+      <resumo>Uma vez mais tentando acertar</resumo>
+      <interessados/>
+      <mesLancamento>03</mesLancamento>
+      <numeroEdicao>1</numeroEdicao>
+      <quantidade>2</quantidade>
+      <id>1619305812381</id>
+>>>>>>> 24ff9659cc2c0ec853268b87c36ed4bc47bba9ae
       <notaMedia>0</notaMedia>
+      <visualizacoes>0</visualizacoes>
     </Livro>
   </livrosDisponiveis>
+<<<<<<< HEAD
   <usuariosCadastrados>
     <Usuario>
       <nome>Leonardo Freitas</nome>
@@ -49,4 +68,7 @@
       <colecaoDeLivros/>
     </Usuario>
   </usuariosCadastrados>
+=======
+  <usuariosCadastrados/>
+>>>>>>> 24ff9659cc2c0ec853268b87c36ed4bc47bba9ae
 </CentralLivro>
