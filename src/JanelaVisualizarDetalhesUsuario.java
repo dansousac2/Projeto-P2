@@ -1,7 +1,6 @@
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -12,7 +11,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
-public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDetalhes{
+
+public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetalhes{
 	Usuario usuarioLocal;
 	public class OuvinteBotaoSalvar implements ActionListener{
 		Livro livroDetalhado;
@@ -63,7 +63,29 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 			}
 		}
 	}
-	public JanelaVisualizarDetalhesLivreiro(Usuario U) {
+	public class OuvinteBotaoNotificar implements ActionListener{
+		Livro livroDetalhado;
+		Usuario usuarioLocal;
+		public OuvinteBotaoNotificar(Usuario U,Livro L) {
+			livroDetalhado = L;
+			usuarioLocal = U;
+		}
+		public void actionPerformed(ActionEvent e) {
+			livroDetalhado.getInteressados().add(usuarioLocal.getNome());
+		}
+	}
+	public class OuvinteBotaoAddColeçao implements ActionListener{
+		Livro livroDetalhado;
+		Usuario usuarioLocal;
+		public OuvinteBotaoAddColeçao(Usuario U,Livro L) {
+			livroDetalhado = L;
+			usuarioLocal = U;
+		}
+		public void actionPerformed(ActionEvent e) {
+			usuarioLocal.getColecaoDeLivros().add(livroDetalhado);
+		}
+	}
+	public JanelaVisualizarDetalhesUsuario(Usuario U) {
 		super();
 		Barra();
 		Titulo();
@@ -98,22 +120,21 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		modelo.addRow(new Object[] {"Quantidade Disponivel",atributos[9]});
 		modelo.addRow(new Object[] {"Nota Média",atributos[10]});
 		tabela = new JTable(modelo);
+		tabela.setEnabled(false);
 		rolo = new JScrollPane(tabela);
 		rolo.setBounds(30, 130, 400, 200);
 		add(rolo);
-		botao = new JButton("Salvar");
-		botao.setBounds(190, 332, 80, 25);
-		botao.addActionListener(new OuvinteBotaoSalvar(atributos, livroDetalhado, comentarios));
-		add(botao);
 		resumo = new JTextArea();
 		resumo.setLineWrap(true);
 		resumo.setWrapStyleWord(true);
 		resumo.setText(atributos[11]);
+		resumo.setEditable(false);
 		rolo = new JScrollPane(resumo);
 		rolo.setBounds(450, 130, 200, 200);
 		add(rolo);
 		comentarios.setLineWrap(true);
 		comentarios.setWrapStyleWord(true);
+		comentarios.setEditable(false);
 		rolo = new JScrollPane(comentarios);
 		rolo.setBounds(30, 360, 400, 150);
 		add(rolo);
@@ -124,15 +145,24 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		botao = new JButton("Home");
 		botao.setBounds(590, 20, 70, 70);
 		add(botao);
-		modelo = new DefaultTableModel();
-		modelo.addColumn("Lista de Interessados");
-		for(int i = 0;i<livroDetalhado.getInteressados().size();i++) {
-			modelo.addRow(new Object[] {livroDetalhado.getInteressados().get(i)});
+		titulo = new JLabel("Unidades Restantes: "+livroDetalhado.getQuantidade());
+		titulo.setBounds(438, 360, 240, 30);
+		titulo.setFont(new Font("Arial", Font.BOLD, 14));
+		add(titulo);
+		botao = new JButton("Notificar-me quando chegar");
+		botao.setBounds(438, 410, 240, 30);
+		botao.addActionListener(new OuvinteBotaoNotificar(usuarioLocal, livroDetalhado));
+		add(botao);
+		botao = new JButton("Adicionar a coleção");
+		botao.setBounds(438, 460, 240, 30);
+		botao.addActionListener(new OuvinteBotaoAddColeçao(usuarioLocal, livroDetalhado));
+		add(botao);
+		botao = new JButton("COMPRAR");
+		if(livroDetalhado.getQuantidade()==0) {
+			botao.setEnabled(false);
 		}
-		tabela = new JTable(modelo);
-		rolo = new JScrollPane(tabela);
-		rolo.setBounds(450, 360, 200, 150);
-		add(rolo);
+		botao.setBounds(455, 510, 200, 30);
+		add(botao);
 	}
 	public void Barra() {
 		menu = new JMenu("Menu");
@@ -145,6 +175,6 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		Livro livro = new Livro("Romance","amor a vida","portugues","conexão paz","Danilo; leo","janeiro",
 				28,2000);
 		Usuario U = new Usuario("Leonardo","leonardofreitas.l94@hotmail.com","leomoral1994");
-		new JanelaVisualizarDetalhesLivreiro(U).DetalhesDoLivro(livro);
+		new JanelaVisualizarDetalhesUsuario(U).DetalhesDoLivro(livro);
 	}
 }

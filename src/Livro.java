@@ -1,7 +1,8 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Livro {
-	
+	public String comentarios = "COMENTÁRIOS\n";
 	private String tipo;
 	private String genero;
 	private String titulo;
@@ -9,7 +10,7 @@ public class Livro {
 	private int anoPublicacao;
 	private String editora;
 	private String resumo;
-	
+	private ArrayList<String> interessados = new ArrayList<String>();
 	private String autores;
 	private String mesLancamento;
 	private int numeroEdicao;
@@ -149,6 +150,14 @@ public class Livro {
 
 	public void setNotasAtribuidas(HashMap<String, Integer> notasAtribuidas) {
 		this.notasAtribuidas = notasAtribuidas;
+	}
+
+	public ArrayList<String> getInteressados() {
+		return interessados;
+	}
+
+	public void setInteressados(ArrayList<String> interessados) {
+		this.interessados = interessados;
 	}
 	
 }
