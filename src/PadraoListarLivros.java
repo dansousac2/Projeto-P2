@@ -92,7 +92,7 @@ public abstract class PadraoListarLivros extends JFrame {
 								if(idSelecionado == liv.getId()) {
 									
 									if(usuarioLogado.isEhLivreiro()) {
-//										new JanelaVisualizarDetalhesLivreiro
+//										new Janela
 									}
 								}
 							}
