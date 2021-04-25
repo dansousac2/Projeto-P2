@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Livro {
-	private String comentarios = "COMENTÁRIOS";
+	private ArrayList<String[]> todosOsComentarios = new ArrayList<String[]>();
 	private String tipo;
 	private String genero;
 	private String titulo;
@@ -169,12 +169,14 @@ public class Livro {
 		this.interessados = interessados;
 	}
 
-	public String getComentarios() {
-		return comentarios;
+	public ArrayList<String[]> getTodosOsComentarios() {
+		return todosOsComentarios;
 	}
 
-	public void setComentarios(String comentarios) {
-		this.comentarios = comentarios;
+	public void setTodosOsComentarios(ArrayList<String[]> todosOsComentarios) {
+		this.todosOsComentarios = todosOsComentarios;
 	}
+
+	
 	
 }

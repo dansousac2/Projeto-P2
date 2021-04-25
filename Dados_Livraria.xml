@@ -2,107 +2,82 @@
 <CentralLivro>
   <livrosDisponiveis>
     <Livro>
-<<<<<<< HEAD
-      <comentarios>COMENTÁRIOS
-leo:  livro muito bom</comentarios>
+      <todosOsComentarios>
+        <string-array>
+          <string>1</string>
+          <string>leo</string>
+          <string>livro bom</string>
+        </string-array>
+        <string-array>
+          <string>2</string>
+          <string>leo</string>
+          <string>livro bom</string>
+        </string-array>
+        <string-array>
+          <string>3</string>
+          <string>leo</string>
+          <string>livro maravilhoso!!!!!!!!!</string>
+        </string-array>
+        <string-array>
+          <string>4</string>
+          <string>leo</string>
+          <string>lknlnlhnklnlkn</string>
+        </string-array>
+        <string-array>
+          <string>5</string>
+          <string>leo</string>
+          <string>dfgdfgd</string>
+        </string-array>
+        <string-array>
+          <string>6</string>
+          <string>leo</string>
+          <string>sçldjhgçsldghsçldgh</string>
+        </string-array>
+        <string-array>
+          <string>7</string>
+          <string>leo</string>
+          <string>leo</string>
+        </string-array>
+        <string-array>
+          <string>8</string>
+          <string>leo</string>
+          <string>leonardo</string>
+        </string-array>
+        <string-array>
+          <string>9</string>
+          <string>leo</string>
+          <string>lelndlksd</string>
+        </string-array>
+        <string-array>
+          <string>10</string>
+          <string>leo</string>
+          <string>sfg</string>
+        </string-array>
+      </todosOsComentarios>
       <tipo>Literatura</tipo>
       <genero>literatura estrangeira</genero>
-      <titulo>O Judeus</titulo>
-      <idioma>Arabe</idioma>
-      <anoPublicacao>2015</anoPublicacao>
-      <editora>Al sababb</editora>
-      <resumo>livro que fala sobre a trajetória da cultura judaica</resumo>
-      <interessados>
-        <string>leonardofreitas.l94@hotmail.com</string>
-      </interessados>
-      <autores>mohammed Malli</autores>
-      <numeroEdicao>0</numeroEdicao>
-      <quantidade>0</quantidade>
-      <id>1619353810305</id>
-      <notaMedia>0</notaMedia>
-      <visualizacoes>7</visualizacoes>
-=======
-      <comentarios>COMENTÁRIOS</comentarios>
-      <tipo>Literatura</tipo>
-      <genero>literatura brasileira</genero>
-      <titulo>coisas</titulo>
-      <idioma>casteliano</idioma>
-      <anoPublicacao>2020</anoPublicacao>
-      <editora>Ávida</editora>
-      <resumo>assuntos</resumo>
+      <titulo>a odisseia</titulo>
+      <idioma>portugues</idioma>
+      <anoPublicacao>2012</anoPublicacao>
+      <editora>odis</editora>
+      <resumo>livro mitologico</resumo>
       <interessados/>
-      <autores>Danilo</autores>
+      <autores>manoteu</autores>
       <numeroEdicao>0</numeroEdicao>
-      <quantidade>2</quantidade>
-      <id>1619357058977</id>
-      <notaMedia>10</notaMedia>
-      <notasAtribuidas>
-        <entry>
-          <string>dansousac2@gmail.com</string>
-          <int>10</int>
-        </entry>
-      </notasAtribuidas>
-      <visualizacoes>1</visualizacoes>
->>>>>>> f8368f50500173b6f78cf1f975efb22f9c81e581
+      <quantidade>1</quantidade>
+      <id>1619365277475</id>
+      <notaMedia>0</notaMedia>
+      <notasAtribuidas/>
+      <visualizacoes>15</visualizacoes>
     </Livro>
   </livrosDisponiveis>
   <usuariosCadastrados>
     <Usuario>
-<<<<<<< HEAD
-      <nome>leonardo</nome>
-      <email>leonardo.lucena@academico.ifp.edu.br</email>
+      <nome>leo</nome>
+      <email>leo</email>
       <senha>12345</senha>
       <ehLivreiro>true</ehLivreiro>
       <colecaoDeLivros/>
-    </Usuario>
-    <Usuario>
-      <nome>leo</nome>
-      <email>leonardofreitas.l94@hotmail.com</email>
-      <senha>12345</senha>
-      <ehLivreiro>false</ehLivreiro>
-      <colecaoDeLivros>
-        <Livro>
-          <comentarios>COMENTÁRIOS
-leo:  livro muito bom</comentarios>
-          <tipo>Literatura</tipo>
-          <genero>literatura estrangeira</genero>
-          <titulo>O Judeus</titulo>
-          <idioma>Arabe</idioma>
-          <anoPublicacao>2015</anoPublicacao>
-          <editora>Al sababb</editora>
-          <resumo>livro que fala sobre a trajetória da cultura judaica</resumo>
-          <interessados/>
-          <autores>mohammed Malli</autores>
-          <numeroEdicao>0</numeroEdicao>
-          <quantidade>0</quantidade>
-          <id>1619353810305</id>
-          <notaMedia>0</notaMedia>
-=======
-      <nome>danilo</nome>
-      <email>dansousac2@gmail.com</email>
-      <senha>123123</senha>
-      <ehLivreiro>false</ehLivreiro>
-      <colecaoDeLivros>
-        <Livro>
-          <comentarios>COMENTÁRIOS</comentarios>
-          <tipo>Literatura</tipo>
-          <genero>literatura brasileira</genero>
-          <titulo>coisas</titulo>
-          <idioma>casteliano</idioma>
-          <anoPublicacao>2020</anoPublicacao>
-          <editora>Ávida</editora>
-          <resumo>assuntos</resumo>
-          <interessados/>
-          <autores>Danilo</autores>
-          <numeroEdicao>0</numeroEdicao>
-          <quantidade>2</quantidade>
-          <id>1619357058977</id>
-          <notaMedia>0</notaMedia>
-          <notasAtribuidas/>
->>>>>>> f8368f50500173b6f78cf1f975efb22f9c81e581
-          <visualizacoes>1</visualizacoes>
-        </Livro>
-      </colecaoDeLivros>
     </Usuario>
   </usuariosCadastrados>
 </CentralLivro>
