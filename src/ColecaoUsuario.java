@@ -38,29 +38,32 @@ public class ColecaoUsuario extends PadraoListarLivros{
 			
 			Integer[] notas = {10,9,8,7,6,5,4,3,2,1};
 			
-			Integer nota = (int)JOptionPane.showInternalInputDialog(null, "Selecione a nota: ", "Atribuir Nota",
+			Integer nota = (Integer)JOptionPane.showInputDialog(null, "Selecione a nota: ", "Atribuir Nota",
 					JOptionPane.INFORMATION_MESSAGE, null, notas, notas[0]);
 			
 			if(nota != null) {
 				
 				int linhaSelecionada = jtLivrosDisponiveis.getSelectedRow();
 				
-				long idSelecionado = (long)modelo.getValueAt(linhaSelecionada, 3);
+				long idSelecionado = Long.parseLong((String)modelo.getValueAt(linhaSelecionada, 3));
 				
 				for(Livro liv : listarLivros) {
+					
 					if(idSelecionado == liv.getId()) {
 						
 						HashMap<String, Integer> hashNotas = liv.getNotasAtribuidas();
 						String emailUsuario = usuarioLogado.getEmail();
 						
-						if(hashNotas.containsKey(emailUsuario)) {
-							hashNotas.replace(emailUsuario, nota);
-						}
-						else {
+						if(hashNotas == null || !hashNotas.containsKey(emailUsuario)) {
 							hashNotas.put(emailUsuario, nota);
 						}
 						
+						else {
+							hashNotas.replace(emailUsuario, nota);
+						}
+						
 						int quantidadeDeVotos = hashNotas.size();
+						System.out.println("quantidade de comentários em hashNotas: " + quantidadeDeVotos);
 						int somaDosVotos = 0;
 						
 						Collection<Integer> colecao = hashNotas.values();
@@ -72,7 +75,7 @@ public class ColecaoUsuario extends PadraoListarLivros{
 						
 						liv.setNotaMedia(somaDosVotos/quantidadeDeVotos);
 						
-						jtLivrosDisponiveis.repaint();
+						System.out.println(liv.getNotaMedia());
 						
 						PersistenciaLivros persistencia = new PersistenciaLivros();
 						
@@ -83,7 +86,7 @@ public class ColecaoUsuario extends PadraoListarLivros{
 							ArrayList<Livro> listaLivros = central.getLivrosDisponiveis();
 							
 							for(Livro L : listaLivros) {
-								if(L == liv) {
+								if(L.getId() == liv.getId()) {
 									L.setNotaMedia(liv.getNotaMedia());
 									L.setNotasAtribuidas(hashNotas);
 								}

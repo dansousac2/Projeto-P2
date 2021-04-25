@@ -2,6 +2,7 @@
 <CentralLivro>
   <livrosDisponiveis>
     <Livro>
+<<<<<<< HEAD
       <comentarios>COMENTÁRIOS
 leo:  livro muito bom</comentarios>
       <tipo>Literatura</tipo>
@@ -20,10 +21,34 @@ leo:  livro muito bom</comentarios>
       <id>1619353810305</id>
       <notaMedia>0</notaMedia>
       <visualizacoes>7</visualizacoes>
+=======
+      <comentarios>COMENTÁRIOS</comentarios>
+      <tipo>Literatura</tipo>
+      <genero>literatura brasileira</genero>
+      <titulo>coisas</titulo>
+      <idioma>casteliano</idioma>
+      <anoPublicacao>2020</anoPublicacao>
+      <editora>Ávida</editora>
+      <resumo>assuntos</resumo>
+      <interessados/>
+      <autores>Danilo</autores>
+      <numeroEdicao>0</numeroEdicao>
+      <quantidade>2</quantidade>
+      <id>1619357058977</id>
+      <notaMedia>10</notaMedia>
+      <notasAtribuidas>
+        <entry>
+          <string>dansousac2@gmail.com</string>
+          <int>10</int>
+        </entry>
+      </notasAtribuidas>
+      <visualizacoes>1</visualizacoes>
+>>>>>>> f8368f50500173b6f78cf1f975efb22f9c81e581
     </Livro>
   </livrosDisponiveis>
   <usuariosCadastrados>
     <Usuario>
+<<<<<<< HEAD
       <nome>leonardo</nome>
       <email>leonardo.lucena@academico.ifp.edu.br</email>
       <senha>12345</senha>
@@ -52,6 +77,29 @@ leo:  livro muito bom</comentarios>
           <quantidade>0</quantidade>
           <id>1619353810305</id>
           <notaMedia>0</notaMedia>
+=======
+      <nome>danilo</nome>
+      <email>dansousac2@gmail.com</email>
+      <senha>123123</senha>
+      <ehLivreiro>false</ehLivreiro>
+      <colecaoDeLivros>
+        <Livro>
+          <comentarios>COMENTÁRIOS</comentarios>
+          <tipo>Literatura</tipo>
+          <genero>literatura brasileira</genero>
+          <titulo>coisas</titulo>
+          <idioma>casteliano</idioma>
+          <anoPublicacao>2020</anoPublicacao>
+          <editora>Ávida</editora>
+          <resumo>assuntos</resumo>
+          <interessados/>
+          <autores>Danilo</autores>
+          <numeroEdicao>0</numeroEdicao>
+          <quantidade>2</quantidade>
+          <id>1619357058977</id>
+          <notaMedia>0</notaMedia>
+          <notasAtribuidas/>
+>>>>>>> f8368f50500173b6f78cf1f975efb22f9c81e581
           <visualizacoes>1</visualizacoes>
         </Livro>
       </colecaoDeLivros>

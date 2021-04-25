@@ -46,40 +46,45 @@ public class MenuOpcoes {
 				int resp = JOptionPane.showConfirmDialog(null, "Um arquivos PDF será gerado para " + precionado
 						+ "\n. Prosseguir? ", "Relatório", JOptionPane.YES_NO_OPTION);
 				
+				GeradorDeRelatorios geradorRelatorio = new GeradorDeRelatorios();
+				
 				switch(precionado) {
 				
 				case "Gerar Relatório: interessados":
 					
-					ArrayList<Livro> maisSolicitados = central.getLivrosDisponiveis();
-					
-					Collections.sort(maisSolicitados, new ComparadorLivros() {
-						public int compare(Livro o1, Livro o2) {
-							
-							if(o1.getInteressados().size() < o2.getInteressados().size()) {
-								return 1;
+					if(resp == JOptionPane.YES_OPTION) {
+						
+						ArrayList<Livro> maisSolicitados = central.getLivrosDisponiveis();
+						
+						Collections.sort(maisSolicitados, new ComparadorLivros() {
+							public int compare(Livro o1, Livro o2) {
+								
+								if(o1.getInteressados().size() < o2.getInteressados().size()) {
+									return 1;
+								}
+								else if(o1.getInteressados().size() > o2.getInteressados().size()) {
+									return -1;
+								}
+								else {
+									return 0;
+								}
 							}
-							else if(o1.getInteressados().size() > o2.getInteressados().size()) {
-								return -1;
-							}
-							else {
-								return 0;
-							}
+						});
+						
+						if(maisSolicitados.size() > 10) {
+							maisSolicitados.remove(maisSolicitados.size() -1);
 						}
-					});
-					
-					if(maisSolicitados.size() > 10) {
-						maisSolicitados.remove(maisSolicitados.size() -1);
+						 
+						geradorRelatorio.relatorioRequisitados(maisSolicitados);
+						
+						break;
 					}
-					
-					GeradorDeRelatorios.relatorioRequisitados(maisSolicitados);
-					
-					break;
 					
 				case "Gerar Relatório: lista de livros":
 					
 					if(resp == JOptionPane.YES_OPTION) {
 						
-						GeradorDeRelatorios.relatorioVisualizacoes(central.getLivrosDisponiveis());
+						geradorRelatorio.relatorioVisualizacoes(central.getLivrosDisponiveis());
 					}	
 				}
 				
