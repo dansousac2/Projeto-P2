@@ -58,7 +58,7 @@ public class Utilidade {
 			}
 			
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Ainda não há livros cadastrados em sua coleção.", "Coleção", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Possíveis atributos foram atualizados. Delete a persistência!", "Coleção", JOptionPane.WARNING_MESSAGE);
 		}
 		return new ArrayList<Livro>(); // !!!
 	}

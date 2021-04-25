@@ -27,7 +27,7 @@ public class BotaoHomePage extends JButton{
 			
 			if(usuario.isEhLivreiro()) {
 				
-				new ListarLivrosLivreiro();
+				new ListarLivrosLivreiro(usuario);
 			}
 			else {
 				new ListarLivrosUsuario(usuario);
