@@ -51,33 +51,57 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 			try {
 				PersistenciaLivros persistencia = new PersistenciaLivros();
 				CentralLivro dados = persistencia.recuperarCentral("Dados_Livraria.xml");
-				for(int i = 0;i<dados.getLivrosDisponiveis().size();i++) {
-					if(dados.getLivrosDisponiveis().get(i).getId() == livroDetalhado.getId()) {
-						livroDetalhado.getInteressados().add(usuarioLocal.getEmail());
-						dados.getLivrosDisponiveis().remove(i);
-						dados.getLivrosDisponiveis().add(livroDetalhado);
-						JOptionPane.showMessageDialog(null, "Você será notificado assim que haver estoque!");
+				Boolean existe = false;
+				for(int n = 0;n<livroDetalhado.getInteressados().size();n++) {
+					if(usuarioLocal.getEmail().equals(livroDetalhado.getInteressados().get(n))) {
+						existe = true;
 						break;
 					}
 				}
-				persistencia.salvarCentral(dados, "Dados_Livraria.xml");
+				if(existe == true) {
+					JOptionPane.showMessageDialog(null, "Você já foi adicionado a lista de interessados!");
+				}
+				else {
+					for(int i = 0;i<dados.getLivrosDisponiveis().size();i++) {
+						if(dados.getLivrosDisponiveis().get(i).getId() == livroDetalhado.getId()) {
+							livroDetalhado.getInteressados().add(usuarioLocal.getEmail());
+							dados.getLivrosDisponiveis().remove(i);
+							dados.getLivrosDisponiveis().add(livroDetalhado);
+							JOptionPane.showMessageDialog(null, "Você será notificado assim que haver estoque deste livro!");
+							break;
+						}
+					}
+				}
+			persistencia.salvarCentral(dados, "Dados_Livraria.xml");
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
 		}
 	}
 	public class OuvinteBotaoAddColeçao implements ActionListener{
-		public OuvinteBotaoAddColeçao() {
-		}
 		public void actionPerformed(ActionEvent e) {
 			try {
 				PersistenciaLivros persistencia = new PersistenciaLivros();
 				CentralLivro dados = persistencia.recuperarCentral("Dados_Livraria.xml");
-				for(int i = 0; i<dados.getUsuariosCadastrados().size();i++) {
-					if(dados.getUsuariosCadastrados().get(i).getEmail().equals(usuarioLocal.getEmail())) {
-						dados.getUsuariosCadastrados().get(i).getColecaoDeLivros().add(livroDetalhado);
-						JOptionPane.showMessageDialog(null, "O livro foi adicionado a sua coleção!");
+				Boolean existe = null;
+				for(int n = 0;n<usuarioLocal.getColecaoDeLivros().size();n++) {
+					if(usuarioLocal.getColecaoDeLivros().get(n).getId() == livroDetalhado.getId()) {
+						existe = true;
 						break;
+					}
+				}
+				if(existe == true) {
+					JOptionPane.showMessageDialog(null, "Você já possue este livro em sua coleção!");
+				}
+				else {
+					for(int i = 0;i<dados.getUsuariosCadastrados().size();i++) {
+						if(dados.getUsuariosCadastrados().get(i).getEmail().equals(usuarioLocal.getEmail())) {
+							usuarioLocal.getColecaoDeLivros().add(livroDetalhado);
+							dados.getUsuariosCadastrados().remove(i);
+							dados.getUsuariosCadastrados().add(usuarioLocal);
+							JOptionPane.showMessageDialog(null, "O livro foi adicionado a sua coleção!");
+							break;
+						}
 					}
 				}
 				persistencia.salvarCentral(dados, "Dados_Livraria.xml");

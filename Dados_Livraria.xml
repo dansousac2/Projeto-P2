@@ -2,122 +2,59 @@
 <CentralLivro>
   <livrosDisponiveis>
     <Livro>
-<<<<<<< HEAD
       <comentarios>COMENTÁRIOS
-leonardo:  wkentklsgs
-leonardo:  lwnjflsdkgns
-leonardo:  lkdnflksdgnslg
-leonardo:  sdnlskdghlsg
-leonardo:  wetwt
-leonardo:  wtwetwet
-leonardo:  wetwetwet
-maria:  slkdngslkdng
-maria:  sdkgsl~kgsklg
-maria:  lsdnlskgnslkdgnsl
-maria:  slkdgskldgslkg
-maria:  skdngslkgnslkgnlgn</comentarios>
-      <tipo>Periódico</tipo>
-      <genero>revista de notícias</genero>
-      <titulo>wetwetwrtwrt</titulo>
-      <idioma>sdsdgsdgs</idioma>
-      <anoPublicacao>2012</anoPublicacao>
-      <editora>sdgsdgsdg</editora>
-      <resumo>ssdgsdgsdg</resumo>
-      <interessados/>
-      <mesLancamento>12</mesLancamento>
-      <numeroEdicao>235</numeroEdicao>
-      <quantidade>23</quantidade>
-      <id>1619309927498</id>
-      <notaMedia>0</notaMedia>
-      <visualizacoes>3</visualizacoes>
-    </Livro>
-    <Livro>
-      <comentarios>COMENTÁRIOS
-maria:  esse livro é uma P@#$%
-</comentarios>
+leo:  livro muito bom</comentarios>
       <tipo>Literatura</tipo>
-      <genero>infanto juvenil</genero>
-      <titulo>wetwetwet</titulo>
-      <idioma>wetwet</idioma>
-      <anoPublicacao>2019</anoPublicacao>
-      <editora>wetwetwet</editora>
-      <resumo>jensljnfsjdf</resumo>
+      <genero>literatura estrangeira</genero>
+      <titulo>O Judeus</titulo>
+      <idioma>Arabe</idioma>
+      <anoPublicacao>2015</anoPublicacao>
+      <editora>Al sababb</editora>
+      <resumo>livro que fala sobre a trajetória da cultura judaica</resumo>
       <interessados>
-        <string>maria</string>
-        <string>maria</string>
+        <string>leonardofreitas.l94@hotmail.com</string>
       </interessados>
-      <autores>1212413r</autores>
+      <autores>mohammed Malli</autores>
       <numeroEdicao>0</numeroEdicao>
       <quantidade>0</quantidade>
-      <id>1619314453856</id>
+      <id>1619353810305</id>
       <notaMedia>0</notaMedia>
       <visualizacoes>7</visualizacoes>
     </Livro>
   </livrosDisponiveis>
   <usuariosCadastrados>
     <Usuario>
-      <nome>leo</nome>
-      <email>leo</email>
+      <nome>leonardo</nome>
+      <email>leonardo.lucena@academico.ifp.edu.br</email>
       <senha>12345</senha>
       <ehLivreiro>true</ehLivreiro>
       <colecaoDeLivros/>
     </Usuario>
     <Usuario>
-      <nome>leonardo</nome>
-      <email>leonardo</email>
-      <senha>12345</senha>
-      <ehLivreiro>false</ehLivreiro>
-      <colecaoDeLivros/>
-    </Usuario>
-    <Usuario>
-      <nome>maria</nome>
-      <email>maria</email>
+      <nome>leo</nome>
+      <email>leonardofreitas.l94@hotmail.com</email>
       <senha>12345</senha>
       <ehLivreiro>false</ehLivreiro>
       <colecaoDeLivros>
         <Livro>
           <comentarios>COMENTÁRIOS
-maria:  esse livro é uma P@#$%
-maria:  lksfngdklfg</comentarios>
+leo:  livro muito bom</comentarios>
           <tipo>Literatura</tipo>
-          <genero>infanto juvenil</genero>
-          <titulo>wetwetwet</titulo>
-          <idioma>wetwet</idioma>
-          <anoPublicacao>2019</anoPublicacao>
-          <editora>wetwetwet</editora>
-          <resumo>jensljnfsjdf</resumo>
-          <interessados>
-            <string>maria</string>
-            <string>maria</string>
-          </interessados>
-          <autores>1212413r</autores>
+          <genero>literatura estrangeira</genero>
+          <titulo>O Judeus</titulo>
+          <idioma>Arabe</idioma>
+          <anoPublicacao>2015</anoPublicacao>
+          <editora>Al sababb</editora>
+          <resumo>livro que fala sobre a trajetória da cultura judaica</resumo>
+          <interessados/>
+          <autores>mohammed Malli</autores>
           <numeroEdicao>0</numeroEdicao>
           <quantidade>0</quantidade>
-          <id>1619314453856</id>
+          <id>1619353810305</id>
           <notaMedia>0</notaMedia>
-          <visualizacoes>3</visualizacoes>
+          <visualizacoes>1</visualizacoes>
         </Livro>
       </colecaoDeLivros>
     </Usuario>
   </usuariosCadastrados>
-=======
-      <comentarios>COMENTÁRIOS</comentarios>
-      <tipo>Técnico</tipo>
-      <genero>paradidático </genero>
-      <titulo>Verdade</titulo>
-      <idioma>português</idioma>
-      <anoPublicacao>2021</anoPublicacao>
-      <editora>Ávida</editora>
-      <resumo>Eu mesmo criei</resumo>
-      <interessados/>
-      <numeroEdicao>0</numeroEdicao>
-      <assunto>discussão filosófica</assunto>
-      <quantidade>2</quantidade>
-      <id>1619320532116</id>
-      <notaMedia>0</notaMedia>
-      <visualizacoes>1</visualizacoes>
-    </Livro>
-  </livrosDisponiveis>
-  <usuariosCadastrados/>
->>>>>>> eb56557a3c3f07abe107a9fdac2ae5844079ca0c
 </CentralLivro>
