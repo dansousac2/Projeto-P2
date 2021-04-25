@@ -29,7 +29,7 @@ public class JanelaLoguin extends JanelaPadraoLivreiroUsuario{
 							&& BancoDeDados.getUsuariosCadastrados().get(i).isEhLivreiro()==true) {
 						cont++;
 						dispose();
-						new ListarLivrosLivreiro();
+						new ListarLivrosLivreiro(BancoDeDados.getUsuariosCadastrados().get(i));
 						break;
 						
 					}

@@ -41,7 +41,7 @@ public class JanelaCadastrarLivreiro extends JanelaPadraoLivreiroUsuario{
 					Persistencia.salvarCentral(BancoDeDados, "Dados_Livraria.xml");
 					JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!", "Seja bem vindo!", JOptionPane.INFORMATION_MESSAGE);
 					dispose();
-					new ListarLivrosLivreiro();
+					new ListarLivrosLivreiro(usuario);
 				}catch (Exception e1) {
 					e1.printStackTrace();
 				}

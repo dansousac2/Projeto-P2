@@ -17,49 +17,23 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 	Livro livroDetalhado;
 	JTextArea comentarios;
 	String C;
-	public class OuvinteBotaoSalvar implements ActionListener{
-		String[] atributos;
-		public OuvinteBotaoSalvar(String[] S) {
-			atributos = S;
-		}
-		public void actionPerformed(ActionEvent e) {
-			livroDetalhado.setTitulo(atributos[0]);
-			livroDetalhado.setGenero(atributos[1]);
-			livroDetalhado.setIdioma(atributos[2]);
-			livroDetalhado.setAnoPublicacao(Integer.parseInt(atributos[3]));
-			livroDetalhado.setEditora(atributos[4]);
-			livroDetalhado.setAutores(atributos[5]);
-			livroDetalhado.setMesLancamento(atributos[6]);
-			livroDetalhado.setNumeroEdicao(Integer.parseInt(atributos[7]));
-			livroDetalhado.setAssunto(atributos[8]);
-			livroDetalhado.setQuantidade(Integer.parseInt(atributos[9]));
-			livroDetalhado.setNotaMedia(Integer.parseInt(atributos[10]));
-			livroDetalhado.setResumo(atributos[11]);
-			livroDetalhado.setComentarios(comentarios.getText());
-			repaint();
-			JOptionPane.showMessageDialog(null, "As alterações foram salvas");
-		}
-		
-	}
 	public class OuvinteBotaoAdicionarComentario implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			String T = JOptionPane.showInputDialog("Adicione um Comentário");
 			if(!T.isBlank()) {
-				
 				try {
 					PersistenciaLivros persistencia = new PersistenciaLivros();
 					CentralLivro dados = persistencia.recuperarCentral("Dados_Livraria.xml");
-					for(int i = 0; i<dados.getLivrosDisponiveis().size();i++) {
-						if(dados.getLivrosDisponiveis().get(i) == livroDetalhado) {
-							
-							C += "\n  "+usuarioLocal.getNome()+":  "+T;
-							dados.getLivrosDisponiveis().get(i).setComentarios(C);
+					for(int i = 0;i<dados.getLivrosDisponiveis().size();i++) {
+						if(dados.getLivrosDisponiveis().get(i).getId() == livroDetalhado.getId()) {
+							C += "\n"+usuarioLocal.getNome()+":  "+T;
+							livroDetalhado.setComentarios(C);
+							dados.getLivrosDisponiveis().remove(i);
+							dados.getLivrosDisponiveis().add(livroDetalhado);
 							break;
 						}
 					}
 					persistencia.salvarCentral(dados, "Dados_Livraria.xml");
-					
-				
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -74,8 +48,22 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 		public OuvinteBotaoNotificar() {
 		}
 		public void actionPerformed(ActionEvent e) {
-			livroDetalhado.getInteressados().add(usuarioLocal.getNome());
-			JOptionPane.showMessageDialog(null, "Você será notificado assim que haver estoque!");
+			try {
+				PersistenciaLivros persistencia = new PersistenciaLivros();
+				CentralLivro dados = persistencia.recuperarCentral("Dados_Livraria.xml");
+				for(int i = 0;i<dados.getLivrosDisponiveis().size();i++) {
+					if(dados.getLivrosDisponiveis().get(i).getId() == livroDetalhado.getId()) {
+						livroDetalhado.getInteressados().add(usuarioLocal.getEmail());
+						dados.getLivrosDisponiveis().remove(i);
+						dados.getLivrosDisponiveis().add(livroDetalhado);
+						JOptionPane.showMessageDialog(null, "Você será notificado assim que haver estoque!");
+						break;
+					}
+				}
+				persistencia.salvarCentral(dados, "Dados_Livraria.xml");
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
 		}
 	}
 	public class OuvinteBotaoAddColeçao implements ActionListener{
@@ -86,13 +74,13 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 				PersistenciaLivros persistencia = new PersistenciaLivros();
 				CentralLivro dados = persistencia.recuperarCentral("Dados_Livraria.xml");
 				for(int i = 0; i<dados.getUsuariosCadastrados().size();i++) {
-					if(dados.getUsuariosCadastrados().get(i) == usuarioLocal) {
+					if(dados.getUsuariosCadastrados().get(i).getEmail().equals(usuarioLocal.getEmail())) {
 						dados.getUsuariosCadastrados().get(i).getColecaoDeLivros().add(livroDetalhado);
+						JOptionPane.showMessageDialog(null, "O livro foi adicionado a sua coleção!");
 						break;
 					}
 				}
 				persistencia.salvarCentral(dados, "Dados_Livraria.xml");
-				JOptionPane.showMessageDialog(null, "O livro foi adicionado a sua coleção");
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
@@ -102,6 +90,7 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 		super();
 		usuarioLocal = U;
 		livroDetalhado = L;
+		C = livroDetalhado.getComentarios();
 		DetalhesDoLivro();
 		Barra();
 		Titulo();
@@ -145,8 +134,7 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 		rolo = new JScrollPane(resumo);
 		rolo.setBounds(450, 130, 200, 200);
 		add(rolo);
-		System.out.print(livroDetalhado.getComentarios());
-		comentarios = new JTextArea(livroDetalhado.getComentarios());
+		comentarios = new JTextArea(C);
 		comentarios.setLineWrap(true);
 		comentarios.setWrapStyleWord(true);
 		comentarios.setEditable(false);

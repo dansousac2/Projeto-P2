@@ -2,73 +2,101 @@
 <CentralLivro>
   <livrosDisponiveis>
     <Livro>
-<<<<<<< HEAD
-      <tipo>Literatura</tipo>
-      <genero>literatura estrangeira</genero>
-      <titulo>A odisseia</titulo>
-      <idioma>Grego</idioma>
-      <anoPublicacao>1980</anoPublicacao>
-      <editora>Grecia antiga</editora>
-      <resumo>A odisseia é livro da mitologia grega que conta a historias dos monstros</resumo>
-      <interessados/>
-      <autores>Black Strets Boys</autores>
-      <numeroEdicao>0</numeroEdicao>
-      <quantidade>0</quantidade>
-      <id>1619298009153</id>
-      <notaMedia>0</notaMedia>
-    </Livro>
-    <Livro>
-      <comentarios>COMENTÁRIOS</comentarios>
-      <tipo>Literatura</tipo>
-      <genero>literatura brasileira</genero>
-      <titulo>wdgsdg</titulo>
-      <idioma>dfhdfhd</idioma>
-      <anoPublicacao>2019</anoPublicacao>
-      <editora>rsfhdfhd</editora>
-      <resumo>sdgsdgsdgsgsdgsdg</resumo>
-      <interessados/>
-      <autores>sdgsdgsgdsg</autores>
-      <numeroEdicao>0</numeroEdicao>
-      <quantidade>0</quantidade>
-      <id>1619306025006</id>
-=======
       <comentarios>COMENTÁRIOS
-</comentarios>
+leonardo:  wkentklsgs
+leonardo:  lwnjflsdkgns
+leonardo:  lkdnflksdgnslg
+leonardo:  sdnlskdghlsg
+leonardo:  wetwt
+leonardo:  wtwetwet
+leonardo:  wetwetwet
+maria:  slkdngslkdng
+maria:  sdkgsl~kgsklg
+maria:  lsdnlskgnslkdgnsl
+maria:  slkdgskldgslkg
+maria:  skdngslkgnslkgnlgn</comentarios>
       <tipo>Periódico</tipo>
       <genero>revista de notícias</genero>
-      <titulo>Alvorada Voraz</titulo>
-      <idioma>português</idioma>
-      <anoPublicacao>1234</anoPublicacao>
-      <editora>Ávida</editora>
-      <resumo>Uma vez mais tentando acertar</resumo>
+      <titulo>wetwetwrtwrt</titulo>
+      <idioma>sdsdgsdgs</idioma>
+      <anoPublicacao>2012</anoPublicacao>
+      <editora>sdgsdgsdg</editora>
+      <resumo>ssdgsdgsdg</resumo>
       <interessados/>
-      <mesLancamento>03</mesLancamento>
-      <numeroEdicao>1</numeroEdicao>
-      <quantidade>2</quantidade>
-      <id>1619305812381</id>
->>>>>>> 24ff9659cc2c0ec853268b87c36ed4bc47bba9ae
+      <mesLancamento>12</mesLancamento>
+      <numeroEdicao>235</numeroEdicao>
+      <quantidade>23</quantidade>
+      <id>1619309927498</id>
       <notaMedia>0</notaMedia>
-      <visualizacoes>0</visualizacoes>
+      <visualizacoes>3</visualizacoes>
+    </Livro>
+    <Livro>
+      <comentarios>COMENTÁRIOS
+maria:  esse livro é uma P@#$%
+</comentarios>
+      <tipo>Literatura</tipo>
+      <genero>infanto juvenil</genero>
+      <titulo>wetwetwet</titulo>
+      <idioma>wetwet</idioma>
+      <anoPublicacao>2019</anoPublicacao>
+      <editora>wetwetwet</editora>
+      <resumo>jensljnfsjdf</resumo>
+      <interessados>
+        <string>maria</string>
+        <string>maria</string>
+      </interessados>
+      <autores>1212413r</autores>
+      <numeroEdicao>0</numeroEdicao>
+      <quantidade>0</quantidade>
+      <id>1619314453856</id>
+      <notaMedia>0</notaMedia>
+      <visualizacoes>7</visualizacoes>
     </Livro>
   </livrosDisponiveis>
-<<<<<<< HEAD
   <usuariosCadastrados>
     <Usuario>
-      <nome>Leonardo Freitas</nome>
-      <email>leonardo.lucena@academico.ifpb.edu.br</email>
+      <nome>leo</nome>
+      <email>leo</email>
       <senha>12345</senha>
       <ehLivreiro>true</ehLivreiro>
       <colecaoDeLivros/>
     </Usuario>
     <Usuario>
-      <nome>Freitas Leonardo</nome>
-      <email>leonardofreitas.l94@hotmail.com</email>
+      <nome>leonardo</nome>
+      <email>leonardo</email>
       <senha>12345</senha>
       <ehLivreiro>false</ehLivreiro>
       <colecaoDeLivros/>
     </Usuario>
+    <Usuario>
+      <nome>maria</nome>
+      <email>maria</email>
+      <senha>12345</senha>
+      <ehLivreiro>false</ehLivreiro>
+      <colecaoDeLivros>
+        <Livro>
+          <comentarios>COMENTÁRIOS
+maria:  esse livro é uma P@#$%
+maria:  lksfngdklfg</comentarios>
+          <tipo>Literatura</tipo>
+          <genero>infanto juvenil</genero>
+          <titulo>wetwetwet</titulo>
+          <idioma>wetwet</idioma>
+          <anoPublicacao>2019</anoPublicacao>
+          <editora>wetwetwet</editora>
+          <resumo>jensljnfsjdf</resumo>
+          <interessados>
+            <string>maria</string>
+            <string>maria</string>
+          </interessados>
+          <autores>1212413r</autores>
+          <numeroEdicao>0</numeroEdicao>
+          <quantidade>0</quantidade>
+          <id>1619314453856</id>
+          <notaMedia>0</notaMedia>
+          <visualizacoes>3</visualizacoes>
+        </Livro>
+      </colecaoDeLivros>
+    </Usuario>
   </usuariosCadastrados>
-=======
-  <usuariosCadastrados/>
->>>>>>> 24ff9659cc2c0ec853268b87c36ed4bc47bba9ae
 </CentralLivro>
