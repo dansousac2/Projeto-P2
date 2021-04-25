@@ -68,7 +68,86 @@
       <id>1619365277475</id>
       <notaMedia>0</notaMedia>
       <notasAtribuidas/>
-      <visualizacoes>15</visualizacoes>
+      <visualizacoes>18</visualizacoes>
+    </Livro>
+    <Livro>
+      <todosOsComentarios/>
+      <tipo>Literatura</tipo>
+      <genero>literatura brasileira</genero>
+      <titulo>lsjdhflskdhfkl</titulo>
+      <idioma>ljh.kjglkgkg</idioma>
+      <anoPublicacao>2020</anoPublicacao>
+      <editora>dfgdfhdfh</editora>
+      <resumo>fgsjdghskjghkjsg</resumo>
+      <interessados>
+        <string>maria</string>
+      </interessados>
+      <autores>sdfsdfsdfsdf</autores>
+      <numeroEdicao>0</numeroEdicao>
+      <quantidade>0</quantidade>
+      <id>1619372976417</id>
+      <notaMedia>0</notaMedia>
+      <notasAtribuidas/>
+      <visualizacoes>6</visualizacoes>
+    </Livro>
+    <Livro>
+      <todosOsComentarios>
+        <string-array>
+          <string>1</string>
+          <string>leo</string>
+          <string>leo</string>
+        </string-array>
+        <string-array>
+          <string>2</string>
+          <string>leo</string>
+          <string>leo</string>
+        </string-array>
+        <string-array>
+          <string>3</string>
+          <string>leo</string>
+          <string>leo</string>
+        </string-array>
+        <string-array>
+          <string>4</string>
+          <string>leo</string>
+          <string>leo</string>
+        </string-array>
+        <string-array>
+          <string>5</string>
+          <string>maria</string>
+          <string>leo</string>
+        </string-array>
+        <string-array>
+          <string>6</string>
+          <string>maria</string>
+          <string>leo</string>
+        </string-array>
+        <string-array>
+          <string>7</string>
+          <string>maria</string>
+          <string>maria</string>
+        </string-array>
+        <string-array>
+          <string>8</string>
+          <string>maria</string>
+          <string>maria</string>
+        </string-array>
+      </todosOsComentarios>
+      <tipo>Literatura</tipo>
+      <genero>literatura brasileira</genero>
+      <titulo>titulo</titulo>
+      <idioma>português</idioma>
+      <anoPublicacao>2020</anoPublicacao>
+      <editora>editora</editora>
+      <resumo>livro exemplo</resumo>
+      <interessados/>
+      <autores>desconhecido</autores>
+      <numeroEdicao>0</numeroEdicao>
+      <quantidade>1</quantidade>
+      <id>1619374909439</id>
+      <notaMedia>0</notaMedia>
+      <notasAtribuidas/>
+      <visualizacoes>51</visualizacoes>
     </Livro>
   </livrosDisponiveis>
   <usuariosCadastrados>
@@ -77,6 +156,13 @@
       <email>leo</email>
       <senha>12345</senha>
       <ehLivreiro>true</ehLivreiro>
+      <colecaoDeLivros/>
+    </Usuario>
+    <Usuario>
+      <nome>maria</nome>
+      <email>maria</email>
+      <senha>12345</senha>
+      <ehLivreiro>false</ehLivreiro>
       <colecaoDeLivros/>
     </Usuario>
   </usuariosCadastrados>
