@@ -13,10 +13,10 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDetalhes{
-	Usuario usuarioLocal;
-	Livro livroDetalhado;
-	JTextArea comentarios;
-	String C;
+	private Usuario usuarioLocal;
+	private Livro livroDetalhado;
+	private JTextArea comentarios;
+	private String concat;
 	public class OuvinteBotaoSalvar implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			livroDetalhado.setGenero(""+modelo.getValueAt(1, 1));
@@ -48,18 +48,23 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		}
 	}
 	public class OuvinteBotaoAdicionarComentario implements ActionListener{
+		JanelaVisualizarDetalhesLivreiro janela;
+		public OuvinteBotaoAdicionarComentario(JanelaVisualizarDetalhesLivreiro J) {
+			janela = J;
+		}
 		public void actionPerformed(ActionEvent e) {
 			String T = JOptionPane.showInputDialog("Adicione um Comentário");
 			if(!T.isBlank()) {
 				try {
+					int numero = livroDetalhado.getTodosOsComentarios().size()+1;
+					String[] prepararComentario = {""+numero,usuarioLocal.getEmail(),T};
 					PersistenciaLivros persistencia = new PersistenciaLivros();
 					CentralLivro dados = persistencia.recuperarCentral("Dados_Livraria.xml");
 					for(int i = 0;i<dados.getLivrosDisponiveis().size();i++) {
 						if(dados.getLivrosDisponiveis().get(i).getId() == livroDetalhado.getId()) {
-							C += "\n(ADM)"+usuarioLocal.getNome()+":  "+T;
-							livroDetalhado.setComentarios(C);
-							dados.getLivrosDisponiveis().remove(i);
-							dados.getLivrosDisponiveis().add(livroDetalhado);
+							livroDetalhado.getTodosOsComentarios().add(prepararComentario);
+							comentarios.setText(concat);
+							janela.repaint();
 							break;
 						}
 					}
@@ -67,7 +72,6 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
-			comentarios.setText(C);
 			}
 			else {
 				JOptionPane.showMessageDialog(null, "Nenhum comentário será adicionado", "Atenção", JOptionPane.INFORMATION_MESSAGE);
@@ -78,7 +82,6 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		super();
 		usuarioLocal = U;
 		livroDetalhado = L;
-		C = livroDetalhado.getComentarios();
 		Barra();
 		Titulo();
 		DetalhesDoLivro();
@@ -133,7 +136,13 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		rolo = new JScrollPane(resumo);
 		rolo.setBounds(450, 130, 200, 200);
 		add(rolo);
-		comentarios = new JTextArea(C);
+		String comentarioConcatenado = "COMENTÁRIOS: \n";
+		for(String[] coment: livroDetalhado.getTodosOsComentarios()) {
+			int n = 1;
+			comentarioConcatenado += "\ncoment "+coment[0]+" / "+coment[1]+"\n"+coment[2];
+		}
+		concat = comentarioConcatenado;
+		comentarios = new JTextArea(comentarioConcatenado);
 		comentarios.setLineWrap(true);
 		comentarios.setWrapStyleWord(true);
 		rolo = new JScrollPane(comentarios);
@@ -141,7 +150,7 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		add(rolo);
 		botao = new JButton("Adicionar comentário");
 		botao.setBounds(140, 515, 180, 25);
-		botao.addActionListener(new OuvinteBotaoAdicionarComentario());
+		botao.addActionListener(new OuvinteBotaoAdicionarComentario(this));
 		add(botao);
 		botao = new JButton("Home");
 		botao.setBounds(590, 20, 70, 70);
@@ -162,5 +171,23 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		barra.setBounds(0, 0, 700, 20);
 		barra.add(menu);
 		add(barra);
+	}
+	public Usuario getUsuarioLocal() {
+		return usuarioLocal;
+	}
+	public void setUsuarioLocal(Usuario usuarioLocal) {
+		this.usuarioLocal = usuarioLocal;
+	}
+	public Livro getLivroDetalhado() {
+		return livroDetalhado;
+	}
+	public void setLivroDetalhado(Livro livroDetalhado) {
+		this.livroDetalhado = livroDetalhado;
+	}
+	public JTextArea getComentarios() {
+		return comentarios;
+	}
+	public void setComentarios(JTextArea comentarios) {
+		this.comentarios = comentarios;
 	}
 }
