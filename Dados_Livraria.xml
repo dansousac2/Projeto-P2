@@ -2,6 +2,7 @@
 <CentralLivro>
   <livrosDisponiveis>
     <Livro>
+<<<<<<< HEAD
       <comentarios>COMENTÁRIOS
 leonardo:  wkentklsgs
 leonardo:  lwnjflsdkgns
@@ -99,4 +100,24 @@ maria:  lksfngdklfg</comentarios>
       </colecaoDeLivros>
     </Usuario>
   </usuariosCadastrados>
+=======
+      <comentarios>COMENTÁRIOS</comentarios>
+      <tipo>Técnico</tipo>
+      <genero>paradidático </genero>
+      <titulo>Verdade</titulo>
+      <idioma>português</idioma>
+      <anoPublicacao>2021</anoPublicacao>
+      <editora>Ávida</editora>
+      <resumo>Eu mesmo criei</resumo>
+      <interessados/>
+      <numeroEdicao>0</numeroEdicao>
+      <assunto>discussão filosófica</assunto>
+      <quantidade>2</quantidade>
+      <id>1619320532116</id>
+      <notaMedia>0</notaMedia>
+      <visualizacoes>1</visualizacoes>
+    </Livro>
+  </livrosDisponiveis>
+  <usuariosCadastrados/>
+>>>>>>> eb56557a3c3f07abe107a9fdac2ae5844079ca0c
 </CentralLivro>

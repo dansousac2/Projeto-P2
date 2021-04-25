@@ -88,27 +88,35 @@ public abstract class PadraoListarLivros extends JFrame {
 					
 					for(Livro elemento : listarLivros) {
 						if(elemento.getId() == idSelecionado) {
-							
-							for(Livro liv : listarLivros) {
-								if(idSelecionado == liv.getId()) {
+								
+								elemento.setVisualizacoes(elemento.getVisualizacoes() + 1);
+								
+								PersistenciaLivros persistencia = new PersistenciaLivros();
+								
+								try {
+									CentralLivro central = persistencia.recuperarCentral("Dados_Livraria.xml");
+									central.setLivrosDisponiveis(listarLivros);
 									
-									liv.setVisualizacoes(liv.getVisualizacoes() + 1);
+									persistencia.salvarCentral(central, "Dados_Livraria.xml");
 									
-									// PERSISTENCIA AQUI !!!!
-									
-									if(usuarioLogado.isEhLivreiro()) {
-										new JanelaVisualizarDetalhesLivreiro(usuarioLogado, liv);
-									} else {
-										new JanelaVisualizarDetalhesUsuario(usuarioLogado, liv);
-									}
+								} catch (Exception e1) {
+									JOptionPane.showMessageDialog(null, "Erro ao salvar número de visualiações do livro", "Visualizações", JOptionPane.ERROR_MESSAGE);
+									e1.printStackTrace();
 								}
-							}
-							
-							break;
+								
+								if(usuarioLogado.isEhLivreiro()) {
+									new JanelaVisualizarDetalhesLivreiro(usuarioLogado, elemento);
+								} else {
+									new JanelaVisualizarDetalhesUsuario(usuarioLogado, elemento);
+								}
+								
+								break;
 						}
+							
 					}
 				}
-				break;
+			
+
 			
 			case "comboTipo":
 				
