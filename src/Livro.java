@@ -20,7 +20,7 @@ public class Livro {
 	private long id;
 	
 	private int notaMedia;
-	private HashMap<String,Integer> notasAtribuidas;
+	private HashMap<String,Integer> notasAtribuidas = new HashMap<String,Integer>();
 	private int visualizacoes = 0;
 	
 	public Livro(String tipo,String genero,String titulo,String idioma,

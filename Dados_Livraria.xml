@@ -2,122 +2,55 @@
 <CentralLivro>
   <livrosDisponiveis>
     <Livro>
-<<<<<<< HEAD
-      <comentarios>COMENTÁRIOS
-leonardo:  wkentklsgs
-leonardo:  lwnjflsdkgns
-leonardo:  lkdnflksdgnslg
-leonardo:  sdnlskdghlsg
-leonardo:  wetwt
-leonardo:  wtwetwet
-leonardo:  wetwetwet
-maria:  slkdngslkdng
-maria:  sdkgsl~kgsklg
-maria:  lsdnlskgnslkdgnsl
-maria:  slkdgskldgslkg
-maria:  skdngslkgnslkgnlgn</comentarios>
-      <tipo>Periódico</tipo>
-      <genero>revista de notícias</genero>
-      <titulo>wetwetwrtwrt</titulo>
-      <idioma>sdsdgsdgs</idioma>
-      <anoPublicacao>2012</anoPublicacao>
-      <editora>sdgsdgsdg</editora>
-      <resumo>ssdgsdgsdg</resumo>
-      <interessados/>
-      <mesLancamento>12</mesLancamento>
-      <numeroEdicao>235</numeroEdicao>
-      <quantidade>23</quantidade>
-      <id>1619309927498</id>
-      <notaMedia>0</notaMedia>
-      <visualizacoes>3</visualizacoes>
-    </Livro>
-    <Livro>
-      <comentarios>COMENTÁRIOS
-maria:  esse livro é uma P@#$%
-</comentarios>
+      <comentarios>COMENTÁRIOS</comentarios>
       <tipo>Literatura</tipo>
-      <genero>infanto juvenil</genero>
-      <titulo>wetwetwet</titulo>
-      <idioma>wetwet</idioma>
-      <anoPublicacao>2019</anoPublicacao>
-      <editora>wetwetwet</editora>
-      <resumo>jensljnfsjdf</resumo>
-      <interessados>
-        <string>maria</string>
-        <string>maria</string>
-      </interessados>
-      <autores>1212413r</autores>
+      <genero>literatura brasileira</genero>
+      <titulo>coisas</titulo>
+      <idioma>casteliano</idioma>
+      <anoPublicacao>2020</anoPublicacao>
+      <editora>Ávida</editora>
+      <resumo>assuntos</resumo>
+      <interessados/>
+      <autores>Danilo</autores>
       <numeroEdicao>0</numeroEdicao>
-      <quantidade>0</quantidade>
-      <id>1619314453856</id>
-      <notaMedia>0</notaMedia>
-      <visualizacoes>7</visualizacoes>
+      <quantidade>2</quantidade>
+      <id>1619357058977</id>
+      <notaMedia>10</notaMedia>
+      <notasAtribuidas>
+        <entry>
+          <string>dansousac2@gmail.com</string>
+          <int>10</int>
+        </entry>
+      </notasAtribuidas>
+      <visualizacoes>1</visualizacoes>
     </Livro>
   </livrosDisponiveis>
   <usuariosCadastrados>
     <Usuario>
-      <nome>leo</nome>
-      <email>leo</email>
-      <senha>12345</senha>
-      <ehLivreiro>true</ehLivreiro>
-      <colecaoDeLivros/>
-    </Usuario>
-    <Usuario>
-      <nome>leonardo</nome>
-      <email>leonardo</email>
-      <senha>12345</senha>
-      <ehLivreiro>false</ehLivreiro>
-      <colecaoDeLivros/>
-    </Usuario>
-    <Usuario>
-      <nome>maria</nome>
-      <email>maria</email>
-      <senha>12345</senha>
+      <nome>danilo</nome>
+      <email>dansousac2@gmail.com</email>
+      <senha>123123</senha>
       <ehLivreiro>false</ehLivreiro>
       <colecaoDeLivros>
         <Livro>
-          <comentarios>COMENTÁRIOS
-maria:  esse livro é uma P@#$%
-maria:  lksfngdklfg</comentarios>
+          <comentarios>COMENTÁRIOS</comentarios>
           <tipo>Literatura</tipo>
-          <genero>infanto juvenil</genero>
-          <titulo>wetwetwet</titulo>
-          <idioma>wetwet</idioma>
-          <anoPublicacao>2019</anoPublicacao>
-          <editora>wetwetwet</editora>
-          <resumo>jensljnfsjdf</resumo>
-          <interessados>
-            <string>maria</string>
-            <string>maria</string>
-          </interessados>
-          <autores>1212413r</autores>
+          <genero>literatura brasileira</genero>
+          <titulo>coisas</titulo>
+          <idioma>casteliano</idioma>
+          <anoPublicacao>2020</anoPublicacao>
+          <editora>Ávida</editora>
+          <resumo>assuntos</resumo>
+          <interessados/>
+          <autores>Danilo</autores>
           <numeroEdicao>0</numeroEdicao>
-          <quantidade>0</quantidade>
-          <id>1619314453856</id>
+          <quantidade>2</quantidade>
+          <id>1619357058977</id>
           <notaMedia>0</notaMedia>
-          <visualizacoes>3</visualizacoes>
+          <notasAtribuidas/>
+          <visualizacoes>1</visualizacoes>
         </Livro>
       </colecaoDeLivros>
     </Usuario>
   </usuariosCadastrados>
-=======
-      <comentarios>COMENTÁRIOS</comentarios>
-      <tipo>Técnico</tipo>
-      <genero>paradidático </genero>
-      <titulo>Verdade</titulo>
-      <idioma>português</idioma>
-      <anoPublicacao>2021</anoPublicacao>
-      <editora>Ávida</editora>
-      <resumo>Eu mesmo criei</resumo>
-      <interessados/>
-      <numeroEdicao>0</numeroEdicao>
-      <assunto>discussão filosófica</assunto>
-      <quantidade>2</quantidade>
-      <id>1619320532116</id>
-      <notaMedia>0</notaMedia>
-      <visualizacoes>1</visualizacoes>
-    </Livro>
-  </livrosDisponiveis>
-  <usuariosCadastrados/>
->>>>>>> eb56557a3c3f07abe107a9fdac2ae5844079ca0c
 </CentralLivro>

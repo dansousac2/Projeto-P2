@@ -40,13 +40,12 @@ public class Utilidade {
 		
 		try {
 			
-			CentralLivro centralInformacoes = perLivros.recuperarCentral("Dados_Livraria.xml");
+			CentralLivro central = perLivros.recuperarCentral("Dados_Livraria.xml");
 
 			if(janela.getClass().getSimpleName().equals("ColecaoUsuario")) {
 				
-				ArrayList<Usuario> buscarUsuario = centralInformacoes.getUsuariosCadastrados();
-				for(Usuario user : buscarUsuario) {
-					if(user == logado) {
+				for(Usuario user : central.getUsuariosCadastrados()) {
+					if(user.getEmail().equals(logado.getEmail()) ) {
 						return user.getColecaoDeLivros();
 					}
 				}
@@ -54,7 +53,7 @@ public class Utilidade {
 			
 			else {
 				
-				return centralInformacoes.getLivrosDisponiveis();
+				return central.getLivrosDisponiveis();
 			}
 			
 		} catch (Exception e) {

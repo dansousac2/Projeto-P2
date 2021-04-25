@@ -18,18 +18,18 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 public class GeradorDeRelatorios {
 	
-	public static void relatorioVisualizacoes(ArrayList<Livro> lista) {
-		
-		Document doc = new Document(PageSize.A4,72,72,72,72);
-		
+	private Document doc = new Document(PageSize.A4,72,72,72,72);
+	
+	private Font f1 = new Font(FontFamily.COURIER, 14, Font.BOLD);
+	private Font f2 = new Font(FontFamily.COURIER, 12, Font.NORMAL);
+	
+	public void relatorioVisualizacoes(ArrayList<Livro> lista) {
+	
 		try {
 			
 			PdfWriter.getInstance(doc, new FileOutputStream("Livros-Visualizacoes.pdf"));
 			
 			doc.open();
-			
-			Font f1 = new Font(FontFamily.COURIER, 14, Font.BOLD);
-			Font f2 = new Font(FontFamily.COURIER, 12, Font.NORMAL);
 			
 			doc.add(new Paragraph("Livraria Stile / " + LocalDate.now() + "\n\n",f1));
 			doc.add(new Paragraph("Visualizações de Livros\n\n",f2));
@@ -49,18 +49,12 @@ public class GeradorDeRelatorios {
 		
 	}
 	
-	public static void relatorioRequisitados(ArrayList<Livro> lista) {
+	public void relatorioRequisitados(ArrayList<Livro> lista) {
 		
-		Document doc = new Document(PageSize.A4,72,72,72,72);
 		
 		try {
 			
 			PdfWriter.getInstance(doc, new FileOutputStream("Livros-Requisitados.pdf"));
-			
-			doc.open();
-			
-			Font f1 = new Font(FontFamily.COURIER, 14, Font.BOLD);
-			Font f2 = new Font(FontFamily.COURIER, 12, Font.NORMAL);
 			
 			doc.add(new Paragraph("Livraria Stile / " + LocalDate.now() + "\n\n",f1));
 			doc.add(new Paragraph("10 Livros mais Requisitados: \n\n"));
