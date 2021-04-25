@@ -64,6 +64,7 @@
       <interessados/>
       <autores>manoteu</autores>
       <numeroEdicao>0</numeroEdicao>
+<<<<<<< HEAD
       <quantidade>1</quantidade>
       <id>1619365277475</id>
       <notaMedia>0</notaMedia>
@@ -148,6 +149,8 @@
       <notaMedia>0</notaMedia>
       <notasAtribuidas/>
       <visualizacoes>51</visualizacoes>
+=======
+>>>>>>> 7f25259036072af3c65de76e93b56b0dab0eaf1b
     </Livro>
   </livrosDisponiveis>
   <usuariosCadastrados>
