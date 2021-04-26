@@ -6,7 +6,7 @@ import javax.swing.JButton;
 public class ListarLivrosUsuario extends PadraoListarLivros{
 	
 	public ListarLivrosUsuario(Usuario usuario) {
-		super(usuario,false,Imagens.ICONE_LOGOMARCA,"Livraria Stile");
+		super(usuario,true,Imagens.ICONE_LOGOMARCA,"Livraria Stile");
 		super.addIconeUsuario();
 		super.addNomeIconeUsuario();
 		super.addIconeCentral();

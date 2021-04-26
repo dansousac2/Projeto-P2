@@ -233,11 +233,13 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 		botao.setBounds(438, 460, 240, 30);
 		botao.addActionListener(new OuvinteBotaoAddColeçao());
 		add(botao);
+		
 		botao = new JButton("COMPRAR");
 		if(livroDetalhado.getQuantidade()==0) {
 			botao.setEnabled(false);
 		}
 		botao.setBounds(455, 510, 200, 30);
+		botao.addActionListener(new OuvinteBotaoComprar());
 		add(botao);
 	}
 	public void Barra() {
@@ -247,6 +249,42 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 		barra.add(menu);
 		add(barra);
 	}
+	
+	public class OuvinteBotaoComprar implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+
+			int comp = JOptionPane.showConfirmDialog(null, "Confirmar compra deste produto?", "Comprar", JOptionPane.YES_NO_OPTION);
+			
+			if(comp == JOptionPane.YES_OPTION) {
+				
+				GeradorDeRelatorios relatorios = new GeradorDeRelatorios();
+				relatorios.boletoDeCobranca(livroDetalhado);
+				
+				PersistenciaLivros persistencia = new PersistenciaLivros();
+				
+				try {
+					
+					CentralLivro central = persistencia.recuperarCentral("Dados_Livraria.xml"); 
+					
+					for(Usuario user : central.getUsuariosCadastrados()) {
+						if(user.getEmail().equals(usuarioLocal.getEmail())){
+							user.getColecaoDeLivros().add(livroDetalhado);
+						}
+					}
+					
+					persistencia.salvarCentral(central, "Dados_Livraria.xml");
+					
+					JOptionPane.showMessageDialog(null, "Processo concluído");
+					
+				}catch (Exception erro) {
+					JOptionPane.showConfirmDialog(null, "Erro ao salva/recuperar", "Erro", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		}
+		
+	}
+	
 	public Usuario getUsuarioLocal() {
 		return usuarioLocal;
 	}

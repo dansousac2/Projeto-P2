@@ -66,9 +66,10 @@
       <numeroEdicao>0</numeroEdicao>
       <quantidade>1</quantidade>
       <id>1619365277475</id>
+      <preco>0.0</preco>
       <notaMedia>0</notaMedia>
       <notasAtribuidas/>
-      <visualizacoes>18</visualizacoes>
+      <visualizacoes>19</visualizacoes>
     </Livro>
     <Livro>
       <todosOsComentarios/>
@@ -86,9 +87,10 @@
       <numeroEdicao>0</numeroEdicao>
       <quantidade>0</quantidade>
       <id>1619372976417</id>
+      <preco>0.0</preco>
       <notaMedia>0</notaMedia>
       <notasAtribuidas/>
-      <visualizacoes>7</visualizacoes>
+      <visualizacoes>8</visualizacoes>
     </Livro>
     <Livro>
       <todosOsComentarios>
@@ -147,9 +149,10 @@
       <assunto>null</assunto>
       <quantidade>1</quantidade>
       <id>1619374909439</id>
+      <preco>0.0</preco>
       <notaMedia>0</notaMedia>
       <notasAtribuidas/>
-      <visualizacoes>76</visualizacoes>
+      <visualizacoes>84</visualizacoes>
     </Livro>
   </livrosDisponiveis>
   <usuariosCadastrados>
@@ -223,9 +226,80 @@
           <assunto>null</assunto>
           <quantidade>1</quantidade>
           <id>1619374909439</id>
+          <preco>0.0</preco>
           <notaMedia>0</notaMedia>
           <notasAtribuidas/>
           <visualizacoes>75</visualizacoes>
+        </Livro>
+      </colecaoDeLivros>
+    </Usuario>
+    <Usuario>
+      <nome>dan</nome>
+      <email>dan</email>
+      <senha>123123</senha>
+      <ehLivreiro>false</ehLivreiro>
+      <colecaoDeLivros>
+        <Livro>
+          <todosOsComentarios>
+            <string-array>
+              <string>1</string>
+              <string>leo</string>
+              <string>leo</string>
+            </string-array>
+            <string-array>
+              <string>2</string>
+              <string>leo</string>
+              <string>leo</string>
+            </string-array>
+            <string-array>
+              <string>3</string>
+              <string>leo</string>
+              <string>leo</string>
+            </string-array>
+            <string-array>
+              <string>4</string>
+              <string>leo</string>
+              <string>leo</string>
+            </string-array>
+            <string-array>
+              <string>5</string>
+              <string>maria</string>
+              <string>leo</string>
+            </string-array>
+            <string-array>
+              <string>6</string>
+              <string>maria</string>
+              <string>leo</string>
+            </string-array>
+            <string-array>
+              <string>7</string>
+              <string>maria</string>
+              <string>maria</string>
+            </string-array>
+            <string-array>
+              <string>8</string>
+              <string>maria</string>
+              <string>maria</string>
+            </string-array>
+          </todosOsComentarios>
+          <tipo>Literatura</tipo>
+          <genero>literatura</genero>
+          <titulo>titulo novo</titulo>
+          <idioma>português</idioma>
+          <anoPublicacao>2020</anoPublicacao>
+          <editora>editora</editora>
+          <resumo>livro exemplo</resumo>
+          <interessados/>
+          <autores>desconhecido</autores>
+          <mesLancamento>null</mesLancamento>
+          <numeroEdicao>0</numeroEdicao>
+          <assunto>null</assunto>
+          <quantidade>1</quantidade>
+          <id>1619374909439</id>
+          <preco>0.0</preco>
+          <notaMedia>0</notaMedia>
+          <notasAtribuidas/>
+          <visualizacoes>84</visualizacoes>
         </Livro>
       </colecaoDeLivros>
     </Usuario>
