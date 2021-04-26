@@ -13,10 +13,10 @@ public class Utilidade {
 
 	public static String[] principaisAtributosDosLivros(Livro liv) {
 		
-		String[] atributos = new String[6];
+		String[] atributos = new String[7];
 		
 		Object[] objetosAtributos = {liv.getTipo(),liv.getTitulo(),liv.getResumo(),liv.getId(),
-				liv.getNotaMedia(),liv.getQuantidade() };
+				liv.getNotaMedia(),liv.getQuantidade(),liv.getPreco() };
 		
 		for(int i = 0; i < 6; i++) {
 			atributos[i] = objetosAtributos[i].toString();

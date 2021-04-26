@@ -233,12 +233,12 @@ public abstract class PadraoListarLivros extends JFrame {
 			
 			this.listarLivros = Utilidade.recuperarLivrosCabiveis(this,usuarioLogado);
 		
-			String[] tituloColunas = {"Tipo","Título","Resumo","ID","Nota Média","Quantidade"};
+			String[] tituloColunas = {"Tipo","Título","Resumo","ID","Nota Média","Quantidade","Preço"};
 		
 			int repetir = 5;
 		
 			if(exibirExtras) {
-				repetir = 6;
+				repetir = 7;
 			}
 			
 			modelo = new DefaultTableModel();

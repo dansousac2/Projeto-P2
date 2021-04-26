@@ -18,6 +18,7 @@ public class Livro {
 	
 	private int quantidade;
 	private long id;
+	private float preco;
 	
 	private int notaMedia;
 	private HashMap<String,Integer> notasAtribuidas = new HashMap<String,Integer>();
@@ -177,6 +178,12 @@ public class Livro {
 		this.todosOsComentarios = todosOsComentarios;
 	}
 
-	
+	public float getPreco() {
+		return preco;
+	}
+
+	public void setPreco(float preco) {
+		this.preco = preco;
+	}
 	
 }

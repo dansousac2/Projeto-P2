@@ -7,17 +7,16 @@ public class testeMain {
 //		
 //		new ListarLivrosUsuario(novoUsuario);
 		
-		novoUsuario.setEhLivreiro(true);
-		new ListarLivrosLivreiro(novoUsuario);
+//		novoUsuario.setEhLivreiro(true);
+//		new ListarLivrosLivreiro(novoUsuario);
 
-		
 //		new ColecaoUsuario(novoUsuario);
-//		try {
-//			
-//			new JanelaLoguin(new PersistenciaLivros().recuperarCentral("Dados_Livraria.xml"));
-//		}catch (Exception e) {
-//			// TODO: handle exception
-//		}
+		
+		try {	
+			new JanelaLoguin(new PersistenciaLivros().recuperarCentral("Dados_Livraria.xml"));
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
 		
 		
 	}
