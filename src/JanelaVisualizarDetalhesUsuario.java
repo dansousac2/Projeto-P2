@@ -32,7 +32,6 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 				try {
 					int numero = livroDetalhado.getTodosOsComentarios().size()+1;
 					String[] prepararComentario = {""+numero,usuarioLocal.getEmail(),T};
-					dados = persistencia.recuperarCentral("Dados_Livraria.xml");
 					for(int i = 0;i<dados.getLivrosDisponiveis().size();i++) {
 						if(dados.getLivrosDisponiveis().get(i).getId() == livroDetalhado.getId()) {
 							livroDetalhado.getTodosOsComentarios().add(prepararComentario);
@@ -61,7 +60,6 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 		}
 		public void actionPerformed(ActionEvent e) {
 			try {
-				dados = persistencia.recuperarCentral("Dados_Livraria.xml");
 				Boolean existe = false;
 				for(int n = 0;n<livroDetalhado.getInteressados().size();n++) {
 					if(usuarioLocal.getEmail().equals(livroDetalhado.getInteressados().get(n))) {
@@ -93,8 +91,6 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 	public class OuvinteBotaoAddColeçao implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			try {
-				PersistenciaLivros persistencia = new PersistenciaLivros();
-				CentralLivro dados = persistencia.recuperarCentral("Dados_Livraria.xml");
 				Boolean existe = false;
 				for(int n = 0;n<usuarioLocal.getColecaoDeLivros().size();n++) {
 					if(usuarioLocal.getColecaoDeLivros().get(n).getId() == livroDetalhado.getId()) {
@@ -106,15 +102,8 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 					JOptionPane.showMessageDialog(null, "Você já possue este livro em sua coleção!");
 				}
 				else {
-					for(int i = 0;i<dados.getUsuariosCadastrados().size();i++) {
-						if(dados.getUsuariosCadastrados().get(i).getEmail().equals(usuarioLocal.getEmail())) {
-							usuarioLocal.getColecaoDeLivros().add(livroDetalhado);
-							dados.getUsuariosCadastrados().remove(i);
-							dados.getUsuariosCadastrados().add(usuarioLocal);
-							JOptionPane.showMessageDialog(null, "O livro foi adicionado a sua coleção!");
-							break;
-						}
-					}
+					usuarioLocal.getColecaoDeLivros().add(livroDetalhado);
+					JOptionPane.showMessageDialog(null, "O livro foi adicionado a sua coleção!");
 				}
 				persistencia.salvarCentral(dados, "Dados_Livraria.xml");
 			} catch (Exception e1) {

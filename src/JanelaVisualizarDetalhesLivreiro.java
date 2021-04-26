@@ -8,6 +8,7 @@ import java.awt.event.MouseListener;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
+import javax.mail.MessagingException;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -26,20 +27,22 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 	private JTextArea comentarios;
 	private JTextField tfPreço;
 	private JTextField tfQuantidade;
-	PersistenciaLivros persistencia = new PersistenciaLivros();
-	CentralLivro dados = new CentralLivro();
+	private PersistenciaLivros persistencia = new PersistenciaLivros();
+	private CentralLivro dados = new CentralLivro();
+	private String P;
 	public class OuvinteBotaoSalvar implements ActionListener{
 		JTable tabela;
 		public OuvinteBotaoSalvar(JTable T) {
 			tabela = T;
 		}
 		public void actionPerformed(ActionEvent e) {
-			try {
 				livroDetalhado.setResumo(resumo.getText());
-				float P = Float.parseFloat(tfPreço.getText());
-				livroDetalhado.setPreco(P);
+				float p = Float.parseFloat(""+P);
+				livroDetalhado.setPreco(p);
 				int N = Integer.parseInt(tfQuantidade.getText());
 				livroDetalhado.setQuantidade(N);
+				try {
+				persistencia.salvarCentral(dados, "Dados_Livraria.xml");
 				tabela.getCellEditor().stopCellEditing();
 				livroDetalhado.setTitulo(""+tabela.getValueAt(0, 1));
 				livroDetalhado.setGenero(""+tabela.getValueAt(1, 1));
@@ -50,30 +53,17 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 				livroDetalhado.setMesLancamento(""+tabela.getValueAt(6, 1));
 				livroDetalhado.setNumeroEdicao(Integer.parseInt(""+tabela.getValueAt(7, 1)));
 				livroDetalhado.setAssunto(""+tabela.getValueAt(8, 1));
-				livroDetalhado.setQuantidade(Integer.parseInt(""+tabela.getValueAt(9, 1)));
 				livroDetalhado.setNotaMedia(Integer.parseInt(""+tabela.getValueAt(10, 1)));
-				dados = persistencia.recuperarCentral("Dados_Livraria.xml");
-				for(int i = 0; i<dados.getLivrosDisponiveis().size();i++) {
-					if(dados.getLivrosDisponiveis().get(i).getId() == livroDetalhado.getId()) {
-						dados.getLivrosDisponiveis().remove(i);
-						dados.getLivrosDisponiveis().add(livroDetalhado);
-						JOptionPane.showMessageDialog(null, "As alterações foram salvas");
-						persistencia.salvarCentral(dados, "Dados_Livraria.xml");
-						break;
-					}
-				}
-			} catch (Exception e1) {
-				try {
-					dados = persistencia.recuperarCentral("Dados_Livraria.xml");
-					persistencia.salvarCentral(dados, "Dados_Livraria.xml");
-					JOptionPane.showMessageDialog(null, "As alterações foram salvas");
-				} catch (Exception e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
+				persistencia.salvarCentral(dados, "Dados_Livraria.xml");
+				JOptionPane.showMessageDialog(null, "Alterações salvas");
+				}catch(NullPointerException E) {
+					JOptionPane.showMessageDialog(null, "alterações salvas");
+				} catch (Exception e1) {
+					e1.printStackTrace();
 				}
 			}
 		}
-	}			
+			
 	public class OuvinteBotaoAdicionarComentario implements ActionListener{
 		String Com;
 		public OuvinteBotaoAdicionarComentario(String S) {
@@ -85,7 +75,6 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 				try {
 					int numero = livroDetalhado.getTodosOsComentarios().size()+1;
 					String[] prepararComentario = {""+numero,usuarioLocal.getEmail(),T};
-					dados = persistencia.recuperarCentral("Dados_Livraria.xml");
 					livroDetalhado.getTodosOsComentarios().add(prepararComentario);
 					Com = "COMENTÁRIOS\n";
 					int N = 1;
@@ -130,7 +119,6 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		public void actionPerformed(ActionEvent e) {
 			try{
 				int numero = Integer.parseInt(JOptionPane.showInputDialog("Informe o numero do comentário a ser excluído"));
-				dados = persistencia.recuperarCentral("Dados_Livraria.xml");
 				livroDetalhado.getTodosOsComentarios().remove(numero-1);
 				Com = "COMENTÁRIOS\n";
 				int N = 1;
@@ -203,7 +191,7 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		add(titulo);
 	}
 	public void DetalhesDoLivro() {
-		String[] atributos = new String[12];
+		String[] atributos = new String[13];
 		atributos[0] = livroDetalhado.getTitulo();
 		atributos[1] = livroDetalhado.getGenero();
 		atributos[2] = livroDetalhado.getIdioma();
@@ -216,6 +204,7 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		atributos[9] = ""+livroDetalhado.getQuantidade();
 		atributos[10] = ""+livroDetalhado.getNotaMedia();
 		atributos[11] = livroDetalhado.getResumo();
+		atributos[12] = ""+livroDetalhado.getPreco();
 		modelo = new DefaultTableModel();
 		modelo.addColumn("Aspectos");
 		modelo.addColumn("Detalhes");
@@ -291,6 +280,7 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		JLabel preço = new JLabel("Preço: ");
 		preço.setBounds(505, 10, 50, 15);
 		add(preço);
+		P = ""+livroDetalhado.getPreco();
 		tfPreço = new JTextField(NumberFormat.getCurrencyInstance().format(livroDetalhado.getPreco()));
 		tfPreço.setBounds(550, 10, 95, 25);
 		tfPreço.setHorizontalAlignment(JTextField.CENTER);

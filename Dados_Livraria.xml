@@ -5,56 +5,30 @@
       <todosOsComentarios/>
       <tipo>Literatura</tipo>
       <genero>literatura brasileira</genero>
-      <titulo>titulo</titulo>
-      <idioma>fgdfgdfg</idioma>
+      <titulo>janela</titulo>
+      <idioma>wekfnsdlkfn</idioma>
       <anoPublicacao>2020</anoPublicacao>
-      <editora>dfgdfgdfg</editora>
-      <resumo></resumo>
+      <editora>sljdnsljdng</editora>
+      <resumo>livro muito bom</resumo>
       <interessados/>
-      <autores>sdgsdgs</autores>
+      <autores>gsdgsd</autores>
       <mesLancamento>null</mesLancamento>
       <numeroEdicao>0</numeroEdicao>
       <assunto>null</assunto>
-      <quantidade>20</quantidade>
-      <id>1619469169578</id>
-      <preco>600.0</preco>
+      <quantidade>10000</quantidade>
+      <id>1619476781677</id>
+      <preco>200.0</preco>
       <notaMedia>0</notaMedia>
       <notasAtribuidas/>
-      <visualizacoes>21</visualizacoes>
-    </Livro>
-    <Livro>
-      <todosOsComentarios/>
-      <tipo>Literatura</tipo>
-      <genero>literatura brasileira</genero>
-      <titulo>sdgsdgsdg</titulo>
-      <idioma>tttttttttt</idioma>
-      <anoPublicacao>2000</anoPublicacao>
-      <editora>ttttttttttt</editora>
-      <resumo>tttttttttttttttt</resumo>
-      <interessados/>
-      <autores>tttttttttttt</autores>
-      <numeroEdicao>0</numeroEdicao>
-      <quantidade>0</quantidade>
-      <id>1619469893413</id>
-      <preco>80.0</preco>
-      <notaMedia>0</notaMedia>
-      <notasAtribuidas/>
-      <visualizacoes>13</visualizacoes>
+      <visualizacoes>6</visualizacoes>
     </Livro>
   </livrosDisponiveis>
   <usuariosCadastrados>
     <Usuario>
       <nome>leonardo</nome>
-      <email>leonardo.lucena@academico.ifpb.edu.br</email>
-      <senha>12345</senha>
-      <ehLivreiro>true</ehLivreiro>
-      <colecaoDeLivros/>
-    </Usuario>
-    <Usuario>
-      <nome>leonardo</nome>
       <email>leonardofreitas.l94@hotmail.com</email>
       <senha>12345</senha>
-      <ehLivreiro>false</ehLivreiro>
+      <ehLivreiro>true</ehLivreiro>
       <colecaoDeLivros/>
     </Usuario>
   </usuariosCadastrados>
