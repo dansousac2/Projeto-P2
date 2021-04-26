@@ -5,10 +5,10 @@ public class testeMain {
 		
 		Usuario novoUsuario = new Usuario("Danilo S. Costa", "dansousac2@hotmail.com", "123qwe");
 //		
-		new ListarLivrosUsuario(novoUsuario);
+//		new ListarLivrosUsuario(novoUsuario);
 		
-//		novoUsuario.setEhLivreiro(true);
-//		new ListarLivrosLivreiro(novoUsuario);
+		novoUsuario.setEhLivreiro(true);
+		new ListarLivrosLivreiro(novoUsuario);
 
 		
 //		new ColecaoUsuario(novoUsuario);
