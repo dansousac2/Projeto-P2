@@ -3,6 +3,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -34,13 +36,26 @@ public class CadastrarNovoLivro extends JDialog{
 	private JFormattedTextField ftfLancamento;
 	private JTextField tfEdicao;
 	private JTextField tfAssunto;
+	private JTextField tfPreço;
 	
 	private JButton btAdicionar;
 	
 	private OuvinteBotaoCadastrar ouvinte = new OuvinteBotaoCadastrar();
 	
 	private ListarLivrosLivreiro janela;
-	
+	public class OuvintePreço implements KeyListener{
+		String caractere = "0123456789";
+		public void keyTyped(KeyEvent e) {
+			char C = e.getKeyChar();
+			if(!caractere.contains(C+"") && C != '.'){
+				e.consume();
+			}
+		}
+		public void keyPressed(KeyEvent e) {		
+		}
+		public void keyReleased(KeyEvent e) {		
+		}
+	}
 	public CadastrarNovoLivro(ListarLivrosLivreiro janela) { 
 	
 		this.setModal(true);
@@ -60,6 +75,7 @@ public class CadastrarNovoLivro extends JDialog{
 		addEditora();
 		addAno();
 		addResumo();
+		addPreço();
 		addQuantidade();
 		addTipo();
 		addGenero();
@@ -68,6 +84,7 @@ public class CadastrarNovoLivro extends JDialog{
 		addEdicao();
 		addAssunto();
 		addBotaoAdicionar();
+		
 		
 		this.setVisible(true);
 	}
@@ -133,15 +150,27 @@ public class CadastrarNovoLivro extends JDialog{
 	private void addResumo() {
 		
 		JLabel resumo = new JLabel("Resumo: ");
-		resumo.setBounds(10, 300, 60, 15);
+		resumo.setBounds(10, 260, 60, 15);
 		add(resumo);
 		
 		taResumo = new JTextArea();
-		taResumo.setBounds(	70, 260, 175, 100);
+		taResumo.setBounds(	70, 260, 175, 65);
 		taResumo.setLineWrap(true);
 		taResumo.setWrapStyleWord(true);
 		taResumo.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		add(taResumo);
+	}
+	private void addPreço() {
+		
+		JLabel preço = new JLabel("Preço: ");
+		preço.setBounds(10, 340, 50, 15);
+		add(preço);
+		
+		tfPreço = new JTextField();
+		tfPreço.setBounds(55, 337, 190, 25);
+		tfPreço.setHorizontalAlignment(JTextField.CENTER);
+		tfPreço.addKeyListener(new OuvintePreço());
+		add(tfPreço);
 	}
 	
 	private void addQuantidade() {
@@ -342,7 +371,8 @@ public class CadastrarNovoLivro extends JDialog{
 								Livro novoLivro = new Livro((String)cbTipo.getSelectedItem(),(String)cbGenero.getSelectedItem(),tfTitulo.getText(),
 										tfIdioma.getText(),tfEditora.getText(),taResumo.getText(),Integer.parseInt(tfAno.getText()),
 										Integer.parseInt(tfQuantidade.getText()));
-								
+								float N = Float.parseFloat(tfPreço.getText());
+								novoLivro.setPreco(N);
 								if(taAutores.isEnabled()) {
 									novoLivro.setAutores(taAutores.getText());
 								}

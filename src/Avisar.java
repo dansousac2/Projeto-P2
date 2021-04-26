@@ -9,13 +9,14 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.swing.JOptionPane;
 
-public class VerificarEmail {
+public class Avisar {
 	private String email;
+	private String NomeLivro;
 
-	public VerificarEmail(String Nome) throws AddressException, MessagingException {
+	public Avisar(String Nome, String NomeL) throws AddressException, MessagingException {
 		email = Nome;
+		NomeLivro = NomeL;
 		verificar();
 	}
 	public void verificar() throws AddressException, MessagingException {
@@ -43,7 +44,7 @@ public class VerificarEmail {
 	        Address[] toUser = InternetAddress.parse(email);
 	        message.setRecipients(Message.RecipientType.TO, toUser);
 	        message.setSubject("Livraria Stile");
-	        message.setText("Seja Bem Vindo!");
+	        message.setText("O Livro "+NomeLivro+" já está disponivel em nossa loja! venha conferir!");
 	        Transport.send(message);
 	}
 }

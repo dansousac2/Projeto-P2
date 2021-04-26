@@ -20,9 +20,9 @@ public class JanelaPadraoVisualizarDetalhes extends JFrame{
 	JMenuItem itens;
 	DefaultTableModel modelo;
 	public JanelaPadraoVisualizarDetalhes() { 
-		setSize(700, 580);
+		setSize(700, 610);
 		setLocationRelativeTo(null);
 		setLayout(null);
-		setResizable(true);
+		setResizable(false);
 	}
 }

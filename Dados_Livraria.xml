@@ -3,30 +3,58 @@
   <livrosDisponiveis>
     <Livro>
       <todosOsComentarios/>
-      <tipo>Periódico</tipo>
-      <genero>gibi </genero>
-      <titulo>Nosso Lar</titulo>
-      <idioma>Português</idioma>
-      <anoPublicacao>1954</anoPublicacao>
-      <editora>Vinha de Luz</editora>
-      <resumo>Livro espiritualista</resumo>
+      <tipo>Literatura</tipo>
+      <genero>literatura brasileira</genero>
+      <titulo>titulo</titulo>
+      <idioma>fgdfgdfg</idioma>
+      <anoPublicacao>2020</anoPublicacao>
+      <editora>dfgdfgdfg</editora>
+      <resumo></resumo>
       <interessados/>
-      <mesLancamento>01</mesLancamento>
-      <numeroEdicao>1</numeroEdicao>
-      <quantidade>3</quantidade>
-      <id>1619405908410</id>
-      <preco>0.0</preco>
+      <autores>sdgsdgs</autores>
+      <mesLancamento>null</mesLancamento>
+      <numeroEdicao>0</numeroEdicao>
+      <assunto>null</assunto>
+      <quantidade>20</quantidade>
+      <id>1619469169578</id>
+      <preco>600.0</preco>
       <notaMedia>0</notaMedia>
       <notasAtribuidas/>
-      <visualizacoes>0</visualizacoes>
+      <visualizacoes>21</visualizacoes>
+    </Livro>
+    <Livro>
+      <todosOsComentarios/>
+      <tipo>Literatura</tipo>
+      <genero>literatura brasileira</genero>
+      <titulo>sdgsdgsdg</titulo>
+      <idioma>tttttttttt</idioma>
+      <anoPublicacao>2000</anoPublicacao>
+      <editora>ttttttttttt</editora>
+      <resumo>tttttttttttttttt</resumo>
+      <interessados/>
+      <autores>tttttttttttt</autores>
+      <numeroEdicao>0</numeroEdicao>
+      <quantidade>0</quantidade>
+      <id>1619469893413</id>
+      <preco>200.0</preco>
+      <notaMedia>0</notaMedia>
+      <notasAtribuidas/>
+      <visualizacoes>6</visualizacoes>
     </Livro>
   </livrosDisponiveis>
   <usuariosCadastrados>
     <Usuario>
-      <nome>Leonardo Freitas</nome>
+      <nome>leonardo</nome>
       <email>leonardo.lucena@academico.ifpb.edu.br</email>
       <senha>12345</senha>
       <ehLivreiro>true</ehLivreiro>
+      <colecaoDeLivros/>
+    </Usuario>
+    <Usuario>
+      <nome>leonardo</nome>
+      <email>leonardofreitas.l94@hotmail.com</email>
+      <senha>12345</senha>
+      <ehLivreiro>false</ehLivreiro>
       <colecaoDeLivros/>
     </Usuario>
   </usuariosCadastrados>

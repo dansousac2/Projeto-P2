@@ -29,7 +29,7 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 
 public class JanelaCadastrarUsuario extends JanelaPadraoLivreiroUsuario{
 	CentralLivro BancoDeDados;
-	PersistenciaLivros Percistencia = new PersistenciaLivros();
+	PersistenciaLivros Persistencia = new PersistenciaLivros();
 	public class OuvinteBotaoCadastrar implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			int cont = 0;
@@ -46,57 +46,22 @@ public class JanelaCadastrarUsuario extends JanelaPadraoLivreiroUsuario{
 				JOptionPane.showMessageDialog(null, "As senhas digitadas são incompativeis, tente novamente.", "Senha Invalida", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
-				int Cont = 0;
-			    Properties props = new Properties();
-				props.put("mail.smtp.user", "estanteonlineifpb@gmail.com"); 
-		        props.put("mail.smtp.host", "smtp.gmail.com"); 
-		        props.put("mail.smtp.port", "25"); 
-		        props.put("mail.debug", "true"); 
-		        props.put("mail.smtp.auth", "true"); 
-		        props.put("mail.smtp.starttls.enable","true"); 
-		        props.put("mail.smtp.EnableSSL.enable","true");
-		        props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");   
-		        props.setProperty("mail.smtp.socketFactory.fallback", "false");   
-		        props.setProperty("mail.smtp.port", "465");   
-		        props.setProperty("mail.smtp.socketFactory.port", "465");
-		        Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-		        	protected PasswordAuthentication getPasswordAuthentication() 
-		        	{
-		        		return new PasswordAuthentication("estanteonlineifpb@gmail.com", "estante123");
-		        	}
-		        });
-		        session.setDebug(true);
-		        try{
-		        	Message message = new MimeMessage(session);
-		        	message.setFrom(new InternetAddress("estanteonlineifpb@gmail.com"));
-		        	Address[] toUser = InternetAddress.parse(email.getText());
-		        	message.setRecipients(Message.RecipientType.TO, toUser);
-		        	message.setSubject("Livraria Stile");
-		        	message.setText("Seja Bem Vindo!");
-		        	Transport.send(message);
-		        	JOptionPane.showMessageDialog(null, "Codigo Enviado");
-		        	Cont++;
-		        }catch(MessagingException E) {
-		        	System.out.println("Ocorreu um erro");
-		        }
-				if(Cont == 0) {
-					JOptionPane.showMessageDialog(null, "email inválido", "Tente novamente", JOptionPane.ERROR_MESSAGE);
-				}
-				else {
-				usuario = new Usuario(getNome().getText(), getEmail().getText(), getSenha().getText());
-				BancoDeDados.getUsuariosCadastrados().add(usuario);
 				try {
-					Percistencia.salvarCentral(BancoDeDados, "Dados_Livraria.xml");
+					new VerificarEmail(email.getText());
+					usuario = new Usuario(getNome().getText(), getEmail().getText(), getSenha().getText());
+					BancoDeDados.getUsuariosCadastrados().add(usuario);
+					Persistencia.salvarCentral(BancoDeDados, "Dados_Livraria.xml");
 					JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!", "Seja bem vindo!", JOptionPane.INFORMATION_MESSAGE);
 					dispose();
 					new ListarLivrosUsuario(usuario);
-				}catch (Exception e1) {
-					e1.printStackTrace();
+				}catch (MessagingException e2) {
+					JOptionPane.showMessageDialog(null, "Endereço de email invalido, tente novamente!", "Aviso", JOptionPane.ERROR_MESSAGE);
+				} catch (Exception e3) {
+					e3.printStackTrace();
 				}
 			}
 		}
 	}
-}
 	public class OuvinteBotaoVoltarCadastrarUsuario implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			dispose();

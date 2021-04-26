@@ -2,6 +2,7 @@ import java.awt.Font;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.NumberFormat;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -18,6 +19,8 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 	private Livro livroDetalhado;
 	private JTextArea comentarios;
 	private String concat;
+	private PersistenciaLivros persistencia = new PersistenciaLivros();
+	private CentralLivro dados = new CentralLivro();
 	public class OuvinteBotaoAdicionarComentario implements ActionListener{
 		String Com;
 		public OuvinteBotaoAdicionarComentario(String S) {
@@ -29,8 +32,7 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 				try {
 					int numero = livroDetalhado.getTodosOsComentarios().size()+1;
 					String[] prepararComentario = {""+numero,usuarioLocal.getEmail(),T};
-					PersistenciaLivros persistencia = new PersistenciaLivros();
-					CentralLivro dados = persistencia.recuperarCentral("Dados_Livraria.xml");
+					dados = persistencia.recuperarCentral("Dados_Livraria.xml");
 					for(int i = 0;i<dados.getLivrosDisponiveis().size();i++) {
 						if(dados.getLivrosDisponiveis().get(i).getId() == livroDetalhado.getId()) {
 							livroDetalhado.getTodosOsComentarios().add(prepararComentario);
@@ -59,8 +61,7 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 		}
 		public void actionPerformed(ActionEvent e) {
 			try {
-				PersistenciaLivros persistencia = new PersistenciaLivros();
-				CentralLivro dados = persistencia.recuperarCentral("Dados_Livraria.xml");
+				dados = persistencia.recuperarCentral("Dados_Livraria.xml");
 				Boolean existe = false;
 				for(int n = 0;n<livroDetalhado.getInteressados().size();n++) {
 					if(usuarioLocal.getEmail().equals(livroDetalhado.getInteressados().get(n))) {
@@ -72,20 +73,21 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 					JOptionPane.showMessageDialog(null, "Você já foi adicionado a lista de interessados!");
 				}
 				else {
-					for(int i = 0;i<dados.getLivrosDisponiveis().size();i++) {
+					livroDetalhado.getInteressados().add(usuarioLocal.getEmail());
+					JOptionPane.showMessageDialog(null, "Você será notificado assim que haver estoque deste livro!");
+					for(int i = 0; i<dados.getLivrosDisponiveis().size();i++) {
 						if(dados.getLivrosDisponiveis().get(i).getId() == livroDetalhado.getId()) {
-							livroDetalhado.getInteressados().add(usuarioLocal.getEmail());
 							dados.getLivrosDisponiveis().remove(i);
 							dados.getLivrosDisponiveis().add(livroDetalhado);
 							JOptionPane.showMessageDialog(null, "Você será notificado assim que haver estoque deste livro!");
+							persistencia.salvarCentral(dados, "Dados_Livraria.xml");
 							break;
+							}
 						}
-					}
 				}
-			persistencia.salvarCentral(dados, "Dados_Livraria.xml");
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 		}
 	}
 	public class OuvinteBotaoAddColeçao implements ActionListener{
@@ -219,7 +221,11 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 		botao.addActionListener(new OuvinteBotaoExcluirComentario(comentarioConcatenado));
 		add(botao);
 		titulo = new JLabel("Unidades Restantes: "+livroDetalhado.getQuantidade());
-		titulo.setBounds(438, 360, 240, 30);
+		titulo.setBounds(438, 355, 240, 30);
+		titulo.setFont(new Font("Arial", Font.BOLD, 14));
+		add(titulo);
+		titulo = new JLabel("Preço: "+NumberFormat.getCurrencyInstance().format(livroDetalhado.getPreco()));
+		titulo.setBounds(438, 377, 150, 30);
 		titulo.setFont(new Font("Arial", Font.BOLD, 14));
 		add(titulo);
 		botao = new JButton("Notificar-me quando chegar");

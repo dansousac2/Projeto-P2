@@ -1,7 +1,11 @@
 import java.awt.Font;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -12,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
@@ -19,6 +24,10 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 	private Usuario usuarioLocal;
 	private Livro livroDetalhado;
 	private JTextArea comentarios;
+	private JTextField tfPreço;
+	private JTextField tfQuantidade;
+	PersistenciaLivros persistencia = new PersistenciaLivros();
+	CentralLivro dados = new CentralLivro();
 	public class OuvinteBotaoSalvar implements ActionListener{
 		JTable tabela;
 		public OuvinteBotaoSalvar(JTable T) {
@@ -26,6 +35,10 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		}
 		public void actionPerformed(ActionEvent e) {
 			try {
+				livroDetalhado.setResumo(resumo.getText());
+				float P = Float.parseFloat(tfPreço.getText());
+				livroDetalhado.setPreco(P);
+				livroDetalhado.setQuantidade(Integer.parseInt(tfQuantidade.getText()));
 				tabela.getCellEditor().stopCellEditing();
 				livroDetalhado.setTitulo(""+tabela.getValueAt(0, 1));
 				livroDetalhado.setGenero(""+tabela.getValueAt(1, 1));
@@ -38,19 +51,25 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 				livroDetalhado.setAssunto(""+tabela.getValueAt(8, 1));
 				livroDetalhado.setQuantidade(Integer.parseInt(""+tabela.getValueAt(9, 1)));
 				livroDetalhado.setNotaMedia(Integer.parseInt(""+tabela.getValueAt(10, 1)));
-				PersistenciaLivros persistencia = new PersistenciaLivros();
-				CentralLivro dados = persistencia.recuperarCentral("Dados_Livraria.xml");
+				dados = persistencia.recuperarCentral("Dados_Livraria.xml");
 				for(int i = 0; i<dados.getLivrosDisponiveis().size();i++) {
 					if(dados.getLivrosDisponiveis().get(i).getId() == livroDetalhado.getId()) {
 						dados.getLivrosDisponiveis().remove(i);
 						dados.getLivrosDisponiveis().add(livroDetalhado);
 						JOptionPane.showMessageDialog(null, "As alterações foram salvas");
+						persistencia.salvarCentral(dados, "Dados_Livraria.xml");
 						break;
 					}
 				}
-				persistencia.salvarCentral(dados, "Dados_Livraria.xml");
 			} catch (Exception e1) {
-				JOptionPane.showMessageDialog(null, "Nenhuma alteração foi realizada", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+				try {
+					dados = persistencia.recuperarCentral("Dados_Livraria.xml");
+					persistencia.salvarCentral(dados, "Dados_Livraria.xml");
+					JOptionPane.showMessageDialog(null, "As alterações foram salvas");
+				} catch (Exception e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
 			}
 		}
 	}			
@@ -65,14 +84,8 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 				try {
 					int numero = livroDetalhado.getTodosOsComentarios().size()+1;
 					String[] prepararComentario = {""+numero,usuarioLocal.getEmail(),T};
-					PersistenciaLivros persistencia = new PersistenciaLivros();
-					CentralLivro dados = persistencia.recuperarCentral("Dados_Livraria.xml");
-					for(int i = 0;i<dados.getLivrosDisponiveis().size();i++) {
-						if(dados.getLivrosDisponiveis().get(i).getId() == livroDetalhado.getId()) {
-							livroDetalhado.getTodosOsComentarios().add(prepararComentario);
-							break;
-						}
-					}
+					dados = persistencia.recuperarCentral("Dados_Livraria.xml");
+					livroDetalhado.getTodosOsComentarios().add(prepararComentario);
 					Com = "COMENTÁRIOS\n";
 					int N = 1;
 					for(String[] coment: livroDetalhado.getTodosOsComentarios()) {
@@ -116,8 +129,7 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		public void actionPerformed(ActionEvent e) {
 			try{
 				int numero = Integer.parseInt(JOptionPane.showInputDialog("Informe o numero do comentário a ser excluído"));
-				PersistenciaLivros persistencia = new PersistenciaLivros();
-				CentralLivro dados = persistencia.recuperarCentral("Dados_Livraria.xml");
+				dados = persistencia.recuperarCentral("Dados_Livraria.xml");
 				livroDetalhado.getTodosOsComentarios().remove(numero-1);
 				Com = "COMENTÁRIOS\n";
 				int N = 1;
@@ -132,7 +144,48 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 			}
 	}
 }
-
+	public class OuvintePreço implements KeyListener{
+		String caractere = "0123456789";
+		public void keyTyped(KeyEvent e) {
+			char C = e.getKeyChar();
+			if(!caractere.contains(C+"") && C != '.'){
+				e.consume();
+			}
+		}
+		public void keyPressed(KeyEvent e) {		
+		}
+		public void keyReleased(KeyEvent e) {		
+		}
+	}
+	public class OuvinteQuantidade implements KeyListener{
+		String caractere = "0123456789";
+		public void keyTyped(KeyEvent e) {
+			char C = e.getKeyChar();
+			if(!caractere.contains(C+"")){
+				e.consume();
+			}
+		}
+		public void keyPressed(KeyEvent e) {		
+		}
+		public void keyReleased(KeyEvent e) {		
+		}
+	}
+	public class OuvinteBotaoAvisar implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			try{
+				dados = persistencia.recuperarCentral("Dados_Livraria.xml");
+				Avisar avisar;
+				for(int i = 0;i<livroDetalhado.getInteressados().size();i++) {
+					avisar = new Avisar(livroDetalhado.getInteressados().get(i), livroDetalhado.getTitulo());
+					livroDetalhado.getInteressados().remove(i);
+				}
+				persistencia.salvarCentral(dados, "Dados_Livraria.xml");
+				JOptionPane.showMessageDialog(null, "Email enviado!");
+			}catch(Exception e1) {
+				JOptionPane.showMessageDialog(null, "Pode haver algum email invalido na lista!", "Erro", JOptionPane.ERROR_MESSAGE);
+			}
+	}
+}
 	public JanelaVisualizarDetalhesLivreiro(Usuario U,Livro L) {
 		super();
 		usuarioLocal = U;
@@ -198,8 +251,7 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 			comentarioConcatenado += "\ncoment "+coment[0]+" / "+coment[1]+"\n"+coment[2];
 		}
 		try {
-		PersistenciaLivros persistencia = new PersistenciaLivros();
-		CentralLivro dados = persistencia.recuperarCentral("Dados_Livraria.xml");
+		dados = persistencia.recuperarCentral("Dados_Livraria.xml");
 		persistencia.salvarCentral(dados, "Dados_Livraria.xml");
 		}catch(Exception e) {
 		}
@@ -217,6 +269,10 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		botao.setBounds(350, 515, 80, 25);
 		botao.addActionListener(new OuvinteBotaoExcluirComentario(comentarioConcatenado));
 		add(botao);
+		botao = new JButton("Os livros chegaram!");
+		botao.setBounds(475, 515, 150, 25);
+		botao.addActionListener(new OuvinteBotaoAvisar());
+		add(botao);
 		modelo = new DefaultTableModel();
 		modelo.addColumn("Lista de Interessados");
 		for(int i = 0;i<livroDetalhado.getInteressados().size();i++) {
@@ -231,6 +287,22 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		rolo = new JScrollPane(tabela);
 		rolo.setBounds(450, 360, 200, 150);
 		add(rolo);
+		JLabel preço = new JLabel("Preço: ");
+		preço.setBounds(505, 10, 50, 15);
+		add(preço);
+		tfPreço = new JTextField(NumberFormat.getCurrencyInstance().format(livroDetalhado.getPreco()));
+		tfPreço.setBounds(550, 10, 95, 25);
+		tfPreço.setHorizontalAlignment(JTextField.CENTER);
+		tfPreço.addKeyListener(new OuvintePreço());
+		add(tfPreço);
+		JLabel quantidade = new JLabel("Quantidade: ");
+		quantidade.setBounds(475, 40, 75, 15);
+		add(quantidade);
+		tfQuantidade = new JTextField(""+livroDetalhado.getQuantidade());
+		tfQuantidade.setBounds(550, 40, 95, 25);
+		tfQuantidade.setHorizontalAlignment(JTextField.CENTER);
+		tfQuantidade.addKeyListener(new OuvinteQuantidade());
+		add(tfQuantidade);
 	}
 	public void Barra() {
 		MenuOpcoes menu = new MenuOpcoes(this);
