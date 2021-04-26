@@ -1,6 +1,7 @@
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -11,26 +12,32 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDetalhes{
 	private Usuario usuarioLocal;
 	private Livro livroDetalhado;
 	private JTextArea comentarios;
-	private String concat;
 	public class OuvinteBotaoSalvar implements ActionListener{
+		JTable tabela;
+		public OuvinteBotaoSalvar(JTable T) {
+			tabela = T;
+		}
 		public void actionPerformed(ActionEvent e) {
-			livroDetalhado.setGenero(""+modelo.getValueAt(1, 1));
-			livroDetalhado.setIdioma(""+modelo.getValueAt(2, 1));
-			livroDetalhado.setAnoPublicacao(Integer.parseInt(""+modelo.getValueAt(3, 1)));
-			livroDetalhado.setEditora(""+modelo.getValueAt(4, 1));
-			livroDetalhado.setAutores(""+modelo.getValueAt(5, 1));
-			livroDetalhado.setMesLancamento(""+modelo.getValueAt(6, 1));
-			livroDetalhado.setNumeroEdicao(Integer.parseInt(""+modelo.getValueAt(7, 1)));
-			livroDetalhado.setAssunto(""+modelo.getValueAt(8, 1));
-			livroDetalhado.setQuantidade(Integer.parseInt(""+modelo.getValueAt(9, 1)));
-			livroDetalhado.setNotaMedia(Integer.parseInt(""+modelo.getValueAt(10, 1)));
-			livroDetalhado.setResumo(""+modelo.getValueAt(11, 1));
 			try {
+				tabela.getCellEditor().stopCellEditing();
+				livroDetalhado.setTitulo(""+tabela.getValueAt(0, 1));
+				livroDetalhado.setGenero(""+tabela.getValueAt(1, 1));
+				livroDetalhado.setIdioma(""+tabela.getValueAt(2, 1));
+				livroDetalhado.setAnoPublicacao(Integer.parseInt(""+tabela.getValueAt(3, 1)));
+				livroDetalhado.setEditora(""+tabela.getValueAt(4, 1));
+				livroDetalhado.setAutores(""+tabela.getValueAt(5, 1));
+				livroDetalhado.setMesLancamento(""+tabela.getValueAt(6, 1));
+				livroDetalhado.setNumeroEdicao(Integer.parseInt(""+tabela.getValueAt(7, 1)));
+				livroDetalhado.setAssunto(""+tabela.getValueAt(8, 1));
+				livroDetalhado.setQuantidade(Integer.parseInt(""+tabela.getValueAt(9, 1)));
+				livroDetalhado.setNotaMedia(Integer.parseInt(""+tabela.getValueAt(10, 1)));
 				PersistenciaLivros persistencia = new PersistenciaLivros();
 				CentralLivro dados = persistencia.recuperarCentral("Dados_Livraria.xml");
 				for(int i = 0; i<dados.getLivrosDisponiveis().size();i++) {
@@ -43,14 +50,14 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 				}
 				persistencia.salvarCentral(dados, "Dados_Livraria.xml");
 			} catch (Exception e1) {
-				e1.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Nenhuma alteração foi realizada", "Aviso", JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
-	}
+	}			
 	public class OuvinteBotaoAdicionarComentario implements ActionListener{
-		JanelaVisualizarDetalhesLivreiro janela;
-		public OuvinteBotaoAdicionarComentario(JanelaVisualizarDetalhesLivreiro J) {
-			janela = J;
+		String Com;
+		public OuvinteBotaoAdicionarComentario(String S) {
+			Com = S;
 		}
 		public void actionPerformed(ActionEvent e) {
 			String T = JOptionPane.showInputDialog("Adicione um Comentário");
@@ -63,11 +70,16 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 					for(int i = 0;i<dados.getLivrosDisponiveis().size();i++) {
 						if(dados.getLivrosDisponiveis().get(i).getId() == livroDetalhado.getId()) {
 							livroDetalhado.getTodosOsComentarios().add(prepararComentario);
-							comentarios.setText(concat);
-							janela.repaint();
 							break;
 						}
 					}
+					Com = "COMENTÁRIOS\n";
+					int N = 1;
+					for(String[] coment: livroDetalhado.getTodosOsComentarios()) {
+						coment[0] = ""+N++;
+						Com += "\ncoment "+coment[0]+" / "+coment[1]+"\n"+coment[2];
+					}
+					comentarios.setText(Com);
 					persistencia.salvarCentral(dados, "Dados_Livraria.xml");
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -78,6 +90,49 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 			}
 	}
 }
+	public class OuvinteTable implements MouseListener{
+		public void mouseClicked(java.awt.event.MouseEvent e) {
+			if(e.getClickCount() == 2) {
+				int E = JOptionPane.showConfirmDialog(null, "Deseja excluir a opção selecionada?", "Remover Linha", JOptionPane.YES_NO_OPTION, JOptionPane.YES_NO_OPTION);
+				if(E == JOptionPane.YES_OPTION) {
+					modelo.removeRow(tabela.getSelectedRow());
+				}
+			}
+		}
+		public void mousePressed(java.awt.event.MouseEvent e) {	
+		}
+		public void mouseReleased(java.awt.event.MouseEvent e) {
+		}
+		public void mouseEntered(java.awt.event.MouseEvent e) {
+		}
+		public void mouseExited(java.awt.event.MouseEvent e) {
+		}
+	}
+	public class OuvinteBotaoExcluirComentario implements ActionListener{
+		String Com;
+		public OuvinteBotaoExcluirComentario(String S) {
+			Com= S;
+		}
+		public void actionPerformed(ActionEvent e) {
+			try{
+				int numero = Integer.parseInt(JOptionPane.showInputDialog("Informe o numero do comentário a ser excluído"));
+				PersistenciaLivros persistencia = new PersistenciaLivros();
+				CentralLivro dados = persistencia.recuperarCentral("Dados_Livraria.xml");
+				livroDetalhado.getTodosOsComentarios().remove(numero-1);
+				Com = "COMENTÁRIOS\n";
+				int N = 1;
+				for(String[] coment: livroDetalhado.getTodosOsComentarios()) {
+					coment[0] = ""+N++;
+					Com += "\ncoment "+coment[0]+" / "+coment[1]+"\n"+coment[2];
+				}
+				comentarios.setText(Com);
+				persistencia.salvarCentral(dados, "Dados_Livraria.xml");
+			}catch(Exception e1) {
+				JOptionPane.showMessageDialog(null, "Só é permitido números no campo de texto", "Compo Invalido", JOptionPane.ERROR_MESSAGE);
+			}
+	}
+}
+
 	public JanelaVisualizarDetalhesLivreiro(Usuario U,Livro L) {
 		super();
 		usuarioLocal = U;
@@ -127,7 +182,7 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		add(rolo);
 		botao = new JButton("Salvar");
 		botao.setBounds(190, 332, 80, 25);
-		botao.addActionListener(new OuvinteBotaoSalvar());
+		botao.addActionListener(new OuvinteBotaoSalvar(tabela));
 		add(botao);
 		resumo = new JTextArea();
 		resumo.setLineWrap(true);
@@ -137,11 +192,17 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		rolo.setBounds(450, 130, 200, 200);
 		add(rolo);
 		String comentarioConcatenado = "COMENTÁRIOS: \n";
+		int N = 1;
 		for(String[] coment: livroDetalhado.getTodosOsComentarios()) {
-			int n = 1;
+			coment[0] = ""+N++;
 			comentarioConcatenado += "\ncoment "+coment[0]+" / "+coment[1]+"\n"+coment[2];
 		}
-		concat = comentarioConcatenado;
+		try {
+		PersistenciaLivros persistencia = new PersistenciaLivros();
+		CentralLivro dados = persistencia.recuperarCentral("Dados_Livraria.xml");
+		persistencia.salvarCentral(dados, "Dados_Livraria.xml");
+		}catch(Exception e) {
+		}
 		comentarios = new JTextArea(comentarioConcatenado);
 		comentarios.setLineWrap(true);
 		comentarios.setWrapStyleWord(true);
@@ -149,28 +210,30 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		rolo.setBounds(30, 360, 400, 150);
 		add(rolo);
 		botao = new JButton("Adicionar comentário");
-		botao.setBounds(140, 515, 180, 25);
-		botao.addActionListener(new OuvinteBotaoAdicionarComentario(this));
+		botao.setBounds(30, 515, 180, 25);
+		botao.addActionListener(new OuvinteBotaoAdicionarComentario(comentarioConcatenado));
 		add(botao);
-		botao = new JButton("Home");
-		botao.setBounds(590, 20, 70, 70);
+		botao = new JButton("Excluir");
+		botao.setBounds(350, 515, 80, 25);
+		botao.addActionListener(new OuvinteBotaoExcluirComentario(comentarioConcatenado));
 		add(botao);
 		modelo = new DefaultTableModel();
 		modelo.addColumn("Lista de Interessados");
 		for(int i = 0;i<livroDetalhado.getInteressados().size();i++) {
 			modelo.addRow(new Object[] {livroDetalhado.getInteressados().get(i)});
 		}
-		tabela = new JTable(modelo);
+		tabela = new JTable(modelo){
+			public boolean isCellEditable(int Linhas, int colunas)  {
+				return false;
+			}
+		};
+		tabela.addMouseListener(new OuvinteTable());
 		rolo = new JScrollPane(tabela);
 		rolo.setBounds(450, 360, 200, 150);
 		add(rolo);
 	}
 	public void Barra() {
-		menu = new JMenu("Menu");
-		barra = new JMenuBar();
-		barra.setBounds(0, 0, 700, 20);
-		barra.add(menu);
-		add(barra);
+		MenuOpcoes menu = new MenuOpcoes(this);
 	}
 	public Usuario getUsuarioLocal() {
 		return usuarioLocal;
