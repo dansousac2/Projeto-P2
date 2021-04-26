@@ -37,43 +37,6 @@ public class JanelaCadastrarLivreiro extends JanelaPadraoLivreiroUsuario{
 			if(cont<5) {
 				JOptionPane.showMessageDialog(null, "A senha deve ter no minimo 5 caracteres", "Tente novamente", JOptionPane.ERROR_MESSAGE);
 			}
-			else {
-			int Cont = 0;
-		    Properties props = new Properties();
-			props.put("mail.smtp.user", "estanteonlineifpb@gmail.com"); 
-	        props.put("mail.smtp.host", "smtp.gmail.com"); 
-	        props.put("mail.smtp.port", "25"); 
-	        props.put("mail.debug", "true"); 
-	        props.put("mail.smtp.auth", "true"); 
-	        props.put("mail.smtp.starttls.enable","true"); 
-	        props.put("mail.smtp.EnableSSL.enable","true");
-	        props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");   
-	        props.setProperty("mail.smtp.socketFactory.fallback", "false");   
-	        props.setProperty("mail.smtp.port", "465");   
-	        props.setProperty("mail.smtp.socketFactory.port", "465");
-	        Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-	        	protected PasswordAuthentication getPasswordAuthentication() 
-	        	{
-	        		return new PasswordAuthentication("estanteonlineifpb@gmail.com", "estante123");
-	        	}
-	        });
-	        session.setDebug(true);
-	        try{
-	        	Message message = new MimeMessage(session);
-	        	message.setFrom(new InternetAddress("estanteonlineifpb@gmail.com"));
-	        	Address[] toUser = InternetAddress.parse(email.getText());
-	        	message.setRecipients(Message.RecipientType.TO, toUser);
-	        	message.setSubject("Livraria Stile");
-	        	message.setText("Seja Bem Vindo!");
-	        	Transport.send(message);
-	        	JOptionPane.showMessageDialog(null, "Codigo Enviado");
-	        	Cont++;
-	        }catch(MessagingException E) {
-	        	System.out.println("Ocorreu um erro");
-	        }
-			if(Cont == 0) {
-				JOptionPane.showMessageDialog(null, "email inválido", "Tente novamente", JOptionPane.ERROR_MESSAGE);
-			}
 			else if(getNome().getText().equals("") || getEmail().getText().equals("") || getSenha().getText().equals("")){
 				JOptionPane.showMessageDialog(null, "Há algum campo vazio, tente novamente", "Campo vazio", JOptionPane.ERROR_MESSAGE);
 			}
@@ -81,6 +44,43 @@ public class JanelaCadastrarLivreiro extends JanelaPadraoLivreiroUsuario{
 				JOptionPane.showMessageDialog(null, "As senhas digitadas são incompativeis, tente novamente.", "Senha Invalida", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
+				int Cont = 0;
+			    Properties props = new Properties();
+				props.put("mail.smtp.user", "estanteonlineifpb@gmail.com"); 
+		        props.put("mail.smtp.host", "smtp.gmail.com"); 
+		        props.put("mail.smtp.port", "25"); 
+		        props.put("mail.debug", "true"); 
+		        props.put("mail.smtp.auth", "true"); 
+		        props.put("mail.smtp.starttls.enable","true"); 
+		        props.put("mail.smtp.EnableSSL.enable","true");
+		        props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");   
+		        props.setProperty("mail.smtp.socketFactory.fallback", "false");   
+		        props.setProperty("mail.smtp.port", "465");   
+		        props.setProperty("mail.smtp.socketFactory.port", "465");
+		        Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+		        	protected PasswordAuthentication getPasswordAuthentication() 
+		        	{
+		        		return new PasswordAuthentication("estanteonlineifpb@gmail.com", "estante123");
+		        	}
+		        });
+		        session.setDebug(true);
+		        try{
+		        	Message message = new MimeMessage(session);
+		        	message.setFrom(new InternetAddress("estanteonlineifpb@gmail.com"));
+		        	Address[] toUser = InternetAddress.parse(email.getText());
+		        	message.setRecipients(Message.RecipientType.TO, toUser);
+		        	message.setSubject("Livraria Stile");
+		        	message.setText("Seja Bem Vindo!");
+		        	Transport.send(message);
+		        	JOptionPane.showMessageDialog(null, "Codigo Enviado");
+		        	Cont++;
+		        }catch(MessagingException E) {
+		        	System.out.println("Ocorreu um erro");
+		        }
+				if(Cont == 0) {
+					JOptionPane.showMessageDialog(null, "email inválido", "Tente novamente", JOptionPane.ERROR_MESSAGE);
+				}
+				else {
 				usuario = new Usuario(getNome().getText(), getEmail().getText(), getSenha().getText());
 				usuario.setEhLivreiro(true);
 				BancoDeDados.getUsuariosCadastrados().add(usuario);
