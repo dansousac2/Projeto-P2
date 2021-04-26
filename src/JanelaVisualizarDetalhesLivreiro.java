@@ -38,7 +38,8 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 				livroDetalhado.setResumo(resumo.getText());
 				float P = Float.parseFloat(tfPreço.getText());
 				livroDetalhado.setPreco(P);
-				livroDetalhado.setQuantidade(Integer.parseInt(tfQuantidade.getText()));
+				int N = Integer.parseInt(tfQuantidade.getText());
+				livroDetalhado.setQuantidade(N);
 				tabela.getCellEditor().stopCellEditing();
 				livroDetalhado.setTitulo(""+tabela.getValueAt(0, 1));
 				livroDetalhado.setGenero(""+tabela.getValueAt(1, 1));
