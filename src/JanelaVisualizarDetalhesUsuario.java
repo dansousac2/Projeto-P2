@@ -93,7 +93,7 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 			try {
 				PersistenciaLivros persistencia = new PersistenciaLivros();
 				CentralLivro dados = persistencia.recuperarCentral("Dados_Livraria.xml");
-				Boolean existe = null;
+				Boolean existe = false;
 				for(int n = 0;n<usuarioLocal.getColecaoDeLivros().size();n++) {
 					if(usuarioLocal.getColecaoDeLivros().get(n).getId() == livroDetalhado.getId()) {
 						existe = true;

@@ -12,27 +12,32 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDetalhes{
 	private Usuario usuarioLocal;
 	private Livro livroDetalhado;
 	private JTextArea comentarios;
-	private String concat;
 	public class OuvinteBotaoSalvar implements ActionListener{
+		JTable tabela;
+		public OuvinteBotaoSalvar(JTable T) {
+			tabela = T;
+		}
 		public void actionPerformed(ActionEvent e) {
-			Object S = modelo.getValueAt(1, 1);
-			livroDetalhado.setGenero(""+S);
-			livroDetalhado.setGenero(""+modelo.getValueAt(1, 1));
-			livroDetalhado.setIdioma(""+modelo.getValueAt(2, 1));
-			livroDetalhado.setAnoPublicacao(Integer.parseInt(""+modelo.getValueAt(3, 1)));
-			livroDetalhado.setEditora(""+modelo.getValueAt(4, 1));
-			livroDetalhado.setAutores(""+modelo.getValueAt(5, 1));
-			livroDetalhado.setMesLancamento(""+modelo.getValueAt(6, 1));
-			livroDetalhado.setNumeroEdicao(Integer.parseInt(""+modelo.getValueAt(7, 1)));
-			livroDetalhado.setAssunto(""+modelo.getValueAt(8, 1));
-			livroDetalhado.setQuantidade(Integer.parseInt(""+modelo.getValueAt(9, 1)));
-			livroDetalhado.setNotaMedia(Integer.parseInt(""+modelo.getValueAt(10, 1)));
 			try {
+				tabela.getCellEditor().stopCellEditing();
+				livroDetalhado.setTitulo(""+tabela.getValueAt(0, 1));
+				livroDetalhado.setGenero(""+tabela.getValueAt(1, 1));
+				livroDetalhado.setIdioma(""+tabela.getValueAt(2, 1));
+				livroDetalhado.setAnoPublicacao(Integer.parseInt(""+tabela.getValueAt(3, 1)));
+				livroDetalhado.setEditora(""+tabela.getValueAt(4, 1));
+				livroDetalhado.setAutores(""+tabela.getValueAt(5, 1));
+				livroDetalhado.setMesLancamento(""+tabela.getValueAt(6, 1));
+				livroDetalhado.setNumeroEdicao(Integer.parseInt(""+tabela.getValueAt(7, 1)));
+				livroDetalhado.setAssunto(""+tabela.getValueAt(8, 1));
+				livroDetalhado.setQuantidade(Integer.parseInt(""+tabela.getValueAt(9, 1)));
+				livroDetalhado.setNotaMedia(Integer.parseInt(""+tabela.getValueAt(10, 1)));
 				PersistenciaLivros persistencia = new PersistenciaLivros();
 				CentralLivro dados = persistencia.recuperarCentral("Dados_Livraria.xml");
 				for(int i = 0; i<dados.getLivrosDisponiveis().size();i++) {
@@ -45,10 +50,10 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 				}
 				persistencia.salvarCentral(dados, "Dados_Livraria.xml");
 			} catch (Exception e1) {
-				e1.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Nenhuma alteração foi realizada", "Aviso", JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
-	}
+	}			
 	public class OuvinteBotaoAdicionarComentario implements ActionListener{
 		String Com;
 		public OuvinteBotaoAdicionarComentario(String S) {
@@ -174,11 +179,10 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		tabela = new JTable(modelo);
 		rolo = new JScrollPane(tabela);
 		rolo.setBounds(30, 130, 400, 200);
-		System.out.print(modelo.getValueAt(1, 1));
 		add(rolo);
 		botao = new JButton("Salvar");
 		botao.setBounds(190, 332, 80, 25);
-		botao.addActionListener(new OuvinteBotaoSalvar());
+		botao.addActionListener(new OuvinteBotaoSalvar(tabela));
 		add(botao);
 		resumo = new JTextArea();
 		resumo.setLineWrap(true);
@@ -229,11 +233,7 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		add(rolo);
 	}
 	public void Barra() {
-		menu = new JMenu("Menu");
-		barra = new JMenuBar();
-		barra.setBounds(0, 0, 700, 20);
-		barra.add(menu);
-		add(barra);
+		MenuOpcoes menu = new MenuOpcoes(this);
 	}
 	public Usuario getUsuarioLocal() {
 		return usuarioLocal;
