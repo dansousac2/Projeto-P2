@@ -229,5 +229,26 @@
         </Livro>
       </colecaoDeLivros>
     </Usuario>
+    <Usuario>
+      <nome>leonardo</nome>
+      <email>leo</email>
+      <senha>12345</senha>
+      <ehLivreiro>false</ehLivreiro>
+      <colecaoDeLivros/>
+    </Usuario>
+    <Usuario>
+      <nome>leo</nome>
+      <email>leo</email>
+      <senha>12345</senha>
+      <ehLivreiro>false</ehLivreiro>
+      <colecaoDeLivros/>
+    </Usuario>
+    <Usuario>
+      <nome>leonardo</nome>
+      <email>leonardofreitas.l94@hotmail.com</email>
+      <senha>12345</senha>
+      <ehLivreiro>false</ehLivreiro>
+      <colecaoDeLivros/>
+    </Usuario>
   </usuariosCadastrados>
 </CentralLivro>
