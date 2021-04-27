@@ -20,7 +20,12 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public abstract class PadraoListarLivros extends JFrame {
-	
+	/**
+	 * A classe PadraoListarLivros é responsavel pela exibição
+	 * da lista de livros apos o usuário logado. duas janelas estendem
+	 * daqui pois possuem codigos muito parecidos que são as janelas
+	 * ListarLivrosLivreiro e ListarLivrosUsuário. 
+	 */
 	protected Usuario usuarioLogado;
 	
 	protected JTable jtLivrosDisponiveis;
