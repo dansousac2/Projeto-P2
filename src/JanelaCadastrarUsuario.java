@@ -114,7 +114,7 @@ public class JanelaCadastrarUsuario extends JanelaPadraoLivreiroUsuario{
 	add(botao);
 	}
 	public void Incremento7() {
-	img = new ImageIcon("100p/livro-logotipo.png");
+	img = Imagens.ICONE_LIVRO;
 	titulo = new JLabel(img);
 	titulo.setBounds(285, 85, 100, 100);
 	add(titulo);
@@ -127,28 +127,28 @@ public class JanelaCadastrarUsuario extends JanelaPadraoLivreiroUsuario{
 	add(botao);	
 	}
 	public void Incremento9() {
-	img = new ImageIcon("24p/key-24p.png");
+	img = Imagens.ICONE_KEY;
 	titulo = new JLabel(img);
 	titulo.setBounds(45, 320, 25, 25);
 	titulo.setBorder(BorderFactory.createLineBorder(Color.CYAN.darker()));
 	add(titulo);
 	}
 	public void Incremento10() {
-	img = new ImageIcon("24p/key-24p.png");
+	img = Imagens.ICONE_KEY;
 	titulo = new JLabel(img);
 	titulo.setBounds(365, 320, 25, 25);
 	titulo.setBorder(BorderFactory.createLineBorder(Color.CYAN.darker()));
 	add(titulo);
 	}
 	public void Incremento11() {
-	img = new ImageIcon("24p/usuario.png");
+	img = Imagens.ICONE_USER24;
 	titulo = new JLabel(img);
 	titulo.setBounds(45, 230, 25, 25);
 	titulo.setBorder(BorderFactory.createLineBorder(Color.CYAN.darker()));
 	add(titulo);
 	}
 	public void Incremento12() {
-	img = new ImageIcon("24p/email-24.png");
+	img = Imagens.ICONE_EMAIL;
 	titulo = new JLabel(img);
 	titulo.setBounds(365, 230, 25, 25);
 	titulo.setBorder(BorderFactory.createLineBorder(Color.CYAN.darker()));

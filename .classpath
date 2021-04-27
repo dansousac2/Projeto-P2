@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-15">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
@@ -19,27 +19,6 @@
 	<classpathentry kind="lib" path="lib/xstream-hibernate-1.4.15.jar"/>
 	<classpathentry kind="lib" path="lib/xstream-jmh-1.4.15.jar"/>
 	<classpathentry kind="lib" path="lib/iText-5.0.5.jar"/>
-	<classpathentry kind="lib" path="00-icones/user.png"/>
-	<classpathentry kind="lib" path="00-icones/Slock-30.png"/>
-	<classpathentry kind="lib" path="00-icones/perfil.png"/>
-	<classpathentry kind="lib" path="00-icones/lupa.png"/>
-	<classpathentry kind="lib" path="00-icones/livro-logotipo.png"/>
-	<classpathentry kind="lib" path="00-icones/livro04.png"/>
-	<classpathentry kind="lib" path="00-icones/livro03.png"/>
-	<classpathentry kind="lib" path="00-icones/livro02.png"/>
-	<classpathentry kind="lib" path="00-icones/livro01.png"/>
-	<classpathentry kind="lib" path="00-icones/key-42.png"/>
-	<classpathentry kind="lib" path="00-icones/key-30p.png"/>
-	<classpathentry kind="lib" path="00-icones/key-24p.png"/>
-	<classpathentry kind="lib" path="00-icones/key.png"/>
-	<classpathentry kind="lib" path="00-icones/favoritos.png"/>
-	<classpathentry kind="lib" path="00-icones/email-48.png"/>
-	<classpathentry kind="lib" path="00-icones/email-24.png"/>
-	<classpathentry kind="lib" path="00-icones/buy.png"/>
-	<classpathentry kind="lib" path="00-icones/books-48p.png"/>
-	<classpathentry kind="lib" path="00-icones/admin-64p.png"/>
-	<classpathentry kind="lib" path="00-icones/admin-32.png"/>
-	<classpathentry kind="lib" path="00-icones/admin-100p.png"/>
-	<classpathentry kind="lib" path="00-icones"/>
+	<classpathentry kind="lib" path="icones"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -25,4 +25,19 @@ public class Imagens {
 	
 	public static final ImageIcon ICONE_NOVO_LIVRO = 
 			new ImageIcon(Imagens.class.getResource("/novoLivro.png"));
+	public static final ImageIcon ICONE_USER = 
+			new ImageIcon(Imagens.class.getResource("/user.png"));
+	public static final ImageIcon ICONE_LIVRO = 
+			new ImageIcon(Imagens.class.getResource("/livro-logotipo.png"));
+	public static final ImageIcon ICONE_USER24 = 
+			new ImageIcon(Imagens.class.getResource("/user24.png"));
+	public static final ImageIcon ICONE_EMAIL = 
+			new ImageIcon(Imagens.class.getResource("/email-24.png"));
+	public static final ImageIcon ICONE_KEY = 
+			new ImageIcon(Imagens.class.getResource("/key-24p.png"));
+	public static final ImageIcon ICONE_COD = 
+			new ImageIcon(Imagens.class.getResource("/Slock-30.png"));
+	public static final ImageIcon ICONE_KEYY = 
+			new ImageIcon(Imagens.class.getResource("/key.png"));
+			
 }
