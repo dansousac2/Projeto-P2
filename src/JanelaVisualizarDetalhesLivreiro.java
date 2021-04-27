@@ -3,6 +3,8 @@ import java.awt.Font;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
@@ -38,8 +40,10 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		}
 		public void actionPerformed(ActionEvent e) {
 				livroDetalhado.setResumo(resumo.getText());
-				float p = Float.parseFloat(""+P);
-				livroDetalhado.setPreco(p);
+				if(!tfPreço.getText().equals(NumberFormat.getCurrencyInstance().format(livroDetalhado.getPreco()))) {
+					P = tfPreço.getText();
+					livroDetalhado.setPreco(Integer.parseInt(P));
+				}
 				int N = Integer.parseInt(tfQuantidade.getText());
 				livroDetalhado.setQuantidade(N);
 				try {
@@ -176,6 +180,18 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 			}
 	}
 }
+	public class OuvinteFocus implements FocusListener{
+		public void focusGained(FocusEvent e) {
+			if (!tfPreço.getText().equals("")){
+				tfPreço.setText("");
+			}
+		}
+		public void focusLost(FocusEvent e) {
+			if (tfPreço.getText().equals("")){
+				tfPreço.setText(NumberFormat.getCurrencyInstance().format(livroDetalhado.getPreco()));
+			}
+		}
+	}
 	public JanelaVisualizarDetalhesLivreiro(Usuario U,Livro L) {
 		super();
 		usuarioLocal = U;
@@ -297,11 +313,11 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 		JLabel preço = new JLabel("Preço: ");
 		preço.setBounds(505, 10, 50, 15);
 		add(preço);
-		P = ""+livroDetalhado.getPreco();
 		tfPreço = new JTextField(NumberFormat.getCurrencyInstance().format(livroDetalhado.getPreco()));
 		tfPreço.setBounds(550, 10, 95, 25);
 		tfPreço.setHorizontalAlignment(JTextField.CENTER);
 		tfPreço.addKeyListener(new OuvintePreço());
+		tfPreço.addFocusListener(new OuvinteFocus());
 		add(tfPreço);
 		JLabel quantidade = new JLabel("Quantidade: ");
 		quantidade.setBounds(475, 40, 75, 15);

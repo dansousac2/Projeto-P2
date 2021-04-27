@@ -1,5 +1,46 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <CentralLivro>
-  <livrosDisponiveis/>
-  <usuariosCadastrados/>
+  <livrosDisponiveis>
+    <Livro>
+      <todosOsComentarios>
+        <string-array>
+          <string>1</string>
+          <string>leonardofreitas.l94@hotmail.com</string>
+          <string>sdfsdf</string>
+        </string-array>
+        <string-array>
+          <string>2</string>
+          <string>leonardofreitas.l94@hotmail.com</string>
+          <string>sdfsdfsdf</string>
+        </string-array>
+      </todosOsComentarios>
+      <tipo>Literatura</tipo>
+      <genero>literatura brasileira</genero>
+      <titulo>brasil</titulo>
+      <idioma>fsdfsdf</idioma>
+      <anoPublicacao>2020</anoPublicacao>
+      <editora>sdfsdfsdf</editora>
+      <resumo>leonardo</resumo>
+      <interessados/>
+      <autores>effsdf</autores>
+      <mesLancamento>null</mesLancamento>
+      <numeroEdicao>0</numeroEdicao>
+      <assunto>null</assunto>
+      <quantidade>200</quantidade>
+      <id>1619540821218</id>
+      <preco>50000.0</preco>
+      <notaMedia>0</notaMedia>
+      <notasAtribuidas/>
+      <visualizacoes>10</visualizacoes>
+    </Livro>
+  </livrosDisponiveis>
+  <usuariosCadastrados>
+    <Usuario>
+      <nome>leonardo</nome>
+      <email>leonardofreitas.l94@hotmail.com</email>
+      <senha>12345</senha>
+      <ehLivreiro>true</ehLivreiro>
+      <colecaoDeLivros/>
+    </Usuario>
+  </usuariosCadastrados>
 </CentralLivro>
