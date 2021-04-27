@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <CentralLivro>
-  <livrosDisponiveis/>
-  <usuariosCadastrados/>
+  <livrosDisponiveis>
+    <Livro>
+      <todosOsComentarios/>
+      <tipo>Desenvolvimento Pessoal</tipo>
+      <genero>religião</genero>
+      <titulo>as barcas</titulo>
+      <idioma>mandarim</idioma>
+      <anoPublicacao>1234</anoPublicacao>
+      <editora>popai</editora>
+      <resumo>asd qwe zxc</resumo>
+      <interessados/>
+      <autores>Dasbryui</autores>
+      <numeroEdicao>0</numeroEdicao>
+      <quantidade>21</quantidade>
+      <id>1619539491153</id>
+      <preco>3.44</preco>
+      <notaMedia>0</notaMedia>
+      <notasAtribuidas/>
+      <visualizacoes>0</visualizacoes>
+    </Livro>
+  </livrosDisponiveis>
+  <usuariosCadastrados>
+    <Usuario>
+      <nome>dan</nome>
+      <email>dansousac2@gmail.com</email>
+      <senha>123123</senha>
+      <ehLivreiro>true</ehLivreiro>
+      <colecaoDeLivros/>
+    </Usuario>
+  </usuariosCadastrados>
 </CentralLivro>
