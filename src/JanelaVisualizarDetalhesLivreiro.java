@@ -57,7 +57,7 @@ public class JanelaVisualizarDetalhesLivreiro extends JanelaPadraoVisualizarDeta
 				persistencia.salvarCentral(dados, "Dados_Livraria.xml");
 				JOptionPane.showMessageDialog(null, "Alterações salvas");
 				}catch(NullPointerException E) {
-					JOptionPane.showMessageDialog(null, "alterações salvas");
+					JOptionPane.showMessageDialog(null, "Alterações salvas");
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}

@@ -27,8 +27,8 @@ import javax.swing.JTextField;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 public class JanelaCadastrarLivreiro extends JanelaPadraoLivreiroUsuario{
-	CentralLivro BancoDeDados;
-	PersistenciaLivros Persistencia = new PersistenciaLivros();
+	private CentralLivro BancoDeDados;
+	private PersistenciaLivros Persistencia = new PersistenciaLivros();
 	public class OuvinteBotaoCadastrar implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			int cont = 0;

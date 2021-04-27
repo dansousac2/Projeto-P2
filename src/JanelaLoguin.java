@@ -3,7 +3,6 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,9 +12,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class JanelaLoguin extends JanelaPadraoLivreiroUsuario{
-	
-	CentralLivro BancoDeDados;
-	
+	private CentralLivro BancoDeDados;
 	public class OuvinteBotaoLogin implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			if(getEmail().getText().equals("") || getSenha().getText().equals("")) {

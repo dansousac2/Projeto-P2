@@ -1,35 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <CentralLivro>
-  <livrosDisponiveis>
-    <Livro>
-      <todosOsComentarios/>
-      <tipo>Literatura</tipo>
-      <genero>literatura brasileira</genero>
-      <titulo>janela</titulo>
-      <idioma>wekfnsdlkfn</idioma>
-      <anoPublicacao>2020</anoPublicacao>
-      <editora>sljdnsljdng</editora>
-      <resumo>livro muito bom</resumo>
-      <interessados/>
-      <autores>gsdgsd</autores>
-      <mesLancamento>null</mesLancamento>
-      <numeroEdicao>0</numeroEdicao>
-      <assunto>null</assunto>
-      <quantidade>10000</quantidade>
-      <id>1619476781677</id>
-      <preco>200.0</preco>
-      <notaMedia>0</notaMedia>
-      <notasAtribuidas/>
-      <visualizacoes>6</visualizacoes>
-    </Livro>
-  </livrosDisponiveis>
-  <usuariosCadastrados>
-    <Usuario>
-      <nome>leonardo</nome>
-      <email>leonardofreitas.l94@hotmail.com</email>
-      <senha>12345</senha>
-      <ehLivreiro>true</ehLivreiro>
-      <colecaoDeLivros/>
-    </Usuario>
-  </usuariosCadastrados>
+  <livrosDisponiveis/>
+  <usuariosCadastrados/>
 </CentralLivro>

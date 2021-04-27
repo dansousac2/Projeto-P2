@@ -24,14 +24,14 @@ import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 
 public class JanelaAlteraçãoDeSenha extends JanelaPadraoLivreiroUsuario{
-	JTextField codigo;
-	JButton botaoConfirmar;
-	JButton botaoEnviarCodigo;
-	String codigoRedefinirSenha;
-	CentralLivro BancoDeDados;
-	PersistenciaLivros persistencia = new PersistenciaLivros();
-	String comparar;
-	int numeroAleatorio;
+	private JTextField codigo;
+	private JButton botaoConfirmar;
+	private JButton botaoEnviarCodigo;
+	private String codigoRedefinirSenha;
+	private CentralLivro BancoDeDados;
+	private PersistenciaLivros persistencia = new PersistenciaLivros();
+	private String comparar;
+	private int numeroAleatorio;
 	public class OuvinteEnviarCodigo implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			int cont = 0;
