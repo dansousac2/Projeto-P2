@@ -1,3 +1,4 @@
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -10,6 +11,7 @@ import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 
 public class JanelaPadraoVisualizarDetalhes extends JFrame{
+	ImageIcon img;
 	JLabel titulo;
 	JTable tabela;
 	JScrollPane rolo;

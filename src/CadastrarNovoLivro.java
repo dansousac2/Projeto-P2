@@ -459,7 +459,9 @@ public class CadastrarNovoLivro extends JDialog{
 					
 					switch(tipo) {
 						
-					case "Literatura","Desenvolvimento Pessoal":
+					case "Literatura":
+					
+					case"Desenvolvimento Pessoal":
 						taAutores.setEnabled(true);
 						break;
 			

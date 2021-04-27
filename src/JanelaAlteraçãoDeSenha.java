@@ -142,13 +142,13 @@ public class JanelaAlteraçãoDeSenha extends JanelaPadraoLivreiroUsuario{
 		add(titulo);
 	}
 	void Incremento2() {
-		img = new ImageIcon("100p/key.png");
+		img = Imagens.ICONE_KEYY;
 		titulo = new JLabel(img);
 		titulo.setBounds(285, 30, 100, 100);
 		add(titulo);
 	}
 	void Incremento3() {
-		img = new ImageIcon("24p/email-24.png");
+		img = Imagens.ICONE_EMAIL;
 		titulo = new JLabel(img);
 		titulo.setBounds(140, 230, 25, 25);
 		titulo.setBorder(BorderFactory.createLineBorder(Color.CYAN.darker()));
@@ -167,7 +167,7 @@ public class JanelaAlteraçãoDeSenha extends JanelaPadraoLivreiroUsuario{
 		add(email);
 	}
 	void Incremento5() {
-		img = new ImageIcon("24p/Slock-30.png");
+		img = Imagens.ICONE_COD;
 		titulo = new JLabel(img);
 		titulo.setBounds(140, 300, 25, 25);
 		titulo.setBorder(BorderFactory.createLineBorder(Color.CYAN.darker()));
@@ -207,14 +207,14 @@ public class JanelaAlteraçãoDeSenha extends JanelaPadraoLivreiroUsuario{
 		add(titulo);
 	}
 	void Incremento9() {
-		img = new ImageIcon("24p/key-24p.png");
+		img = Imagens.ICONE_KEY;
 		titulo = new JLabel(img);
 		titulo.setBounds(45, 390, 25, 25);
 		titulo.setBorder(BorderFactory.createLineBorder(Color.CYAN.darker()));
 		add(titulo);
 	}
 	void Incremento10() {
-		img = new ImageIcon("24p/key-24p.png");
+		img = Imagens.ICONE_KEY;
 		titulo = new JLabel(img);
 		titulo.setBounds(365, 390, 25, 25);
 		titulo.setBorder(BorderFactory.createLineBorder(Color.CYAN.darker()));

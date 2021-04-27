@@ -36,7 +36,6 @@ public class ListarLivrosLivreiro extends PadraoListarLivros{
 		nomeADM.setForeground(new Color(163, 73, 164));
 		nomeADM.setHorizontalAlignment(JLabel.CENTER);
 		nomeADM.setBounds(20, 75, 75, 20);
-		
 		add(nomeADM);
 	}
 	

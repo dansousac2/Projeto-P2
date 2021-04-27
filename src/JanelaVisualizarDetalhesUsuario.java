@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Font;
 
 import java.awt.event.ActionEvent;
@@ -152,6 +153,22 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 		titulo = new JLabel("Visualizar Detalhes");
 		titulo.setBounds(230, 20, 250, 30);
 		titulo.setFont(new Font("Arial", Font.BOLD, 22));
+		add(titulo);
+		img = Imagens.ICONE_USUARIO;
+		titulo = new JLabel(img);
+		titulo.setBounds(20, 10, 75, 75);
+		add(titulo);
+		titulo = new JLabel(usuarioLocal.getNome());
+		titulo.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		titulo.setForeground(new Color(163, 73, 164));
+		titulo.setHorizontalAlignment(JLabel.CENTER);
+		titulo.setBounds(20, 75, 75, 20);
+		add(titulo);
+		titulo = new JLabel("Resumo");
+		titulo.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		titulo.setForeground(new Color(163, 73, 164));
+		titulo.setHorizontalAlignment(JLabel.CENTER);
+		titulo.setBounds(500, 100, 100, 30);
 		add(titulo);
 	}
 	public void DetalhesDoLivro() {

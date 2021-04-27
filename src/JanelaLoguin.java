@@ -67,7 +67,7 @@ public class JanelaLoguin extends JanelaPadraoLivreiroUsuario{
 		add(titulo);
 	}
 	public void Incremento2() {
-		img = new ImageIcon("100p/user.png");
+		img = Imagens.ICONE_USER;
 		titulo = new JLabel(img);
 		titulo.setBounds(285, 30, 100, 100);
 		add(titulo);
@@ -87,14 +87,14 @@ public class JanelaLoguin extends JanelaPadraoLivreiroUsuario{
 		add(email);
 	}
 		public void Incremento5() {
-		img = new ImageIcon("24p/key-24p.png");
+		img = Imagens.ICONE_KEY;
 		titulo = new JLabel(img);
 		titulo.setBounds(210, 300, 25, 25);
 		titulo.setBorder(BorderFactory.createLineBorder(Color.CYAN.darker()));
 		add(titulo);
 	}
 	public void Incremento6() {
-		img = new ImageIcon("24p/email-24.png");
+		img = Imagens.ICONE_EMAIL;
 		titulo = new JLabel(img);
 		titulo.setBounds(210, 230, 25, 25);
 		titulo.setBorder(BorderFactory.createLineBorder(Color.CYAN.darker()));
