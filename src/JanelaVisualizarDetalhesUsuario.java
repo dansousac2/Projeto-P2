@@ -120,8 +120,7 @@ public class JanelaVisualizarDetalhesUsuario extends JanelaPadraoVisualizarDetal
 			try{
 				int numero = Integer.parseInt(JOptionPane.showInputDialog("Informe o numero do comentário a ser excluído"));
 				if(livroDetalhado.getTodosOsComentarios().get(numero-1)[1].equals(usuarioLocal.getEmail())) {
-					PersistenciaLivros persistencia = new PersistenciaLivros();
-					CentralLivro dados = persistencia.recuperarCentral("Dados_Livraria.xml");
+					dados = persistencia.recuperarCentral("Dados_Livraria.xml");
 					livroDetalhado.getTodosOsComentarios().remove(numero-1);
 					Com = "COMENTÁRIOS\n";
 					int N = 1;
