@@ -18,7 +18,7 @@ public class Utilidade {
 		Object[] objetosAtributos = {liv.getTipo(),liv.getTitulo(),liv.getResumo(),liv.getId(),
 				liv.getNotaMedia(),liv.getQuantidade(),liv.getPreco() };
 		
-		for(int i = 0; i < 6; i++) {
+		for(int i = 0; i < objetosAtributos.length; i++) {
 			atributos[i] = objetosAtributos[i].toString();
 		}
 		return atributos;

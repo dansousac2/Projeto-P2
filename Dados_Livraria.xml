@@ -2,6 +2,7 @@
 <CentralLivro>
   <livrosDisponiveis>
     <Livro>
+<<<<<<< HEAD
       <todosOsComentarios>
         <string-array>
           <string>1</string>
@@ -32,13 +33,38 @@
       <notaMedia>0</notaMedia>
       <notasAtribuidas/>
       <visualizacoes>10</visualizacoes>
+=======
+      <todosOsComentarios/>
+      <tipo>Desenvolvimento Pessoal</tipo>
+      <genero>religião</genero>
+      <titulo>as barcas</titulo>
+      <idioma>mandarim</idioma>
+      <anoPublicacao>1234</anoPublicacao>
+      <editora>popai</editora>
+      <resumo>asd qwe zxc</resumo>
+      <interessados/>
+      <autores>Dasbryui</autores>
+      <numeroEdicao>0</numeroEdicao>
+      <quantidade>21</quantidade>
+      <id>1619539491153</id>
+      <preco>3.44</preco>
+      <notaMedia>0</notaMedia>
+      <notasAtribuidas/>
+      <visualizacoes>0</visualizacoes>
+>>>>>>> a92ea68bba905a0d3049db63fd4fab9fbd7ae25b
     </Livro>
   </livrosDisponiveis>
   <usuariosCadastrados>
     <Usuario>
+<<<<<<< HEAD
       <nome>leonardo</nome>
       <email>leonardofreitas.l94@hotmail.com</email>
       <senha>12345</senha>
+=======
+      <nome>dan</nome>
+      <email>dansousac2@gmail.com</email>
+      <senha>123123</senha>
+>>>>>>> a92ea68bba905a0d3049db63fd4fab9fbd7ae25b
       <ehLivreiro>true</ehLivreiro>
       <colecaoDeLivros/>
     </Usuario>
